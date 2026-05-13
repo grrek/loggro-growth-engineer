@@ -13,8 +13,8 @@ const pasos = [
     Icon: GitBranch,
     code: '02',
     title: 'Clona el template y crea tu repo',
-    desc: 'Marca el repo como público. Nómbralo así:',
-    code_block: 'loggro-{track}-{tu-apellido}\n# ej. loggro-intel-rodriguez',
+    desc: 'Usa el repo template grrek/loggro-ai-challenge. Marca el tuyo como público (más fácil para que te evaluemos sin permisos). Nómbralo loggro-{track}-{tu-apellido}:',
+    code_block: 'gh repo create loggro-{track}-{tu-apellido} \\\n  --template grrek/loggro-ai-challenge \\\n  --public --clone\n# ej. gh repo create loggro-intel-rodriguez ...',
   },
   {
     Icon: FileText,
@@ -26,7 +26,7 @@ const pasos = [
     Icon: FileCheck,
     code: '04',
     title: 'Lee y firma los 2 documentos legales',
-    desc: 'Consentimiento Habeas Data (Ley 1581/2012) y propiedad intelectual. Los firmas digital y los guardas en /legal/ de tu repo.',
+    desc: 'Consentimiento Habeas Data (Ley 1581/2012) y propiedad intelectual. Vienen en /legal/ del template. Suficiente con escribir tu nombre completo + fecha al final de cada uno y commitearlos. Detalles en cada archivo.',
   },
   {
     Icon: Send,
