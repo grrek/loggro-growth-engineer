@@ -52,8 +52,8 @@
     "id": "d",
     "code": "Track D",
     "name": "Inteligencia de Conversaciones",
-    "tagline": "Procesas audios de llamadas comerciales en español Colombia. STT + extracción de objeciones + competidores + señales DIAN + cálculo de riesgo + email de seguimiento.",
-    "perfil_si": "RevOps, sales ops, builders híbridos con apetito por audio + multi-agente",
+    "tagline": "Procesas 9 grabaciones REALES del equipo comercial de Loggro en español Colombia. STT + diarization + objeciones + competidores + señales DIAN + scoring + email de seguimiento.",
+    "perfil_si": "RevOps, sales ops, builders híbridos con apetito por audio + multi-agente, cómodos con audio sin limpiar (overlap, emociones, acentos variados)",
     "tiempo": "3 a 4 horas (incluye setup de STT)",
     "sub_agentes": [
       "TranscriptionAgent",
@@ -64,7 +64,9 @@
       "FollowUpDrafter"
     ],
     "inputs": [
-      "3 audios MP3 obligatorios en español Colombia + opcionales (5 a 10 para batch)",
+      "9 MP3 reales Q2 2026 (5 obligatorios + 4 opcionales que suman puntos)",
+      "~80 minutos totales: cancelación, prospecto, cliente molesto, contactado, edge cases",
+      "speaker_map.json con metadata por audio (escenario + señales esperadas)",
       "Brand voice guide de Loggro",
       "Whisper self-hosted opcional + virtual key LLM Broker"
     ],
