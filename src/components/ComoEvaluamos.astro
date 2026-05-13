@@ -28,18 +28,17 @@ const dimensiones = [
 ];
 
 const thresholds = [
-  { name: 'Code-based (held-out 5 casos)', value: '>= 3/5 + reasoning 0.7' },
-  { name: 'LLM-as-judge', value: '>= 0.7 promedio' },
-  { name: 'AgentLint sobre tu CLAUDE.md', value: '>= 60 / 100' },
+  { name: 'LLM-as-judge async', value: '>= 0.7 promedio' },
+  { name: 'AgentLint sobre tu CLAUDE.md (en vivo)', value: '>= 60 / 100' },
   { name: 'Human review (equipo evaluador)', value: '>= 7.0 / 10' },
   { name: 'AI Audit Log con criterio', value: 'presente y no trivial' },
 ];
 
 const lentes = [
-  { name: 'Code-based (objetivo)', desc: 'Automático. Corremos tu eval.py contra held-out (5 casos secretos)' },
-  { name: 'Human review en frío', desc: 'El líder del rol y el Tech Lead califican por separado antes de hablar entre ellos' },
-  { name: 'LLM-as-judge async', desc: 'Script automatizado con prompt versionado en eval/judge_prompt.md' },
-  { name: 'LLM review post-sesión', desc: 'Grabación de Parte C procesada con Claude usando rúbrica predefinida' },
+  { name: 'LLM-as-judge async', desc: 'Script con Claude API + rúbrica versionada en eval/judge_prompt.md. Procesa todo tu entregable async después de tu push final.' },
+  { name: 'Human review en frío', desc: 'El líder del rol y el Tech Lead califican por separado antes de hablar entre ellos. Sobre el repo + el Loom.' },
+  { name: 'LLM review post-sesión en vivo', desc: 'Grabación de Parte C procesada con Claude usando rúbrica predefinida. Captura señales que se escapan en vivo.' },
+  { name: 'Judge extension + sabotage test (tu Apéndice.A5)', desc: 'Lo evalúa otro LLM: extendiste el judge bien? tu sabotage atrapó outputs malos? Lo más alto signal para este rol.' },
 ];
 ---
 
@@ -75,7 +74,7 @@ const lentes = [
     </div>
 
     <div class="mb-16">
-      <h3 class="text-xl font-bold mb-6">5 thresholds para avanzar a entrevista final</h3>
+      <h3 class="text-xl font-bold mb-6">4 thresholds para avanzar a entrevista final</h3>
       <div class="grid md:grid-cols-2 gap-3">
         {thresholds.map((t) => (
           <div class="p-4 rounded-lg border border-line bg-surface-alt flex justify-between items-center">

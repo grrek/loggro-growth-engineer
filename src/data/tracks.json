@@ -3,13 +3,15 @@
     "id": "a",
     "code": "Track A",
     "name": "Prospección Automatizada (Outbound)",
-    "tagline": "Construyes un sistema autónomo de prospección outbound para Loggro: scraping + enriquecimiento + secuencia email + WhatsApp + clasificación de respuestas.",
-    "perfil_si": "SDR, growth con experiencia en prospección en frío, alguien que entiende que un asunto malo mata cualquier secuencia",
+    "tagline": "Construyes un pipeline de outbound end-to-end: identificas ~100 cuentas desde un ICP, las enriqueces con fuentes públicas, escribes secuencia email + WhatsApp adaptada, y clasificas respuestas entrantes.",
+    "perfil_si": "SDR, growth con experiencia en prospección en frío, alguien que entiende que un asunto malo mata cualquier secuencia y que sabe scrapear fuentes públicas",
     "tiempo": "3 a 4 horas",
-    "sub_agentes": ["Scraper / Enricher", "MessageWriter", "ResponseClassifier"],
+    "sub_agentes": ["AccountFinder + Enricher", "MessageWriter", "ResponseClassifier"],
     "inputs": [
-      "Buyer persona objetivo (dueño de empresa, director de finanzas, emprendedor)",
-      "Brand voice guide de Loggro",
+      "ICP escrito (sector + tamaño + ciudad + señales de pain)",
+      "30 cuentas ejemplo en formato canónico (referencia de output)",
+      "10 respuestas sintéticas con ground_truth para el clasificador",
+      "Buyer persona: dueño de empresa, director de finanzas, emprendedor",
       "Virtual key del LLM Broker"
     ],
     "color": "#E75E1E"
