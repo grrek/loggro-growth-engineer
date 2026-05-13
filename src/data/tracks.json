@@ -18,13 +18,15 @@
     "id": "b",
     "code": "Track B",
     "name": "Insights de Campañas de Marketing",
-    "tagline": "Construyes un sistema que analiza 30 campañas activas y genera 3 hallazgos priorizados con detección de anomalías para la retro mensual.",
+    "tagline": "Construyes un sistema que analiza 124 campañas reales y genera 3 hallazgos priorizados con detección de anomalías para la retro mensual.",
     "perfil_si": "Analítica, data-oriented, cómodo cruzando JSON y detectando patrones no obvios",
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["DataIngestor", "CampaignAnalyzer", "InsightPrioritizer"],
     "inputs": [
-      "JSON con 30 campañas activas (anonimizadas, realistas)",
-      "Métricas por etapa: leads, MQL, SQL, oportunidades, costo, audiencia",
+      "JSON con 124 campañas reales (Q1-Q2 2026) anonimizadas",
+      "Funnel completo por campaña: impressions → clicks → leads → MQL → SQL → customers + CAC",
+      "Métricas: CTR, CPC, frecuencia, alcance, costo/MQL, audiencia, brief",
+      "3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas",
       "Virtual key del LLM Broker"
     ],
     "color": "#03A3F8"
