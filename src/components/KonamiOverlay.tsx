@@ -89,10 +89,10 @@ export default function KonamiOverlay() {
             </p>
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white relative z-10">Bien jugado.</h2>
             <p className="text-green-300/80 mb-4 leading-relaxed relative z-10">
-              Si llegaste hasta este punto, vos ponés atención a los detalles. Bienvenido al club de los curiosos.
+              Si llegaste hasta este punto, pones atención a los detalles. Bienvenido al club de los curiosos.
             </p>
             <p className="text-green-300/80 mb-6 leading-relaxed relative z-10">
-              Si querés, mencioná este easter egg en tu entrevista. Así sabemos que llegaste hasta acá sin que nadie te lo soplara, y nos da gusto saberlo.
+              Si quieres, menciona este easter egg en tu entrevista. Así sabemos que llegaste hasta acá sin que nadie te lo soplara, y nos da gusto saberlo.
             </p>
             <p className="text-xs text-green-300/50 mb-6 relative z-10">
               {'> '}no hay premio material. solo el guiño.

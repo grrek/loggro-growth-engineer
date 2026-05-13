@@ -12,6 +12,16 @@ module.exports = {
           accent: 'var(--color-brand-accent)',
           ink: 'var(--color-brand-ink)',
         },
+        arcade: {
+          red: 'var(--arcade-red)',
+          'red-bright': 'var(--arcade-red-bright)',
+          blue: 'var(--arcade-blue)',
+          'blue-bright': 'var(--arcade-blue-bright)',
+          green: 'var(--arcade-green)',
+          'green-bright': 'var(--arcade-green-bright)',
+          yellow: 'var(--arcade-yellow)',
+          'yellow-bright': 'var(--arcade-yellow-bright)',
+        },
         surface: {
           DEFAULT: 'var(--color-surface)',
           alt: 'var(--color-surface-alt)',

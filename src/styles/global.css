@@ -72,12 +72,29 @@ html {
   background: var(--color-surface);
   color: var(--color-fg);
   font-family: 'Open Sans', system-ui, sans-serif;
+  font-display: optional;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   /* Papel vintage: textura sutil */
   background-image:
     radial-gradient(circle at 25% 30%, rgba(212, 201, 168, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 75% 80%, rgba(231, 94, 30, 0.04) 0%, transparent 60%);
+  /* Mitigar CLS: reservar metrics aprox de pixel font para fallback */
+  font-size-adjust: 0.5;
+}
+
+/* Fallback que aproxima métricas de Press Start 2P para reducir CLS */
+@font-face {
+  font-family: 'Press Start 2P Fallback';
+  src: local('Courier New'), local('Courier');
+  size-adjust: 88%;
+  ascent-override: 100%;
+  descent-override: 0%;
+  line-gap-override: 0%;
+}
+
+.font-pixel {
+  font-family: 'Press Start 2P', 'Press Start 2P Fallback', 'Courier New', monospace;
 }
 
 .dark html,
@@ -86,19 +103,19 @@ html.dark {
 }
 
 /* ========================================
-   Tipografía: pixel titles
+   Tipografía: Montserrat para titulos grandes,
+   Press Start 2P solo para acentos pequeños (≤14px)
    ======================================== */
-h1, h2, h3 {
-  font-family: 'Press Start 2P', system-ui, sans-serif;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  font-weight: 400;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 h4, h5, h6 {
-  font-family: 'Montserrat', system-ui, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
 code, pre, .font-mono {

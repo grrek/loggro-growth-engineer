@@ -6,48 +6,57 @@ import Terminal from './Terminal';
   <!-- Dot grid manual NES -->
   <div aria-hidden="true" class="absolute inset-0 -z-10 dot-grid opacity-[0.35] dark:opacity-[0.12]"></div>
 
-  <!-- Esquinas pixel art (corner markers manual de cartucho) -->
-  <div aria-hidden="true" class="absolute top-20 left-6 md:left-10 select-none">
-    <div class="font-pixel text-[8px] text-fg flex flex-col gap-1">
-      <span class="text-brand-primary-text">▟▙</span>
-      <span class="text-brand-primary-text">▔▔</span>
+  <!-- Stats arcade bar (esquina sup izq) -->
+  <div aria-hidden="true" class="absolute top-24 left-4 md:left-10 select-none">
+    <div class="flex flex-col gap-1.5 font-pixel text-[8px] uppercase tracking-widest">
+      <div class="flex items-center gap-2">
+        <span class="text-fg-subtle">P1</span>
+        <span class="text-brand-primary-text">READY</span>
+      </div>
+      <div class="text-fg-subtle">XP:<span class="text-fg ml-1">000</span></div>
+      <div class="text-fg-subtle">HI<span class="text-brand-primary-text mx-1">·</span>SCORE</div>
     </div>
   </div>
-  <div aria-hidden="true" class="absolute top-20 right-6 md:right-16 select-none">
-    <div class="font-pixel text-[8px] text-fg flex flex-col gap-1 items-end">
-      <span class="text-brand-primary-text">▙▟</span>
-      <span class="text-brand-primary-text">▔▔</span>
+
+  <!-- Game info (esquina sup der: dejamos espacio para el header) -->
+  <div aria-hidden="true" class="hidden md:block absolute top-24 right-4 md:right-44 select-none">
+    <div class="flex flex-col gap-1.5 font-pixel text-[8px] uppercase tracking-widest items-end">
+      <div class="flex items-center gap-2">
+        <span class="text-brand-primary-text">VE_1770</span>
+        <span class="w-2 h-2 bg-brand-primary animate-blink"></span>
+      </div>
+      <div class="text-fg-subtle">TIMER:<span class="text-fg ml-1">48:00:00</span></div>
+      <div class="text-fg-subtle">TRACKS:<span class="text-fg ml-1">04</span></div>
     </div>
   </div>
-  <div aria-hidden="true" class="absolute bottom-10 left-6 md:left-10 select-none">
-    <div class="font-pixel text-[8px] text-fg flex flex-col gap-1">
-      <span class="text-brand-primary-text">▁▁</span>
-      <span class="text-brand-primary-text">▜▛</span>
-    </div>
+
+  <!-- Esquinas inferiores -->
+  <div aria-hidden="true" class="absolute bottom-10 left-4 md:left-10 select-none font-pixel text-[8px] text-fg-subtle uppercase tracking-widest">
+    LOGGRO_ARCADE.exe
   </div>
-  <div aria-hidden="true" class="absolute bottom-10 right-6 md:right-16 select-none">
-    <div class="font-pixel text-[8px] text-fg flex flex-col gap-1 items-end">
-      <span class="text-brand-primary-text">▁▁</span>
-      <span class="text-brand-primary-text">▛▜</span>
-    </div>
+  <div aria-hidden="true" class="absolute bottom-10 right-4 md:right-10 select-none font-pixel text-[8px] text-fg-subtle uppercase tracking-widest">
+    v.1.0 · BUILD 2026
   </div>
 
   <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center relative">
     <div class="animate-fade-in">
-      <!-- Insignia tipo PRESS START -->
+      <!-- Insignia parpadeante con el rol -->
       <div class="inline-flex items-center gap-2 mb-8 px-3 py-2 border-2 border-fg bg-surface-alt shadow-pixel-sm pixel-corners">
         <span class="w-2 h-2 bg-brand-primary animate-blink"></span>
         <p class="font-pixel text-[9px] uppercase tracking-widest">
-          VE_1770 / press start
+          Especialista en Automatización, IA y Growth
         </p>
       </div>
 
-      <h1 class="text-2xl md:text-4xl lg:text-5xl mb-8 leading-[1.3]">
-        Construí con IA.
-        <span class="block text-brand-primary-text text-glow-primary mt-3">Como vivís.</span>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl mb-6 leading-[1.3]">
+        Pasaste el screening.
+        <span class="block text-brand-primary-text text-glow-primary mt-3">Bienvenido al boss fight.</span>
       </h1>
-      <p class="font-sans text-lg md:text-xl text-fg-muted mb-10 max-w-xl leading-relaxed">
-        48 horas, 4 tracks, tu criterio en primer plano. No buscamos perfección. Buscamos cómo pensás cuando la IA te da algo mediocre disfrazado de bueno.
+      <p class="font-sans text-lg md:text-xl text-fg-muted mb-2 max-w-xl leading-relaxed">
+        48 horas. 4 tracks a elegir. Tu Claude Code abierto.
+      </p>
+      <p class="font-sans text-base md:text-lg text-fg-muted mb-10 max-w-xl leading-relaxed">
+        No queremos perfección. Queremos ver cómo piensas cuando la IA te da algo mediocre disfrazado de bueno, y cómo lo cambias.
       </p>
 
       <div class="flex flex-wrap gap-4 items-center">
@@ -62,24 +71,51 @@ import Terminal from './Terminal';
           href="#espiritu"
           class="inline-flex items-center px-6 py-4 border-2 border-fg bg-surface-alt font-pixel text-[10px] uppercase tracking-widest btn-pixel"
         >
-          Ver el espíritu primero
+          Ver las reglas
         </a>
       </div>
 
-      <p class="mt-10 text-xs text-fg-subtle font-mono flex items-center gap-2">
-        <span class="font-pixel text-[9px] text-brand-primary-text">TIP</span>
-        Pulsa <kbd class="px-1.5 py-0.5 rounded border-2 border-fg bg-surface-alt text-fg font-sans">/</kbd> para abrir el command palette
+      <!-- Stat line tipo HUD de juego -->
+      <div class="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 font-pixel text-[9px] uppercase tracking-widest text-fg-muted">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 bg-arcade-green-bright"></span>
+          <span>5 a 7H gameplay</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 bg-brand-primary"></span>
+          <span>4 tracks</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 bg-arcade-yellow-bright"></span>
+          <span>+5% XP wildcard</span>
+        </div>
+      </div>
+
+      <p class="mt-6 text-xs text-fg-subtle font-mono">
+        Pulsa <kbd class="px-1.5 py-0.5 border-2 border-fg bg-surface-alt text-fg font-sans">/</kbd>
+        para acciones rápidas o
+        <kbd class="px-1.5 py-0.5 border-2 border-fg bg-surface-alt text-fg font-sans">?</kbd>
+        para ver shortcuts.
       </p>
     </div>
 
-    <div class="md:pl-8">
+    <div class="md:pl-8 relative">
+      <!-- Decorativo: gemas flotando arriba del terminal -->
+      <div aria-hidden="true" class="absolute -top-6 left-2 flex gap-2 select-none">
+        <span class="font-pixel text-sm animate-bob" style="color: var(--arcade-yellow-bright); animation-delay: 0s;">◆</span>
+        <span class="font-pixel text-sm animate-bob" style="color: var(--arcade-yellow-bright); animation-delay: 0.3s;">◆</span>
+        <span class="font-pixel text-sm animate-bob" style="color: var(--arcade-yellow-bright); animation-delay: 0.6s;">◆</span>
+      </div>
       <Terminal client:idle />
+      <p class="mt-3 text-center font-pixel text-[9px] uppercase tracking-widest text-fg-subtle">
+        {'> '} demo del setup que esperamos
+      </p>
     </div>
   </div>
 
   <!-- Scroll hint pixel art -->
-  <div aria-hidden="true" class="absolute bottom-6 left-1/2 -translate-x-1/2 select-none flex flex-col items-center gap-1">
+  <div aria-hidden="true" class="absolute bottom-20 left-1/2 -translate-x-1/2 select-none flex flex-col items-center gap-1">
     <span class="font-pixel text-xs text-brand-primary-text animate-bob">▼</span>
-    <span class="font-pixel text-[8px] text-fg-subtle uppercase tracking-widest">scroll</span>
+    <span class="font-pixel text-[8px] text-fg-subtle uppercase tracking-widest">explorar</span>
   </div>
 </section>

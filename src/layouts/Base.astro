@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
-import ThemeToggle from '../components/ThemeToggle';
+import Header from '../components/Header';
 import ScrollProgress from '../components/ScrollProgress';
 import ClaudeFM from '../components/ClaudeFM';
+import ShortcutsModal from '../components/ShortcutsModal';
 
 interface Props {
   title: string;
@@ -72,10 +73,9 @@ const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
   </head>
   <body class="min-h-screen bg-surface text-fg antialiased">
     <ScrollProgress client:idle />
-    <header class="fixed top-0 right-0 p-4 z-50">
-      <ThemeToggle client:load />
-    </header>
+    <Header client:load />
     <ClaudeFM client:idle />
+    <ShortcutsModal client:idle />
     <slot />
     <!--
       DIAN: si llegaste hasta aca leyendo el source, abri issue #1 en

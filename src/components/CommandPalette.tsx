@@ -11,7 +11,7 @@ const buildCommands = (): Command[] => [
   { label: 'Ir al Hero', group: 'nav', action: () => scrollTo('#top') },
   { label: 'Ir a El rol', group: 'nav', action: () => scrollTo('#rol') },
   { label: 'Ir a Los 4 tracks', group: 'nav', action: () => scrollTo('#reto') },
-  { label: 'Ir a Qué recibís', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
+  { label: 'Ir a Qué recibes', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
   { label: 'Ir a El espíritu', group: 'nav', action: () => scrollTo('#espiritu') },
   { label: 'Ir a Cómo evaluamos', group: 'nav', action: () => scrollTo('#evaluacion') },
   { label: 'Ir a FAQ', group: 'nav', action: () => scrollTo('#faq') },
@@ -137,7 +137,7 @@ export default function CommandPalette() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="¿Qué querés hacer? (escribí para filtrar)"
+          placeholder="¿Qué quieres hacer? (escribe para filtrar)"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
