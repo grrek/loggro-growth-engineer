@@ -41,16 +41,16 @@ import PersonalizedGreeting from './PersonalizedGreeting';
 
   <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center relative">
     <div class="animate-fade-in">
-      <!-- Saludo personalizado (hidrata client-side, lee ?n= y trackea via beacon) -->
-      <PersonalizedGreeting client:load />
-
       <!-- Insignia parpadeante con el rol -->
-      <div class="inline-flex items-center gap-2 mb-8 px-3 py-2 border-2 border-fg bg-surface-alt shadow-pixel-sm pixel-corners">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-2 border-2 border-fg bg-surface-alt shadow-pixel-sm pixel-corners">
         <span class="w-2 h-2 bg-brand-primary animate-blink"></span>
         <p class="font-pixel text-[9px] uppercase tracking-widest">
           Especialista en Automatización, IA y Growth
         </p>
       </div>
+
+      <!-- Saludo personalizado (hidrata client-side, lee ?n= y trackea via beacon) -->
+      <PersonalizedGreeting client:load />
 
       <h1 class="text-3xl md:text-5xl lg:text-6xl mb-6 leading-[1.1]">
         Pasaste la primera llamada.

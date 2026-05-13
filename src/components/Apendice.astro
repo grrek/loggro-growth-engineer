@@ -5,6 +5,7 @@ import {
   Video,
   Github,
   Gavel,
+  MessagesSquare,
 } from 'lucide-react';
 
 const items = [
@@ -47,6 +48,14 @@ const items = [
     obligatorio: true,
     desc: 'El repo trae eval/judge_prompt.md público (rúbrica de 5 dimensiones que usa un LLM para evaluarte). Lo extiendes con 2 a 3 criterios tuyos, corres un sabotage test contra 2 outputs deliberadamente malos, y reportas si tu judge atrapó el sabotaje. Este sub-ejercicio es el de más alto signal de toda la prueba.',
     file: 'eval/judge_prompt_extended.md',
+  },
+  {
+    Icon: MessagesSquare,
+    code: 'A6',
+    title: 'Prompts versionados + transcripts/exports',
+    obligatorio: true,
+    desc: 'Los prompts reales que tu pipeline usa (no los del Audit Log, esos son notas). Versionados en /prompts/ o /eval/prompts/ con un README breve por cada uno. Más: exports o screenshots de 2 a 3 sesiones representativas con tu agente (Claude Code /export, transcript de Cursor, screenshot del chat). No tiene que ser todo: lo que muestre cómo trabajaste.',
+    file: 'prompts/ + docs/sessions/',
   },
 ];
 ---

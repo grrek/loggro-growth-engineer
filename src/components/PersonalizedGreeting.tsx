@@ -59,23 +59,26 @@ export default function PersonalizedGreeting() {
     return () => window.removeEventListener('pagehide', onLeave);
   }, []);
 
-  // No render until mounted (SSR-safe, evita flash con saludo equivocado).
-  // Reservamos el alto del saludo grande para evitar layout shift en match.
+  // Reserva un alto para no causar layout shift entre estados.
   if (!mounted || !greeting) {
-    return <div aria-hidden="true" className="mb-4 h-7 md:h-10 opacity-0" />;
+    return <div aria-hidden="true" className="mb-6 h-5 md:h-6 opacity-0" />;
   }
 
   if (greeting.matched) {
     return (
-      <p className="mb-4 animate-fade-in text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05]">
-        <span className="text-brand-primary-text text-glow-primary">{greeting.text}.</span>
+      <p className="mb-6 animate-fade-in font-pixel text-xs md:text-sm uppercase tracking-widest text-brand-primary-text text-glow-primary leading-relaxed">
+        <span aria-hidden="true">{'> '}</span>
+        {greeting.text.toUpperCase()}.
+        <span className="animate-blink ml-1">█</span>
       </p>
     );
   }
 
   return (
-    <p className="font-pixel text-[11px] uppercase tracking-widest text-brand-primary-text mb-4 animate-fade-in">
+    <p className="mb-6 animate-fade-in font-pixel text-[11px] uppercase tracking-widest text-brand-primary-text leading-relaxed">
+      <span aria-hidden="true">{'> '}</span>
       {greeting.text}
+      <span className="animate-blink ml-1">█</span>
     </p>
   );
 }
