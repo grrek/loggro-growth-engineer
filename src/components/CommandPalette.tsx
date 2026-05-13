@@ -34,6 +34,11 @@ const buildCommands = (): Command[] => [
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     },
   },
+  {
+    label: 'Activar Claude FM (música ambient)',
+    group: 'extras',
+    action: () => window.dispatchEvent(new CustomEvent('claudefm:open')),
+  },
   { label: 'Página secreta: AI Audit honesty', group: 'secret', action: () => (window.location.href = '/reto/honesty') },
   { label: 'Página secreta: nuestro equipo', group: 'secret', action: () => (window.location.href = '/reto/team') },
 ];
@@ -166,7 +171,7 @@ export default function CommandPalette() {
                         }}
                         onMouseEnter={() => setActiveIndex(globalIdx)}
                         className={`w-full text-left px-5 py-2.5 text-sm flex justify-between items-center transition-colors ${
-                          isActive ? 'bg-brand-primary/10 text-brand-primary' : 'hover:bg-surface-alt'
+                          isActive ? 'bg-brand-primary/10 text-brand-primary-text' : 'hover:bg-surface-alt'
                         }`}
                       >
                         <span>{cmd.label}</span>

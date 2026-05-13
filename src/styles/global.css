@@ -2,37 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   PALETA "NES MANUAL" — Light arcade vintage
+   Inspirada en manuales de cartuchos NES + flyers arcade 80s
+   ======================================== */
 :root {
-  /* Brand Loggro (manual oficial) */
-  --color-brand-primary: #E75E1E;     /* Naranja Loggro Pymes (marca madre) */
-  --color-brand-secondary: #03A3F8;   /* Azul Loggro secundario */
-  --color-brand-accent: #C9D52A;      /* Verde lima Nomina, acento puntual */
-  --color-brand-ink: #2F2F2F;          /* Negro corporativo */
+  /* Loggro brand (manual oficial, mantenido) */
+  --color-brand-primary: #E75E1E;     /* Naranja Loggro Pymes (Clyde the ghost) */
+  --color-brand-secondary: #03A3F8;   /* Azul Loggro (Inky the ghost) */
+  --color-brand-accent: #C9D52A;      /* Verde lima Nomina */
+  --color-brand-ink: #1A1A1A;          /* Tinta negra arcade */
 
-  /* Light mode */
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #F7F7F7;
-  --color-surface-muted: #FAFAFA;
-  --color-fg: #0A0A0A;
-  --color-fg-muted: #4B5563;
-  --color-fg-subtle: #6B7280;
-  --color-line: #E5E5E5;
+  /* Arcade accent palette (referencia a juegos NES clásicos, oscurecida para AA contrast sobre cream) */
+  --arcade-red: #B30000;       /* Mario red oscurecido (AA: 6.2:1 sobre cream) */
+  --arcade-blue: #003BCB;      /* Sonic blue oscurecido (AA pass) */
+  --arcade-green: #007033;     /* Luigi green oscurecido (AA: 5.5:1 sobre cream) */
+  --arcade-yellow: #C99700;    /* Pac-Man yellow oscurecido para text (bg quedan bright) */
+  --arcade-pink: #C2348B;      /* Kirby pink oscurecido */
 
-  /* Neon glow tones (used over brand-primary) */
-  --glow-primary: 231 94 30;     /* same as brand-primary in rgb form for shadow */
-  --glow-secondary: 3 163 248;
-  --glow-accent: 201 213 42;
+  /* Bright variants para uso en fondos (badges, fills) */
+  --arcade-red-bright: #E60012;
+  --arcade-blue-bright: #0066FF;
+  --arcade-green-bright: #00A040;
+  --arcade-yellow-bright: #FFCE00;
+  --arcade-pink-bright: #FF77CC;
+
+  /* Light mode (default) — "manual de cartucho" */
+  --color-surface: #FAF4E4;          /* papel cream */
+  --color-surface-alt: #F1E9D2;      /* papel cream más saturado */
+  --color-surface-muted: #FBF7EA;
+  --color-fg: #1A1A1A;                /* tinta negra arcade */
+  --color-fg-muted: #4A4032;          /* sepia tostado */
+  --color-fg-subtle: #6F5C42;         /* sepia (oscurecido para AA) */
+  --color-line: #C2B58E;              /* línea sutil tipo lápiz (oscurecido para AA borders) */
+
+  /* Variante oscurecida del naranja solo para uso de texto sobre cream (AA ratio 5.4:1) */
+  --color-brand-primary-text: #A03A0E;
+
+  /* Box shadow sólidas estilo 8-bit (NO soft shadows) */
+  --shadow-pixel-sm: 2px 2px 0 0 var(--color-fg);
+  --shadow-pixel-md: 4px 4px 0 0 var(--color-fg);
+  --shadow-pixel-lg: 6px 6px 0 0 var(--color-fg);
+  --shadow-pixel-brand: 4px 4px 0 0 var(--color-brand-primary);
+
+  /* Glow para hovers light mode (más sutil que dark) */
+  --glow-primary: 231 94 30;
 }
 
 .dark {
-  /* Dark mode */
+  /* Dark mode — "arcade prendida" CRT */
   --color-surface: #0A0A0A;
-  --color-surface-alt: #111111;
+  --color-surface-alt: #141414;
   --color-surface-muted: #1A1A1A;
-  --color-fg: #FAFAFA;
-  --color-fg-muted: #B8B8B8;
-  --color-fg-subtle: #8B8B8B;
-  --color-line: #262626;
+  --color-fg: #FAF4E4;                /* papel cream sobre dark */
+  --color-fg-muted: #C9BDA0;
+  --color-fg-subtle: #948766;
+  --color-line: #2A2620;
+
+  /* En dark, el naranja base ya tiene contraste suficiente */
+  --color-brand-primary-text: #E75E1E;
+
+  --shadow-pixel-sm: 2px 2px 0 0 var(--color-brand-primary);
+  --shadow-pixel-md: 4px 4px 0 0 var(--color-brand-primary);
+  --shadow-pixel-lg: 6px 6px 0 0 var(--color-brand-primary);
+  --shadow-pixel-brand: 4px 4px 0 0 var(--color-brand-primary);
 }
 
 html {
@@ -41,9 +74,28 @@ html {
   font-family: 'Open Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  /* Papel vintage: textura sutil */
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(212, 201, 168, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 75% 80%, rgba(231, 94, 30, 0.04) 0%, transparent 60%);
 }
 
-h1, h2, h3, h4, h5, h6 {
+.dark html,
+html.dark {
+  background-image: none;
+}
+
+/* ========================================
+   Tipografía: pixel titles
+   ======================================== */
+h1, h2, h3 {
+  font-family: 'Press Start 2P', system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+h4, h5, h6 {
   font-family: 'Montserrat', system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -53,37 +105,13 @@ code, pre, .font-mono {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Selection */
 ::selection {
   background: var(--color-brand-primary);
   color: white;
 }
 
 /* ========================================
-   Neon / glow utilities
-   ======================================== */
-.glow-primary {
-  box-shadow:
-    0 0 0 1px rgba(var(--glow-primary) / 0.4),
-    0 8px 24px -4px rgba(var(--glow-primary) / 0.35),
-    0 0 60px -12px rgba(var(--glow-primary) / 0.5);
-}
-
-.glow-primary-hover:hover {
-  box-shadow:
-    0 0 0 1px rgba(var(--glow-primary) / 0.5),
-    0 12px 32px -4px rgba(var(--glow-primary) / 0.5),
-    0 0 80px -12px rgba(var(--glow-primary) / 0.7);
-}
-
-.text-glow-primary {
-  text-shadow:
-    0 0 12px rgba(var(--glow-primary) / 0.5),
-    0 0 32px rgba(var(--glow-primary) / 0.3);
-}
-
-/* ========================================
-   Pixel art utilities (vintage acentos)
+   8-bit pixel utilities
    ======================================== */
 .pixel-corners {
   clip-path: polygon(
@@ -94,30 +122,90 @@ code, pre, .font-mono {
   );
 }
 
+.pixel-corners-lg {
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
 .font-pixel {
   font-family: 'Press Start 2P', 'JetBrains Mono', monospace;
   letter-spacing: 0.05em;
 }
 
+.shadow-pixel {
+  box-shadow: var(--shadow-pixel-md);
+}
+
+.shadow-pixel-sm {
+  box-shadow: var(--shadow-pixel-sm);
+}
+
+.shadow-pixel-lg {
+  box-shadow: var(--shadow-pixel-lg);
+}
+
+.shadow-pixel-brand {
+  box-shadow: var(--shadow-pixel-brand);
+}
+
+/* Pixel button: hover lifts; active pushes down (game button feel) */
+.btn-pixel {
+  position: relative;
+  box-shadow: var(--shadow-pixel-md);
+  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+}
+
+.btn-pixel:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--color-fg);
+}
+
+.btn-pixel:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--color-fg);
+}
+
+.dark .btn-pixel:hover {
+  box-shadow: 6px 6px 0 0 var(--color-brand-primary);
+}
+
 /* ========================================
-   Scroll progress bar (top)
+   Neon glow (solo dark mode, sutil light)
+   ======================================== */
+.text-glow-primary {
+  text-shadow: 2px 2px 0 rgba(var(--glow-primary) / 0.25);
+}
+
+.dark .text-glow-primary {
+  text-shadow:
+    0 0 12px rgba(var(--glow-primary) / 0.5),
+    0 0 32px rgba(var(--glow-primary) / 0.3);
+}
+
+/* ========================================
+   Scroll progress (top bar, color "HP")
    ======================================== */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 4px;
   background: var(--color-brand-primary);
   transform-origin: 0 50%;
   transform: scaleX(0);
   z-index: 90;
   pointer-events: none;
   will-change: transform;
+  box-shadow: 0 1px 0 0 var(--color-fg);
 }
 
 /* ========================================
-   ASCII section dividers
+   Section ASCII dividers
    ======================================== */
 .ascii-divider {
   font-family: 'JetBrains Mono', monospace;
@@ -127,13 +215,12 @@ code, pre, .font-mono {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  position: relative;
   padding: 1.5rem 0;
   user-select: none;
 }
 
 /* ========================================
-   CRT scanlines (terminal effect)
+   CRT scanlines (terminal y secciones especiales)
    ======================================== */
 .crt-scanlines {
   position: relative;
@@ -151,7 +238,6 @@ code, pre, .font-mono {
     rgba(0, 0, 0, 0.04) 3px,
     rgba(0, 0, 0, 0) 4px
   );
-  border-radius: inherit;
   z-index: 1;
 }
 
@@ -160,13 +246,13 @@ code, pre, .font-mono {
     to bottom,
     rgba(0, 0, 0, 0) 0px,
     rgba(0, 0, 0, 0) 2px,
-    rgba(255, 255, 255, 0.025) 3px,
+    rgba(255, 255, 255, 0.03) 3px,
     rgba(0, 0, 0, 0) 4px
   );
 }
 
 /* ========================================
-   Dot grid background
+   Dot grid background (manual NES vibe)
    ======================================== */
 .dot-grid {
   background-image: radial-gradient(
@@ -178,13 +264,21 @@ code, pre, .font-mono {
 }
 
 /* ========================================
-   Cursor custom (hero zone)
+   Pixel border thick (cards principales)
    ======================================== */
-.cursor-crosshair {
-  cursor: crosshair;
+.border-pixel {
+  border: 3px solid var(--color-fg);
+  border-radius: 0;
 }
 
-/* Reduce motion for accessibility */
+.border-pixel-brand {
+  border: 3px solid var(--color-brand-primary);
+  border-radius: 0;
+}
+
+/* ========================================
+   Reduce motion (accesibilidad)
+   ======================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -194,14 +288,64 @@ code, pre, .font-mono {
   }
 }
 
-/* Focus rings */
+/* Focus rings (visible para keyboard) */
 *:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
+  outline: 3px solid var(--color-brand-primary);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
-/* Disable focus ring on mouse, keep for keyboard */
 *:focus:not(:focus-visible) {
   outline: none;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+.animate-blink {
+  animation: blink 1s steps(2) infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-bob {
+  animation: bob 2.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ========================================
+   XP badge (gamificación, aparece en hovers/CTAs)
+   ======================================== */
+.xp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background: var(--arcade-yellow);
+  color: var(--color-fg);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--color-fg);
+  box-shadow: 2px 2px 0 0 var(--color-fg);
+  transform: rotate(-3deg);
+}
+
+.cursor-crosshair {
+  cursor: crosshair;
 }

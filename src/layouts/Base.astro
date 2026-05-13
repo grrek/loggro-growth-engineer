@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle';
 import ScrollProgress from '../components/ScrollProgress';
+import ClaudeFM from '../components/ClaudeFM';
 
 interface Props {
   title: string;
@@ -56,11 +57,11 @@ const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
     <title>{fullTitle}</title>
     <script is:inline>
       // Theme init antes del paint (anti-flash)
+      // Default: light mode (estilo NES Manual). Dark solo si el usuario lo eligió explícito.
       (function () {
         try {
           const saved = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (saved === 'dark' || (!saved && prefersDark)) {
+          if (saved === 'dark') {
             document.documentElement.classList.add('dark');
           }
         } catch (e) {
@@ -74,6 +75,7 @@ const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
     <header class="fixed top-0 right-0 p-4 z-50">
       <ThemeToggle client:load />
     </header>
+    <ClaudeFM client:idle />
     <slot />
     <!--
       DIAN: si llegaste hasta aca leyendo el source, abri issue #1 en

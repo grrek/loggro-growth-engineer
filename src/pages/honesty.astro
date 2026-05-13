@@ -6,13 +6,13 @@ import Base from '../layouts/Base.astro';
   <main class="max-w-3xl mx-auto px-6 md:px-8 py-24 relative">
     <!-- Top bar estilo terminal -->
     <div class="font-mono text-[11px] text-fg-subtle mb-8 flex justify-between items-center select-none">
-      <span class="font-pixel text-[9px] text-brand-primary tracking-widest">{'> '}PAGINA_OCULTA / HONESTY</span>
+      <span class="font-pixel text-[9px] text-brand-primary-text tracking-widest">{'> '}PAGINA_OCULTA / HONESTY</span>
       <span class="font-mono text-[10px]">[ESC] volver</span>
     </div>
 
     <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
       La honestidad cuenta<br />
-      <span class="text-brand-primary text-glow-primary">más que la perfección.</span>
+      <span class="text-brand-primary-text text-glow-primary">más que la perfección.</span>
     </h1>
     <p class="text-lg text-fg-muted mb-12 leading-relaxed">
       Llegaste a una página que no está en el navegador principal. Acá te mostramos ejemplos reales de AI Audit Log para que entiendas qué estamos evaluando cuando decimos: queremos criterio, no fanboys.
@@ -20,7 +20,7 @@ import Base from '../layouts/Base.astro';
 
     <!-- Ejemplo bueno -->
     <section class="mb-16">
-      <p class="font-pixel text-[10px] text-green-600 dark:text-green-400 uppercase tracking-widest mb-3">
+      <p class="font-pixel text-[10px] text-green-800 dark:text-green-400 uppercase tracking-widest mb-3">
         {'> '}EJEMPLO_BUENO.md
       </p>
       <div class="crt-scanlines p-6 rounded-xl border border-green-500/30 bg-green-500/[0.04] font-mono text-sm leading-relaxed relative overflow-hidden">
@@ -43,7 +43,7 @@ import Base from '../layouts/Base.astro';
 
     <!-- Ejemplo malo -->
     <section class="mb-16">
-      <p class="font-pixel text-[10px] text-red-600 dark:text-red-400 uppercase tracking-widest mb-3">
+      <p class="font-pixel text-[10px] text-red-700 dark:text-red-400 uppercase tracking-widest mb-3">
         {'> '}EJEMPLO_MALO.md
       </p>
       <div class="crt-scanlines p-6 rounded-xl border border-red-500/30 bg-red-500/[0.04] font-mono text-sm leading-relaxed relative overflow-hidden">
@@ -65,15 +65,15 @@ import Base from '../layouts/Base.astro';
       </p>
       <ol class="space-y-6 text-fg-muted leading-relaxed">
         <li class="pl-12 relative">
-          <span class="absolute left-0 top-0 font-pixel text-brand-primary text-sm">01</span>
+          <span class="absolute left-0 top-0 font-pixel text-brand-primary-text text-sm">01</span>
           <strong class="text-fg">Audit Log heroico:</strong> 10 entradas que dicen "Claude lo hizo bien al primer intento". No es creíble. Si tu Audit Log tiene cero fricción, no estás mirando suficiente.
         </li>
         <li class="pl-12 relative">
-          <span class="absolute left-0 top-0 font-pixel text-brand-primary text-sm">02</span>
+          <span class="absolute left-0 top-0 font-pixel text-brand-primary-text text-sm">02</span>
           <strong class="text-fg">Audit Log inflado:</strong> 50 entradas triviales tipo "le pedi a Claude que me formateara este JSON". El volumen no compensa la falta de criterio. 12 entradas con substance vencen a 50 sin.
         </li>
         <li class="pl-12 relative">
-          <span class="absolute left-0 top-0 font-pixel text-brand-primary text-sm">03</span>
+          <span class="absolute left-0 top-0 font-pixel text-brand-primary-text text-sm">03</span>
           <strong class="text-fg">Audit Log sin generalización:</strong> Aprendizajes específicos a la tarea ("para esto, esta versión del prompt funcionó"). El aprendizaje debe ser portable a otro proyecto.
         </li>
       </ol>

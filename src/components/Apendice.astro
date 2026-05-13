@@ -51,45 +51,45 @@ const items = [
 ];
 ---
 
-<section id="apendice" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+<section id="apendice" class="py-20 md:py-28 px-6 md:px-8">
   <div class="max-w-5xl mx-auto">
-    <div class="flex items-baseline gap-3 mb-4">
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary">{'> '} OBLIGATORIO</p>
-      <span class="text-xs font-mono text-fg-subtle">peso: 15%</span>
+    <div class="flex items-baseline gap-3 mb-4 flex-wrap">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} STAGE 4 · OBLIGATORIO</p>
+      <span class="font-pixel text-[9px] text-fg-subtle">peso: 15%</span>
     </div>
-    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">El Apéndice</h2>
-    <p class="text-lg text-fg-muted mb-4 max-w-2xl">
+    <h2 class="text-2xl md:text-4xl mb-4 leading-[1.3]">El Apéndice</h2>
+    <p class="text-lg text-fg-muted mb-4 max-w-2xl font-sans">
       Estos artefactos documentan cómo trabajaste con IA durante el reto: tu criterio, tus correcciones, las decisiones que tomaste cuando la IA te dio algo que no servía.
     </p>
-    <p class="text-sm text-fg-muted mb-12 max-w-2xl">
+    <p class="text-sm text-fg-muted mb-12 max-w-2xl font-sans">
       <strong class="text-fg">Sin ellos no evaluamos nada más.</strong> El proceso importa tanto como el output. Esa es la única regla dura.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-2 gap-5">
       {items.map(({ Icon, code, title, obligatorio, desc, file }) => (
-        <div class={`p-6 rounded-xl border ${obligatorio ? 'border-line bg-surface' : 'border-line bg-surface border-dashed'}`}>
+        <div class={`p-6 bg-surface border-pixel shadow-pixel-md`}>
           <div class="flex items-start gap-4 mb-3">
-            <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
-              <Icon size={20} />
+            <div class="shrink-0 w-12 h-12 grid place-items-center border-2 border-fg bg-brand-primary/15 text-brand-primary-text pixel-corners">
+              <Icon size={22} />
             </div>
             <div class="flex-1 min-w-0">
-              <div class="flex items-baseline gap-2 mb-1">
-                <span class="font-pixel text-[10px] text-fg-subtle">{code}</span>
-                {!obligatorio && <span class="font-pixel text-[9px] text-fg-subtle uppercase">opcional</span>}
+              <div class="flex items-baseline gap-2 mb-1 flex-wrap">
+                <span class="font-pixel text-xs text-fg-subtle">{code}</span>
+                {!obligatorio && <span class="font-pixel text-[9px] text-fg-subtle uppercase border border-fg-subtle px-1.5 py-0.5">opcional</span>}
               </div>
-              <h3 class="font-semibold">{title}</h3>
+              <h3 class="text-sm leading-snug">{title}</h3>
             </div>
           </div>
-          <p class="text-sm text-fg-muted leading-relaxed mb-3">{desc}</p>
-          <p class="text-xs text-fg-subtle font-mono pl-1">
-            <span class="text-brand-primary">{'>'}</span> {file}
+          <p class="text-sm text-fg-muted leading-relaxed mb-3 font-sans">{desc}</p>
+          <p class="text-[10px] text-fg-subtle font-mono pl-1">
+            <span class="text-brand-primary-text">{'>'}</span> {file}
           </p>
         </div>
       ))}
     </div>
 
-    <div class="mt-10 p-6 rounded-xl border border-amber-500/30 bg-amber-500/[0.04]">
-      <p class="text-sm text-fg-muted leading-relaxed">
+    <div class="mt-10 p-6 border-pixel shadow-pixel-md bg-surface" style="border-color: var(--arcade-yellow);">
+      <p class="text-sm text-fg-muted leading-relaxed font-sans">
         <strong class="text-fg">Sobre el AI Audit Log:</strong> si tu tabla dice "todo perfecto, la IA hizo todo bien", la nota baja. Buscamos criterio, no fanboys. Documentar cuándo te diste cuenta que la IA te estaba dando algo mediocre y lo cambiaste, suma. Que el log tenga fricción documentada es la señal más alta de fluidez real con IA.
       </p>
     </div>

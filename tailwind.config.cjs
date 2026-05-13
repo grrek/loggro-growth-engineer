@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         brand: {
           primary: 'var(--color-brand-primary)',
+          'primary-text': 'var(--color-brand-primary-text)',
           secondary: 'var(--color-brand-secondary)',
           accent: 'var(--color-brand-accent)',
           ink: 'var(--color-brand-ink)',

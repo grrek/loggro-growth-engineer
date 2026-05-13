@@ -98,13 +98,13 @@ const porTrack = [
 
     <!-- General para todos -->
     <div class="mb-16">
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary mb-6">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-6">
         {'> '} PARA TODOS LOS TRACKS
       </p>
       <div class="grid md:grid-cols-2 gap-6">
         {general.map(({ Icon, title, desc }) => (
           <div class="flex gap-4 items-start p-6 rounded-xl border border-line hover:border-brand-primary/40 transition-colors">
-            <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
+            <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary-text">
               <Icon size={20} />
             </div>
             <div>
@@ -118,7 +118,7 @@ const porTrack = [
 
     <!-- Por track -->
     <div>
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary mb-6">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-6">
         {'> '} INPUTS ESPECÍFICOS POR TRACK
       </p>
       <p class="text-sm text-fg-muted mb-6">
@@ -139,7 +139,7 @@ const porTrack = [
             </div>
             <ul class="text-sm text-fg-muted space-y-1.5 pl-1">
               {t.inputs.map((i) => (
-                <li class="flex gap-2"><span class="text-brand-primary shrink-0">+</span> {i}</li>
+                <li class="flex gap-2"><span class="text-brand-primary-text shrink-0">+</span> {i}</li>
               ))}
             </ul>
           </div>

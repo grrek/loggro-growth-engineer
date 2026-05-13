@@ -11,43 +11,46 @@ const noEs = [
 
 const siEs = [
   '48 horas para construir algo real con tu criterio en primer plano',
-  'Con todas las herramientas IA que usés normalmente',
+  'Con todas las herramientas IA que uses normalmente',
   'Vamos a ver cómo pensás cuando te trabás',
-  'Documentar honesto cuando la IA te dio algo malo (eso suma)',
+  'Documentar honesto cuándo la IA te dio algo malo (eso suma)',
   'Defender tus decisiones en vivo con conocimiento de causa',
 ];
 ---
 
 <section id="espiritu" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">El espíritu</h2>
-    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+    <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
+      {'> '} STAGE 5
+    </p>
+    <h2 class="text-2xl md:text-4xl mb-4 leading-[1.3]">El espíritu</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl font-sans">
       Para evitarnos malentendidos sobre qué tipo de prueba es esta.
     </p>
 
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="p-7 rounded-xl border border-red-500/30 bg-red-500/[0.03]">
-        <h3 class="text-lg font-bold mb-5 flex items-center gap-2 text-red-600 dark:text-red-400">
+      <div class="p-7 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-red);">
+        <h3 class="text-sm md:text-base mb-5 flex items-center gap-2 leading-snug" style="color: var(--arcade-red);">
           <X size={20} /> Esto NO es
         </h3>
         <ul class="space-y-3">
           {noEs.map((item) => (
-            <li class="flex gap-3 items-start text-sm leading-relaxed">
-              <span class="text-red-500/60 shrink-0 mt-1 font-mono">x</span>
+            <li class="flex gap-3 items-start text-sm leading-relaxed font-sans">
+              <span class="font-pixel shrink-0 mt-1" style="color: var(--arcade-red);">x</span>
               <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <div class="p-7 rounded-xl border border-green-500/30 bg-green-500/[0.03]">
-        <h3 class="text-lg font-bold mb-5 flex items-center gap-2 text-green-600 dark:text-green-400">
+      <div class="p-7 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-green);">
+        <h3 class="text-sm md:text-base mb-5 flex items-center gap-2 leading-snug" style="color: var(--arcade-green);">
           <Check size={20} /> Esto SÍ es
         </h3>
         <ul class="space-y-3">
           {siEs.map((item) => (
-            <li class="flex gap-3 items-start text-sm leading-relaxed">
-              <span class="text-green-500/60 shrink-0 mt-1 font-mono">+</span>
+            <li class="flex gap-3 items-start text-sm leading-relaxed font-sans">
+              <span class="font-pixel shrink-0 mt-1" style="color: var(--arcade-green);">+</span>
               <span>{item}</span>
             </li>
           ))}
@@ -55,9 +58,9 @@ const siEs = [
       </div>
     </div>
 
-    <div class="mt-12 p-7 rounded-xl border border-line bg-surface">
-      <p class="text-sm text-fg-muted leading-relaxed">
-        <strong class="text-fg">Por qué 48 horas:</strong> queremos ver cómo decidís bajo presión realista, no cómo pulís 5 días seguidos. Si necesitás pausar para dormir, trabajar o vivir, eso es parte del ejercicio. Lo que entregás a la hora 48 es lo que evaluamos.
+    <div class="mt-12 p-7 bg-surface border-pixel shadow-pixel-md">
+      <p class="text-sm text-fg-muted leading-relaxed font-sans">
+        <strong class="text-fg">Por qué 48 horas:</strong> queremos ver cómo decidís bajo presión realista, no cómo pulís 5 días seguidos. Si necesitás pausar para descansar, trabajar o vivir, eso es parte del ejercicio. Lo que entregás a la hora 48 es lo que evaluamos.
       </p>
     </div>
   </div>

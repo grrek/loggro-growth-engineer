@@ -55,7 +55,7 @@ const partes = [
 
 <section id="estructura" class="py-20 md:py-28 px-6 md:px-8">
   <div class="max-w-5xl mx-auto">
-    <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary mb-3">
+    <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
       {'> '} VISTA DE PÁJARO
     </p>
     <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">La estructura</h2>
@@ -88,7 +88,7 @@ const partes = [
               </td>
               <td class="p-4 text-fg-muted font-mono text-xs hidden md:table-cell">{p.tiempo}</td>
               <td class="p-4">
-                <span class={`font-mono text-sm font-semibold ${p.destacado ? 'text-brand-primary' : 'text-fg'}`}>
+                <span class={`font-mono text-sm font-semibold ${p.destacado ? 'text-brand-primary-text' : 'text-fg'}`}>
                   {p.peso}
                 </span>
               </td>
@@ -96,7 +96,7 @@ const partes = [
                 {p.async ? (
                   <span class="font-mono">async</span>
                 ) : (
-                  <span class="font-mono text-brand-primary">en vivo</span>
+                  <span class="font-mono text-brand-primary-text">en vivo</span>
                 )}
               </td>
             </tr>

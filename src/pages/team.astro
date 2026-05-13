@@ -17,13 +17,13 @@ const team = [
 <Base title="El equipo - Loggro VE-1770" description="Conocé al equipo de Marketing y Growth de Loggro al que te unirás si llegás al rol.">
   <main class="max-w-4xl mx-auto px-6 md:px-8 py-24">
     <div class="font-mono text-[11px] text-fg-subtle mb-8 flex justify-between items-center select-none">
-      <span class="font-pixel text-[9px] text-brand-primary tracking-widest">{'> '}PAGINA_OCULTA / TEAM</span>
+      <span class="font-pixel text-[9px] text-brand-primary-text tracking-widest">{'> '}PAGINA_OCULTA / TEAM</span>
       <span class="font-mono text-[10px]">[ESC] volver</span>
     </div>
 
     <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
       A este equipo<br />
-      <span class="text-brand-primary text-glow-primary">te unís.</span>
+      <span class="text-brand-primary-text text-glow-primary">te unís.</span>
     </h1>
     <p class="text-lg text-fg-muted mb-12 leading-relaxed">
       9 personas operando Marketing y Growth de Loggro. Acá está el equipo al que reportarías, y la silla que va a ocupar quien gane el VE-1770.
@@ -44,7 +44,7 @@ const team = [
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
         <div class="hidden w-full h-full flex-col items-center justify-center p-8 text-center text-fg-muted absolute inset-0">
-          <p class="font-pixel text-[10px] text-brand-primary tracking-widest mb-3">[LOADING.IMG]</p>
+          <p class="font-pixel text-[10px] text-brand-primary-text tracking-widest mb-3">[LOADING.IMG]</p>
           <p class="text-lg">Foto del equipo próximamente.</p>
           <p class="text-sm text-fg-subtle mt-2">Mientras tanto, los nombres y roles abajo.</p>
         </div>
@@ -59,8 +59,8 @@ const team = [
       {team.map((p, i) => (
         <li class={`p-5 rounded-lg border transition-all ${p.highlight ? 'border-brand-primary bg-brand-primary/[0.06] glow-primary' : 'border-line hover:border-brand-primary/30'}`}>
           <div class="flex items-baseline gap-3 mb-1">
-            <span class={`font-pixel text-[9px] ${p.highlight ? 'text-brand-primary' : 'text-fg-subtle'} shrink-0`}>{String(i + 1).padStart(2, '0')}</span>
-            <p class={`font-semibold ${p.highlight ? 'text-brand-primary' : ''}`}>{p.name}</p>
+            <span class={`font-pixel text-[9px] ${p.highlight ? 'text-brand-primary-text' : 'text-fg-subtle'} shrink-0`}>{String(i + 1).padStart(2, '0')}</span>
+            <p class={`font-semibold ${p.highlight ? 'text-brand-primary-text' : ''}`}>{p.name}</p>
           </div>
           <p class="text-sm text-fg-muted mt-0.5 pl-7">{p.role}</p>
           <p class="text-[10px] text-fg-subtle font-pixel mt-1.5 pl-7 uppercase tracking-widest">{p.pilar}</p>

@@ -57,8 +57,8 @@ const lentes = [
           <thead class="bg-surface-alt border-b border-line">
             <tr>
               <th class="text-left p-4 font-semibold">Dimensión</th>
-              <th class="text-left p-4 font-semibold text-red-600 dark:text-red-400">Pobre (1-3)</th>
-              <th class="text-left p-4 font-semibold text-green-600 dark:text-green-400">Excelente (9-10)</th>
+              <th class="text-left p-4 font-semibold text-red-700 dark:text-red-400">Pobre (1-3)</th>
+              <th class="text-left p-4 font-semibold text-green-800 dark:text-green-400">Excelente (9-10)</th>
             </tr>
           </thead>
           <tbody>
@@ -80,7 +80,7 @@ const lentes = [
         {thresholds.map((t) => (
           <div class="p-4 rounded-lg border border-line bg-surface-alt flex justify-between items-center">
             <span class="text-sm font-medium">{t.name}</span>
-            <span class="text-sm font-mono text-brand-primary font-semibold">{t.value}</span>
+            <span class="text-sm font-mono text-brand-primary-text font-semibold">{t.value}</span>
           </div>
         ))}
       </div>
@@ -109,7 +109,7 @@ const lentes = [
       </p>
       <div class="grid md:grid-cols-2 gap-4">
         <div class="p-6 rounded-xl border border-green-500/30 bg-green-500/[0.04]">
-          <p class="font-pixel text-[10px] text-green-600 dark:text-green-400 uppercase tracking-widest mb-4">
+          <p class="font-pixel text-[10px] text-green-800 dark:text-green-400 uppercase tracking-widest mb-4">
             {'> '} SUMA
           </p>
           <ul class="space-y-2 text-sm">
@@ -127,7 +127,7 @@ const lentes = [
         </div>
 
         <div class="p-6 rounded-xl border border-red-500/30 bg-red-500/[0.04]">
-          <p class="font-pixel text-[10px] text-red-600 dark:text-red-400 uppercase tracking-widest mb-4">
+          <p class="font-pixel text-[10px] text-red-700 dark:text-red-400 uppercase tracking-widest mb-4">
             {'> '} RESTA
           </p>
           <ul class="space-y-2 text-sm">
@@ -145,7 +145,7 @@ const lentes = [
     </div>
 
     <div class="p-7 rounded-xl border border-amber-500/30 bg-amber-500/[0.04]">
-      <h3 class="text-lg font-bold mb-3 text-amber-700 dark:text-amber-400">Honestidad sobre lo que NO sabemos medir bien</h3>
+      <h3 class="text-lg font-bold mb-3 text-amber-800 dark:text-amber-400">Honestidad sobre lo que NO sabemos medir bien</h3>
       <p class="text-sm text-fg-muted leading-relaxed">
         Esta rúbrica mide bien descomposición, fluidez con IA y disciplina de evaluación. Lo que mide peor: creatividad de producto, intuición de growth, habilidad para construir relaciones con contadores. Esas las vamos a ver mejor cuando trabajemos juntos (si llegamos ahí). Decímoslo de frente porque la prueba no es perfecta y no queremos vendértelo como si lo fuera.
       </p>
