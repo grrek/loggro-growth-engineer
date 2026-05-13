@@ -1,7 +1,7 @@
 [
   {
     "id": "a",
-    "code": "Track A",
+    "code": "Escenario A",
     "name": "Prospección Automatizada (Outbound)",
     "tagline": "Construyes un pipeline de outbound end-to-end: identificas ~100 cuentas desde un ICP, las enriqueces con fuentes públicas, escribes secuencia email + WhatsApp adaptada, y clasificas respuestas entrantes.",
     "perfil_si": "SDR, growth con experiencia en prospección en frío, alguien que entiende que un asunto malo mata cualquier secuencia y que sabe scrapear fuentes públicas",
@@ -32,7 +32,7 @@
   },
   {
     "id": "b",
-    "code": "Track B",
+    "code": "Escenario B",
     "name": "Insights de Campañas de Marketing",
     "tagline": "Construyes un sistema que analiza 124 campañas reales de Loggro Q1-Q2 2026 y genera 3 hallazgos priorizados + detección de anomalías + flag de vanity metrics.",
     "perfil_si": "Analítica, data-oriented, cómodo cruzando JSON y separando vanity de señal real",
@@ -63,7 +63,7 @@
   },
   {
     "id": "c",
-    "code": "Track C",
+    "code": "Escenario C",
     "name": "Generador de Piezas",
     "tagline": "Construyes un agente que recibe brief de campaña y genera piezas multi-canal consistentes en brand voice, con un reviewer que bloquea las que no pasan umbral.",
     "perfil_si": "Creativos técnicos, content ops, marketing + IA generativa, perfiles híbridos copywriter-developer",
@@ -95,7 +95,7 @@
   },
   {
     "id": "d",
-    "code": "Track D",
+    "code": "Escenario D",
     "name": "Inteligencia de Conversaciones",
     "tagline": "Procesas 9 grabaciones REALES del equipo comercial de Loggro en español Colombia. STT + diarization + objeciones + competidores + señales DIAN + scoring + email de seguimiento.",
     "perfil_si": "RevOps, sales ops, builders híbridos con apetito por audio + multi-agente, cómodos con audio sin limpiar (overlap, emociones, acentos variados)",

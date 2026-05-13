@@ -12,7 +12,7 @@ const stats = [
 
 const misionesPrimarias = [
   { code: 'A', name: 'Caso de negocio', detail: 'Analiza el caso y responde 6 preguntas sobre el funnel real. 60 min · 15%' },
-  { code: 'B', name: 'Build (eliges 1 de 4 tracks)', detail: 'Elije el escenario, analiza, desarrolla y sube a tu repo la solución con pipeline + documentación. 3-4h · 30%' },
+  { code: 'B', name: 'Build (eliges 1 de 4 escenarios)', detail: 'Elije el escenario, analiza, desarrolla y sube a tu repo la solución con pipeline + documentación. 3-4h · 30%' },
   { code: 'Apéndice', name: 'Completa el AI Audit Log + Stack + Loom', detail: 'Documentas cómo trabajaste con IA. 45 min · 15%' },
   { code: 'C', name: 'Sesión en vivo', detail: 'Tengamos una charla sobre tu solución y enfoque. Plan / Build / Review / Sustentación. 60 min · 35%' },
 ];
@@ -25,7 +25,7 @@ const misionesSecundarias = [
 
 const entregables = [
   { Icon: Github, name: 'Tu repo público', detail: 'loggro-{track}-{tu-apellido} en GitHub. Commits con criterio, no un mega-commit final.' },
-  { Icon: Workflow, name: 'Pipeline funcional', detail: 'Tu sistema corre end-to-end con un README claro: clonamos tu repo, seguimos instrucciones, procesa el track elegido. Sub-agentes coordinados, no scripts sueltos.' },
+  { Icon: Workflow, name: 'Pipeline funcional', detail: 'Tu sistema corre end-to-end con un README claro: clonamos tu repo, seguimos instrucciones, procesa el escenario elegido. Sub-agentes coordinados, no scripts sueltos.' },
   { Icon: MessagesSquare, name: 'Artefactos del flujo IA', detail: 'Prompts versionados (/prompts/ o inline) + transcripts o screenshots de tus sesiones con Claude Code / Cursor / Chat. Vemos cómo trabajaste, no solo qué entregaste.' },
   { Icon: ScrollText, name: 'Documento Parte A', detail: 'Caso de negocio en máximo 1.5 páginas / 700 palabras.' },
   { Icon: FileCheck, name: 'Apéndice obligatorio', detail: 'Audit Log (≥10 entradas con fricción) + Stack IA + Judge prompt extendido con sabotage test.' },
@@ -112,7 +112,7 @@ const reglasHonestidad = [
     <!-- Párrafo humano de resumen -->
     <div class="max-w-3xl mb-12 space-y-4">
       <p class="text-base md:text-lg text-fg leading-relaxed">
-        Para este reto te damos una <strong>foto real</strong> (anonimizada) del embudo de marketing de Loggro, algunos escenarios reales, y 48 horas para mostrarnos cómo piensas. Eliges <strong>1 de 4 escenarios</strong> o tracks técnicos (prospección, calificación, contenido o atribución), construyes una solución con un <strong>pipeline IA con varios sub-agentes coordinados</strong>, lo evalúas, y documentas cómo trabajaste con IA.
+        Para este reto te damos una <strong>foto real</strong> (anonimizada) del embudo de marketing de Loggro, algunos escenarios reales, y 48 horas para mostrarnos cómo piensas. Eliges <strong>1 de 4 escenarios</strong> técnicos (prospección, calificación, contenido o atribución), construyes una solución con un <strong>pipeline IA con varios sub-agentes coordinados</strong>, lo evalúas, y documentas cómo trabajaste con IA.
       </p>
       <p class="text-base md:text-lg text-fg-muted leading-relaxed">
         Después agendamos una <strong class="text-fg">sesión en vivo de 60 minutos</strong> donde planeas, construyes y defiendes una pieza nueva sobre tu mismo código. Esa sesión vale 35% del puntaje. La barra es alta: buscamos a alguien que sepa operar con IA mejor que la mayoría.

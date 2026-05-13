@@ -17,12 +17,12 @@ const general = [
   {
     Icon: FileCode,
     title: 'Schemas y judge prompt público',
-    desc: 'HubSpot mock schema, insights schema (Track D), y eval/judge_prompt.md v1.0 con la rúbrica de 5 dimensiones que extiendes en el Apéndice.',
+    desc: 'HubSpot mock schema, insights schema (Escenario D), y eval/judge_prompt.md v1.0 con la rúbrica de 5 dimensiones que extiendes en el Apéndice.',
   },
   {
     Icon: Palette,
     title: 'Brand voice de Loggro',
-    desc: 'Extracto operativo del manual: vocabulario clave, palabras prohibidas, ejemplos buenos y malos por canal. Útil para todos los tracks.',
+    desc: 'Extracto operativo del manual: vocabulario clave, palabras prohibidas, ejemplos buenos y malos por canal. Útil para todos los escenarios.',
   },
   {
     Icon: KeyRound,
@@ -32,7 +32,7 @@ const general = [
   {
     Icon: Server,
     title: 'Whisper self-hosted (opcional)',
-    desc: 'Endpoint en Loggro Labs si prefieres no usar STT comercial. Solo aplica si eliges Track D.',
+    desc: 'Endpoint en Loggro Labs si prefieres no usar STT comercial. Solo aplica si eliges Escenario D.',
   },
   {
     Icon: MessageCircle,
@@ -47,7 +47,7 @@ const REPO_TREE = 'https://github.com/grrek/loggro-ai-challenge/tree/main';
 const porTrack = [
   {
     id: 'a',
-    code: 'Track A',
+    code: 'Escenario A',
     name: 'Prospección Automatizada (Outbound)',
     color: '#E75E1E',
     brief_url: `${REPO_BLOB}/data/track-a-outbound/BRIEF.md`,
@@ -60,7 +60,7 @@ const porTrack = [
   },
   {
     id: 'b',
-    code: 'Track B',
+    code: 'Escenario B',
     name: 'Insights de Campañas de Marketing',
     color: '#03A3F8',
     brief_url: `${REPO_BLOB}/data/track-b-insights/BRIEF.md`,
@@ -72,7 +72,7 @@ const porTrack = [
   },
   {
     id: 'c',
-    code: 'Track C',
+    code: 'Escenario C',
     name: 'Generador de Piezas',
     color: '#DD1C4B',
     brief_url: `${REPO_BLOB}/data/track-c-pieces/BRIEF.md`,
@@ -86,7 +86,7 @@ const porTrack = [
   },
   {
     id: 'd',
-    code: 'Track D',
+    code: 'Escenario D',
     name: 'Inteligencia de Conversaciones',
     color: '#149E71',
     brief_url: `${REPO_BLOB}/data/track-d-intel/BRIEF.md`,
@@ -110,7 +110,7 @@ const porTrack = [
     <!-- General para todos -->
     <div class="mb-16">
       <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-6">
-        {'> '} PARA TODOS LOS TRACKS
+        {'> '} PARA TODOS LOS ESCENARIOS
       </p>
       <div class="grid md:grid-cols-2 gap-6">
         {general.map(({ Icon, title, desc }) => (
@@ -130,10 +130,10 @@ const porTrack = [
     <!-- Por track -->
     <div>
       <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-6">
-        {'> '} INPUTS ESPECÍFICOS POR TRACK
+        {'> '} INPUTS ESPECÍFICOS POR ESCENARIO
       </p>
       <p class="text-sm text-fg-muted mb-6">
-        Cada track recibe datasets propios. Solo usarás los del track que elegiste.
+        Cada escenario recibe datasets propios. Solo usarás los del escenario que elegiste.
       </p>
       <div class="grid md:grid-cols-2 gap-4">
         {porTrack.map((t) => (
