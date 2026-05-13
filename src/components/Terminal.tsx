@@ -11,23 +11,20 @@ interface Candidato {
   firstName: string;
 }
 
-// Resuelve el handle del candidato desde el query param ?n=
-// Ejemplos: "edison-growth-engineer", "cristian-s-growth-engineer", o "growth-engineer" si no hay match
-const resolveWhoami = (): string => {
-  if (typeof window === 'undefined') return 'growth-engineer';
+// Resuelve el slug del candidato para el saludo del motd. El whoami queda fijo.
+const resolveCandidateSlug = (): string | null => {
+  if (typeof window === 'undefined') return null;
   const params = new URLSearchParams(window.location.search);
   const code = params.get('n');
-  if (!code) return 'growth-engineer';
+  if (!code) return null;
   const c = (candidatos as Candidato[]).find((x) => x.code.toLowerCase() === code.toLowerCase());
-  if (!c) return 'growth-engineer';
-  // Slug: primer nombre + inicial apellido si lo trae (ej. "Cristian S.")
-  const slug = c.firstName
+  if (!c) return null;
+  return c.firstName
     .toLowerCase()
     .replace(/\./g, '')
     .replace(/\s+/g, '-')
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '');
-  return `${slug}-growth-engineer`;
 };
 
 const MOTD_BASE = ` ██╗      ██████╗   ██████╗   ██████╗  ██████╗   ██████╗
@@ -38,10 +35,10 @@ const MOTD_BASE = ` ██╗      ██████╗   ██████╗
  ╚══════╝ ╚═════╝   ╚═════╝   ╚═════╝  ╚═╝  ╚═╝  ╚═════╝
                                           challenge_VE-1770`;
 
-const buildCommands = (whoamiOutput: string): Command[] => [
+const COMMANDS: Command[] = [
   {
     cmd: 'whoami',
-    output: whoamiOutput,
+    output: 'growth-engineer',
   },
   {
     cmd: 'docker ps --filter name=n8n',
@@ -74,12 +71,11 @@ export default function Terminal() {
   const [step, setStep] = useState(0);
   const [phase, setPhase] = useState<Phase>('motd');
   const [motdShown, setMotdShown] = useState(false);
-  const [whoamiOutput] = useState<string>(() => resolveWhoami());
   const [motd] = useState<string>(() => {
-    const welcomeName = resolveWhoami() === 'growth-engineer' ? 'player_one' : resolveWhoami();
+    const slug = resolveCandidateSlug();
+    const welcomeName = slug || 'player_one';
     return `${MOTD_BASE}\n\nLast login: today.  Welcome, ${welcomeName}.`;
   });
-  const COMMANDS = buildCommands(whoamiOutput);
 
   useEffect(() => {
     if (phase === 'done') return;

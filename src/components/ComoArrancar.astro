@@ -82,15 +82,24 @@ const pasos = [
       </p>
     </div>
 
-    <div class="mt-10 text-center">
+    <div class="mt-10 flex flex-wrap gap-4 justify-center items-center">
       <a
         href="https://github.com/grrek/loggro-ai-challenge"
         target="_blank"
         rel="noopener"
+        data-track="repo_template"
         class="inline-flex items-center gap-2 px-7 py-4 bg-brand-primary text-black rounded-md font-bold text-lg hover:opacity-90 transition-all glow-primary glow-primary-hover"
       >
         Ir al repo template
         <span aria-hidden="true">{'->'}</span>
+      </a>
+      <a
+        href="#aceptar"
+        data-track="arrancar_to_footer"
+        class="inline-flex items-center gap-2 px-6 py-4 border-2 border-fg bg-surface-alt font-pixel text-[10px] uppercase tracking-widest btn-pixel"
+      >
+        <span aria-hidden="true" class="font-mono">↓</span>
+        Mandar el correo y arrancar
       </a>
     </div>
   </div>

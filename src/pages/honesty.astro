@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import TrackingListener from '../components/TrackingListener';
 ---
 
 <Base title="Honesty - Loggro VE-1770" description="Ejemplos buenos y malos de AI Audit Log. Por qué la honestidad cuenta más que la perfección.">
@@ -14,6 +15,11 @@ import Base from '../layouts/Base.astro';
       La honestidad cuenta<br />
       <span class="text-brand-primary-text text-glow-primary">más que la perfección.</span>
     </h1>
+    <p
+      data-personalize="greet"
+      data-personalize-template="{name}, descubriste una página que no está en el navegador principal — esa curiosidad ya nos dice algo de vos."
+      class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4 opacity-0 transition-opacity"
+    >.</p>
     <p class="text-lg text-fg-muted mb-12 leading-relaxed">
       Llegaste a una página que no está en el navegador principal. Aquí te mostramos ejemplos reales de AI Audit Log para que entiendas qué estamos evaluando cuando decimos: queremos criterio, no fanboys.
     </p>
@@ -93,4 +99,5 @@ import Base from '../layouts/Base.astro';
       </a>
     </div>
   </main>
+  <TrackingListener client:idle />
 </Base>

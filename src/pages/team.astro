@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import TrackingListener from '../components/TrackingListener';
 
 const team = [
   { name: 'Gregorio Aristizábal', role: 'Director de Crecimiento y Marketing', pilar: 'Dirección Estratégica' },
@@ -10,7 +11,7 @@ const team = [
   { name: 'Ana Marly Orrego Parra', role: 'Diseñadora UI y Video', pilar: 'Creative' },
   { name: 'Albert Anaya Pitalua', role: 'Diseñador UI/UX', pilar: 'Creative' },
   { name: 'Sergio Rendón G.', role: 'Webmaster', pilar: 'MarkOps' },
-  { name: 'Tú, si llegas al rol', role: 'Especialista en Automatización, IA y Growth', pilar: 'MarkOps', highlight: true },
+  { name: 'Tú, si llegas al rol', role: 'Growth Engineer — Automatización & IA', pilar: 'MarkOps', highlight: true },
 ];
 ---
 
@@ -60,7 +61,10 @@ const team = [
         <li class={`p-5 rounded-lg border transition-all ${p.highlight ? 'border-brand-primary bg-brand-primary/[0.06] glow-primary' : 'border-line hover:border-brand-primary/30'}`}>
           <div class="flex items-baseline gap-3 mb-1">
             <span class={`font-pixel text-[9px] ${p.highlight ? 'text-brand-primary-text' : 'text-fg-subtle'} shrink-0`}>{String(i + 1).padStart(2, '0')}</span>
-            <p class={`font-semibold ${p.highlight ? 'text-brand-primary-text' : ''}`}>{p.name}</p>
+            <p
+              class={`font-semibold ${p.highlight ? 'text-brand-primary-text' : ''}`}
+              {...(p.highlight ? { 'data-personalize': 'self', 'data-personalize-template': '{name}, si llegas al rol' } : {})}
+            >{p.name}</p>
           </div>
           <p class="text-sm text-fg-muted mt-0.5 pl-7">{p.role}</p>
           <p class="text-[10px] text-fg-subtle font-pixel mt-1.5 pl-7 uppercase tracking-widest">{p.pilar}</p>
@@ -81,4 +85,5 @@ const team = [
       </a>
     </div>
   </main>
+  <TrackingListener client:idle />
 </Base>
