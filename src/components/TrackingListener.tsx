@@ -106,7 +106,7 @@ function personalizeDOM(c: Candidato): void {
     const [base, qs] = href.split('?');
     const params = new URLSearchParams(qs || '');
     const subject = `VE-1770: ${name} acepta el reto`;
-    const body = `Hola, equipo Loggro:\n\nSoy ${name}. Quiero arrancar mi ventana de 48h para el reto VE-1770.\n\nTrack que elijo:\n\nGracias,\n${name}`;
+    const body = `Hola, equipo Loggro:\n\nSoy ${name}. Confirmo que recibí las instrucciones del reto VE-1770. El reloj ya está corriendo.\n\nTrack que elijo:\n\nLink a mi repo:\n\nGracias,\n${name}`;
     params.set('subject', subject);
     params.set('body', body);
     a.setAttribute('href', `${base}?${params.toString()}`);
