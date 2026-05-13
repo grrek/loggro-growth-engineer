@@ -1,0 +1,97 @@
+---
+import {
+  ListChecks,
+  Layers,
+  Video,
+  Github,
+  Gavel,
+} from 'lucide-react';
+
+const items = [
+  {
+    Icon: ListChecks,
+    code: 'A1',
+    title: 'AI Audit Log',
+    obligatorio: true,
+    desc: 'Registro de cada vez que usaste IA durante el reto: qué le pediste, qué te dio, qué tuviste que corregir, y qué aprendiste. Mínimo 10 entradas. No es para mostrarte prolijo, es para que veamos tu criterio real sobre la IA.',
+    file: 'docs/AI_AUDIT_LOG.md',
+  },
+  {
+    Icon: Layers,
+    code: 'A2',
+    title: 'Stack IA diario',
+    obligatorio: true,
+    desc: 'Tu setup real de IA en el día a día. Modelos que usás, MCPs conectados, herramientas favoritas. Si no usás una categoría, decilo: no inventés.',
+    file: 'docs/AI_STACK.md',
+  },
+  {
+    Icon: Video,
+    code: 'A3',
+    title: 'Video Loom de 5 a 10 minutos',
+    obligatorio: true,
+    desc: 'Defendés 3 decisiones del entregable: una de arquitectura, una donde la IA te dio algo y vos lo cambiaste, una de "no construir". Hablás a cámara, no leés la pantalla.',
+    file: 'URL en tu README final',
+  },
+  {
+    Icon: Github,
+    code: 'A4',
+    title: 'Tu GitHub',
+    obligatorio: false,
+    desc: 'Opcional. Si te sentís cómodo, mandanos tu perfil + top 3 repos + 1 línea por cada uno. Si tenés un MCP server propio, suma muchísimo.',
+    file: 'enlace en README',
+  },
+  {
+    Icon: Gavel,
+    code: 'A5',
+    title: 'Extensión del judge prompt',
+    obligatorio: true,
+    desc: 'El repo trae eval/judge_prompt.md público (rúbrica de 5 dimensiones que usa un LLM para evaluarte). Lo extendés con 2 a 3 criterios tuyos, corrés un sabotage test contra 2 outputs deliberadamente malos, y reportás si tu judge atrapó el sabotaje. Este sub-ejercicio es el de más alto signal de toda la prueba.',
+    file: 'eval/judge_prompt_extended.md',
+  },
+];
+---
+
+<section id="apendice" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-baseline gap-3 mb-4">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary">{'> '} OBLIGATORIO</p>
+      <span class="text-xs font-mono text-fg-subtle">peso: 15%</span>
+    </div>
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">El Apéndice</h2>
+    <p class="text-lg text-fg-muted mb-4 max-w-2xl">
+      Estos artefactos documentan cómo trabajaste con IA durante el reto: tu criterio, tus correcciones, las decisiones que tomaste cuando la IA te dio algo que no servía.
+    </p>
+    <p class="text-sm text-fg-muted mb-12 max-w-2xl">
+      <strong class="text-fg">Sin ellos no evaluamos nada más.</strong> El proceso importa tanto como el output. Esa es la única regla dura.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      {items.map(({ Icon, code, title, obligatorio, desc, file }) => (
+        <div class={`p-6 rounded-xl border ${obligatorio ? 'border-line bg-surface' : 'border-line bg-surface border-dashed'}`}>
+          <div class="flex items-start gap-4 mb-3">
+            <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
+              <Icon size={20} />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="font-pixel text-[10px] text-fg-subtle">{code}</span>
+                {!obligatorio && <span class="font-pixel text-[9px] text-fg-subtle uppercase">opcional</span>}
+              </div>
+              <h3 class="font-semibold">{title}</h3>
+            </div>
+          </div>
+          <p class="text-sm text-fg-muted leading-relaxed mb-3">{desc}</p>
+          <p class="text-xs text-fg-subtle font-mono pl-1">
+            <span class="text-brand-primary">{'>'}</span> {file}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 p-6 rounded-xl border border-amber-500/30 bg-amber-500/[0.04]">
+      <p class="text-sm text-fg-muted leading-relaxed">
+        <strong class="text-fg">Sobre el AI Audit Log:</strong> si tu tabla dice "todo perfecto, la IA hizo todo bien", la nota baja. Buscamos criterio, no fanboys. Documentar cuándo te diste cuenta que la IA te estaba dando algo mediocre y lo cambiaste, suma. Que el log tenga fricción documentada es la señal más alta de fluidez real con IA.
+      </p>
+    </div>
+  </div>
+</section>

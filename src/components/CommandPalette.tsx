@@ -11,9 +11,9 @@ const buildCommands = (): Command[] => [
   { label: 'Ir al Hero', group: 'nav', action: () => scrollTo('#top') },
   { label: 'Ir a El rol', group: 'nav', action: () => scrollTo('#rol') },
   { label: 'Ir a Los 4 tracks', group: 'nav', action: () => scrollTo('#reto') },
-  { label: 'Ir a Que recibis', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
-  { label: 'Ir a El espiritu', group: 'nav', action: () => scrollTo('#espiritu') },
-  { label: 'Ir a Como evaluamos', group: 'nav', action: () => scrollTo('#evaluacion') },
+  { label: 'Ir a Qué recibís', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
+  { label: 'Ir a El espíritu', group: 'nav', action: () => scrollTo('#espiritu') },
+  { label: 'Ir a Cómo evaluamos', group: 'nav', action: () => scrollTo('#evaluacion') },
   { label: 'Ir a FAQ', group: 'nav', action: () => scrollTo('#faq') },
   {
     label: 'Abrir repo template en GitHub',
@@ -21,7 +21,7 @@ const buildCommands = (): Command[] => [
     action: () => window.open('https://github.com/grrek/loggro-ai-challenge', '_blank'),
   },
   {
-    label: 'Escribir a Grego',
+    label: 'Escribir al líder del rol',
     group: 'extras',
     action: () => (window.location.href = 'mailto:garistizabal@loggro.com?subject=VE-1770: acepto el reto'),
   },
@@ -34,8 +34,8 @@ const buildCommands = (): Command[] => [
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     },
   },
-  { label: 'Pagina secreta: AI Audit honesty', group: 'secret', action: () => (window.location.href = '/reto/honesty') },
-  { label: 'Pagina secreta: nuestro equipo', group: 'secret', action: () => (window.location.href = '/reto/team') },
+  { label: 'Página secreta: AI Audit honesty', group: 'secret', action: () => (window.location.href = '/reto/honesty') },
+  { label: 'Página secreta: nuestro equipo', group: 'secret', action: () => (window.location.href = '/reto/team') },
 ];
 
 const scrollTo = (sel: string) => {
@@ -110,7 +110,7 @@ export default function CommandPalette() {
 
   const groups: Array<Command['group']> = ['nav', 'extras', 'secret'];
   const groupLabels: Record<Command['group'], string> = {
-    nav: 'Navegacion',
+    nav: 'Navegación',
     extras: 'Acciones',
     secret: 'Secretos',
   };
@@ -132,7 +132,7 @@ export default function CommandPalette() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Que queres hacer? (escribi para filtrar)"
+          placeholder="¿Qué querés hacer? (escribí para filtrar)"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);

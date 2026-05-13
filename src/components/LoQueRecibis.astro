@@ -1,8 +1,6 @@
 ---
 import {
   Github,
-  Database,
-  Mic,
   FileCode,
   Palette,
   KeyRound,
@@ -10,69 +8,143 @@ import {
   MessageCircle,
 } from 'lucide-react';
 
-const items = [
+const general = [
   {
     Icon: Github,
-    title: 'Repo template publico',
-    desc: 'grrek/loggro-ai-challenge marcado como GitHub template. Lo clonas con un comando y arrancas con estructura completa.',
-  },
-  {
-    Icon: Database,
-    title: 'Datasets sinteticos por track',
-    desc: 'Track A: 30 cuentas + 10 respuestas. Track B: 20 campanas + 5 reportes GA + 3 transcripts. Track C: 3 briefs + 20 piezas etiquetadas.',
-  },
-  {
-    Icon: Mic,
-    title: '9 audios MP3 en espanol Colombia',
-    desc: 'Track D: 3 demos obligatorios (contadora, CFO, negociacion) + edge case consentimiento + 5 opcionales (hospitalidad, nomina, etc.).',
+    title: 'Repo template público',
+    desc: 'grrek/loggro-ai-challenge marcado como GitHub template. Lo clonás con un comando y arrancás con estructura completa: README, CLAUDE.md skeleton, Makefile, .env, eval skeleton, schemas, legal.',
   },
   {
     Icon: FileCode,
-    title: 'Schemas y judge prompt publico',
-    desc: 'HubSpot mock schema, insights schema, judge_prompt.md v1.0 con rubrica de 5 dimensiones que extendes en el Apendice.',
+    title: 'Schemas y judge prompt público',
+    desc: 'HubSpot mock schema, insights schema (Track D), y eval/judge_prompt.md v1.0 con la rúbrica de 5 dimensiones que vos extendés en el Apéndice.',
   },
   {
     Icon: Palette,
     title: 'Brand voice de Loggro',
-    desc: 'Extracto operativo del manual: vocabulario, palabras prohibidas, ejemplos buenos y malos por canal.',
+    desc: 'Extracto operativo del manual: vocabulario clave, palabras prohibidas, ejemplos buenos y malos por canal. Útil para todos los tracks.',
   },
   {
     Icon: KeyRound,
     title: 'Virtual key del LLM Broker',
-    desc: 'Una key llm_brk_* con budget cap pre-asignado. Cero costo personal de tooling. Apunta a labs.loggro.com/llm_broker.',
+    desc: 'Una key llm_brk_* con budget cap pre-asignado. Apunta a labs.loggro.com/llm_broker (gateway OpenAI-compatible). Cero costo personal de tooling.',
   },
   {
     Icon: Server,
     title: 'Whisper self-hosted (opcional)',
-    desc: 'Endpoint para Track D si preferis no usar STT comercial. Latencia baja, costo cero.',
+    desc: 'Endpoint en Loggro Labs si preferís no usar STT comercial. Solo aplica si elegís Track D.',
   },
   {
     Icon: MessageCircle,
     title: 'Canal de soporte',
-    desc: 'GitHub Issues del repo template. Respondemos en <2h en horario laboral Colombia (9am a 7pm COT).',
+    desc: 'GitHub Issues del repo template + correo directo al líder del rol. Respondemos en menos de 2h en horario laboral Colombia (9am a 7pm COT).',
+  },
+];
+
+const porTrack = [
+  {
+    id: 'a',
+    code: 'Track A',
+    name: 'Outbound Automation',
+    color: '#E75E1E',
+    inputs: [
+      '30 cuentas objetivo (empresas mid-market Colombia)',
+      'Buyer persona objetivo (CFO o Contador General, 50 a 500 empleados)',
+      '10 respuestas sintéticas con groundtruth para el clasificador',
+    ],
+  },
+  {
+    id: 'b',
+    code: 'Track B',
+    name: 'Marketing Insights',
+    color: '#03A3F8',
+    inputs: [
+      '20 campañas en JSON (anonimizadas pero realistas)',
+      '5 reportes de Google Analytics simulados en CSV',
+      '3 transcripciones de reuniones internas (con anomalías plantadas)',
+    ],
+  },
+  {
+    id: 'c',
+    code: 'Track C',
+    name: 'Generador de Piezas',
+    color: '#DD1C4B',
+    inputs: [
+      '3 briefs de campaña en JSON (DIAN, cross-sell POS, retención Nómina)',
+      'Brand voice guide extendido con ejemplos',
+      '10 piezas buenas etiquetadas + 10 malas (con violaciones documentadas)',
+    ],
+  },
+  {
+    id: 'd',
+    code: 'Track D',
+    name: 'Inteligencia de Conversaciones',
+    color: '#149E71',
+    inputs: [
+      '9 audios MP3 en español Colombia (3 obligatorios + 1 edge case + 5 opcionales)',
+      'Speaker map con acentos regionales (paisa, bogotano, valluno, costeño, santandereano)',
+      'Schema fijo de insights.json para el output del pipeline',
+    ],
   },
 ];
 ---
 
 <section id="lo-que-recibis" class="py-20 md:py-28 px-6 md:px-8">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Lo que recibis</h2>
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Lo que recibís</h2>
     <p class="text-lg text-fg-muted mb-12 max-w-2xl">
-      Todo el material y herramientas para que el unico costo sea tu tiempo y tu criterio.
+      Todo el material y herramientas para que el único costo sea tu tiempo y tu criterio.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      {items.map(({ Icon, title, desc }) => (
-        <div class="flex gap-4 items-start p-6 rounded-xl border border-line hover:border-brand-primary/40 transition-colors">
-          <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
-            <Icon size={20} />
+    <!-- General para todos -->
+    <div class="mb-16">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary mb-6">
+        {'> '} PARA TODOS LOS TRACKS
+      </p>
+      <div class="grid md:grid-cols-2 gap-6">
+        {general.map(({ Icon, title, desc }) => (
+          <div class="flex gap-4 items-start p-6 rounded-xl border border-line hover:border-brand-primary/40 transition-colors">
+            <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
+              <Icon size={20} />
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1.5">{title}</h3>
+              <p class="text-sm text-fg-muted leading-relaxed">{desc}</p>
+            </div>
           </div>
-          <div>
-            <h3 class="font-semibold mb-1.5">{title}</h3>
-            <p class="text-sm text-fg-muted leading-relaxed">{desc}</p>
+        ))}
+      </div>
+    </div>
+
+    <!-- Por track -->
+    <div>
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary mb-6">
+        {'> '} INPUTS ESPECÍFICOS POR TRACK
+      </p>
+      <p class="text-sm text-fg-muted mb-6">
+        Cada track recibe datasets propios. Solo vas a usar los del track que elegiste.
+      </p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {porTrack.map((t) => (
+          <div class="p-6 rounded-xl border border-line" style={`border-left: 4px solid ${t.color};`}>
+            <div class="flex items-baseline gap-3 mb-3">
+              <span
+                class="font-pixel text-xs font-bold text-white px-2 py-1 pixel-corners"
+                style={`background-color: ${t.color};`}
+              >
+                {t.id.toUpperCase()}
+              </span>
+              <span class="text-xs font-mono text-fg-subtle">{t.code}</span>
+              <h3 class="font-semibold">{t.name}</h3>
+            </div>
+            <ul class="text-sm text-fg-muted space-y-1.5 pl-1">
+              {t.inputs.map((i) => (
+                <li class="flex gap-2"><span class="text-brand-primary shrink-0">+</span> {i}</li>
+              ))}
+            </ul>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 </section>

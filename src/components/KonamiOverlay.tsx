@@ -89,13 +89,13 @@ export default function KonamiOverlay() {
             </p>
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white relative z-10">Bien jugado.</h2>
             <p className="text-green-300/80 mb-4 leading-relaxed relative z-10">
-              Si llegaste hasta este punto, vos pones atencion a los detalles. Bienvenido al club de los curiosos.
+              Si llegaste hasta este punto, vos ponés atención a los detalles. Bienvenido al club de los curiosos.
             </p>
             <p className="text-green-300/80 mb-6 leading-relaxed relative z-10">
-              Como reconocimiento: si terminas el reto y pasas threshold, te invitamos a una llamada extra de 30 min con Edison Castro y Grego, sin agenda formal. Hablamos de lo que vos quieras: como pensamos la arquitectura de Loggro, como vemos el futuro de la IA en B2B colombiano, o por que el contador es el cliente mas interesante del mundo.
+              Si querés, mencioná este easter egg en tu entrevista. Así sabemos que llegaste hasta acá sin que nadie te lo soplara, y nos da gusto saberlo.
             </p>
             <p className="text-xs text-green-300/50 mb-6 relative z-10">
-              {'> '}para reclamarlo: menciona este easter egg en tu Loom de Apendice. asi sabemos que llegaste sin spoiler.
+              {'> '}no hay premio material. solo el guiño.
             </p>
             <button
               onClick={() => setOpen(false)}
