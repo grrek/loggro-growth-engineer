@@ -1,0 +1,17 @@
+---
+interface Props {
+  variant?: 'dots' | 'dashes' | 'plus' | 'wave' | 'angle' | 'brackets';
+}
+const { variant = 'dots' } = Astro.props;
+
+const patterns: Record<NonNullable<Props['variant']>, string> = {
+  dots: '· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·',
+  dashes: '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+  plus: '+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +',
+  wave: '~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~',
+  angle: '> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >',
+  brackets: '[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]',
+};
+---
+
+<div class="ascii-divider" aria-hidden="true">{patterns[variant]}</div>

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle';
+import ScrollProgress from '../components/ScrollProgress';
 
 interface Props {
   title: string;
@@ -14,6 +15,7 @@ const {
   ogImage = '/reto/og.png',
 } = Astro.props;
 
+const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://labs.loggro.com${ogImage}`;
 const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
 ---
 
@@ -26,16 +28,31 @@ const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
     <meta name="theme-color" content="#E75E1E" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:url" content="https://labs.loggro.com/reto" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/reto/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts via preload + media trick para no bloquear render -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&family=Press+Start+2P&display=swap"
+    />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&family=Press+Start+2P&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&family=Press+Start+2P&display=swap"
+      />
+    </noscript>
     <title>{fullTitle}</title>
     <script is:inline>
       // Theme init antes del paint (anti-flash)
@@ -53,6 +70,7 @@ const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
     </script>
   </head>
   <body class="min-h-screen bg-surface text-fg antialiased">
+    <ScrollProgress client:idle />
     <header class="fixed top-0 right-0 p-4 z-50">
       <ThemeToggle client:load />
     </header>

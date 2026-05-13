@@ -82,15 +82,16 @@ export default function Terminal() {
     <div
       role="img"
       aria-label="Demo de comandos en terminal: claude --version, slash insights, npm run eval"
-      className="font-mono text-[13px] leading-relaxed rounded-xl bg-black text-green-400 p-5 shadow-2xl border border-neutral-800 min-h-[280px] overflow-hidden"
+      className="crt-scanlines font-mono text-[13px] leading-relaxed rounded-xl bg-black text-green-400 p-5 shadow-2xl border border-neutral-800 min-h-[280px] overflow-hidden relative"
+      style={{ textShadow: '0 0 6px rgba(74, 222, 128, 0.3)' }}
     >
-      <div className="flex gap-1.5 mb-4">
+      <div className="flex gap-1.5 mb-4 relative z-10">
         <span className="w-3 h-3 rounded-full bg-red-500/80" aria-hidden="true"></span>
         <span className="w-3 h-3 rounded-full bg-yellow-500/80" aria-hidden="true"></span>
         <span className="w-3 h-3 rounded-full bg-green-500/80" aria-hidden="true"></span>
         <span className="ml-2 text-xs text-neutral-500">~/loggro-ai-challenge</span>
       </div>
-      <pre className="whitespace-pre-wrap break-words">
+      <pre className="whitespace-pre-wrap break-words relative z-10">
         {history.length > 0 && (
           <>
             {history.join('\n')}

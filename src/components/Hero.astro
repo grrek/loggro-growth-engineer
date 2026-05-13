@@ -2,48 +2,72 @@
 import Terminal from './Terminal';
 ---
 
-<section class="relative min-h-[88vh] flex items-center justify-center px-6 md:px-8 pt-24 pb-16 overflow-hidden">
-  <!-- Subtle background grid -->
+<section class="relative min-h-[92vh] flex items-center justify-center px-6 md:px-8 pt-24 pb-16 overflow-hidden cursor-crosshair">
+  <!-- Dot grid background pulsa sutilmente -->
+  <div aria-hidden="true" class="absolute inset-0 -z-10 dot-grid opacity-[0.18] dark:opacity-[0.12]"></div>
+
+  <!-- Radial fade overlay para darle profundidad -->
   <div
     aria-hidden="true"
-    class="absolute inset-0 -z-10 opacity-[0.04] dark:opacity-[0.08]"
-    style="background-image: linear-gradient(var(--color-fg) 1px, transparent 1px), linear-gradient(90deg, var(--color-fg) 1px, transparent 1px); background-size: 48px 48px;"
+    class="absolute inset-0 -z-10 bg-gradient-radial-fade pointer-events-none"
+    style="background: radial-gradient(circle at center, transparent 0%, transparent 40%, var(--color-surface) 90%);"
   ></div>
 
-  <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+  <!-- Esquinas marcadas estilo pixel art -->
+  <div aria-hidden="true" class="absolute top-20 left-6 md:left-10 text-fg-subtle font-mono text-xs select-none">
+    <span class="text-brand-primary">+</span>--{'>'}
+  </div>
+  <div aria-hidden="true" class="absolute top-20 right-6 md:right-16 text-fg-subtle font-mono text-xs select-none">
+    {'<'}--<span class="text-brand-primary">+</span>
+  </div>
+  <div aria-hidden="true" class="absolute bottom-10 left-6 md:left-10 text-fg-subtle font-mono text-xs select-none">
+    <span class="text-brand-primary">+</span>--{'>'}
+  </div>
+  <div aria-hidden="true" class="absolute bottom-10 right-6 md:right-16 text-fg-subtle font-mono text-xs select-none">
+    {'<'}--<span class="text-brand-primary">+</span>
+  </div>
+
+  <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center relative">
     <div class="animate-fade-in">
-      <p class="text-xs md:text-sm font-mono text-fg-muted mb-6 tracking-wider">
-        VE-1770 / ESPECIALISTA EN AUTOMATIZACION, IA Y GROWTH
+      <p class="font-pixel text-[10px] md:text-xs text-brand-primary mb-6 tracking-widest uppercase">
+        &gt; VE_1770.exe
       </p>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-6 tracking-tight">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] mb-6 tracking-tight">
         Construi con IA.
-        <span class="block text-brand-primary">Como vivis.</span>
+        <span class="block text-brand-primary text-glow-primary">Como vivis.</span>
       </h1>
       <p class="text-lg md:text-xl text-fg-muted mb-10 max-w-xl leading-relaxed">
         48 horas, 4 tracks, tu criterio en primer plano. No buscamos perfeccion. Buscamos como pensas cuando la IA te da algo mediocre disfrazado de bueno.
       </p>
-      <div class="flex flex-wrap gap-3">
+      <div class="flex flex-wrap gap-3 items-center">
         <a
           href="#reto"
-          class="inline-flex items-center gap-2 px-7 py-4 bg-brand-primary text-white rounded-md font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-brand-primary/20"
+          class="group relative inline-flex items-center gap-2 px-7 py-4 bg-brand-primary text-black rounded-md font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all glow-primary glow-primary-hover"
         >
-          Aceptar el reto
-          <span aria-hidden="true">{'->'}</span>
+          <span>Aceptar el reto</span>
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">{'->'}</span>
         </a>
         <a
           href="#espiritu"
-          class="inline-flex items-center px-7 py-4 border border-line rounded-md font-semibold hover:bg-surface-alt transition-colors"
+          class="inline-flex items-center px-7 py-4 border border-line rounded-md font-semibold hover:bg-surface-alt hover:border-brand-primary/40 transition-all"
         >
           Ver el espiritu primero
         </a>
       </div>
-      <p class="mt-8 text-sm text-fg-subtle font-mono">
-        Probalo: presiona <kbd class="px-1.5 py-0.5 rounded border border-line bg-surface-alt text-fg">/</kbd> para abrir el command palette
+      <p class="mt-10 text-xs text-fg-subtle font-mono flex items-center gap-2">
+        <span class="font-pixel text-[9px] text-brand-primary">TIP</span>
+        Probalo: pulsa <kbd class="px-1.5 py-0.5 rounded border border-line bg-surface-alt text-fg font-sans">/</kbd> para abrir el command palette
       </p>
     </div>
 
     <div class="md:pl-8">
       <Terminal client:idle />
     </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div aria-hidden="true" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-fg-subtle font-mono text-[10px] flex flex-col items-center gap-1 select-none">
+    <span class="animate-pulse">v</span>
+    <span class="opacity-60">scroll</span>
   </div>
 </section>

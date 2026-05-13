@@ -10,7 +10,7 @@ const mailto = `mailto:${email}?subject=${encodeURIComponent('VE-1770: acepto el
       <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">¿Listo?</h2>
       <a
         href={mailto}
-        class="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-md font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-brand-primary/30"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-black rounded-md font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-brand-primary/30"
       >
         Aceptar el reto
         <span aria-hidden="true">{'->'}</span>
@@ -44,7 +44,9 @@ const mailto = `mailto:${email}?subject=${encodeURIComponent('VE-1770: acepto el
     </div>
 
     <div class="mt-12 pt-8 border-t border-surface/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-surface/40">
-      <p>Loggro S.A.S. 2026.</p>
+      <p class="font-mono">
+        <span class="text-brand-primary">{'>'}</span> Loggro S.A.S. {new Date().getFullYear()}.
+      </p>
       <p class="font-mono">
         Encontraste algo curioso en el codigo? Esta bien, esta hecho a proposito.
       </p>

@@ -14,19 +14,24 @@
   --color-surface-alt: #F7F7F7;
   --color-surface-muted: #FAFAFA;
   --color-fg: #0A0A0A;
-  --color-fg-muted: #525252;
-  --color-fg-subtle: #A1A1AA;
+  --color-fg-muted: #4B5563;
+  --color-fg-subtle: #6B7280;
   --color-line: #E5E5E5;
+
+  /* Neon glow tones (used over brand-primary) */
+  --glow-primary: 231 94 30;     /* same as brand-primary in rgb form for shadow */
+  --glow-secondary: 3 163 248;
+  --glow-accent: 201 213 42;
 }
 
 .dark {
   /* Dark mode */
   --color-surface: #0A0A0A;
-  --color-surface-alt: #171717;
-  --color-surface-muted: #1F1F1F;
+  --color-surface-alt: #111111;
+  --color-surface-muted: #1A1A1A;
   --color-fg: #FAFAFA;
-  --color-fg-muted: #A3A3A3;
-  --color-fg-subtle: #525252;
+  --color-fg-muted: #B8B8B8;
+  --color-fg-subtle: #8B8B8B;
   --color-line: #262626;
 }
 
@@ -52,6 +57,131 @@ code, pre, .font-mono {
 ::selection {
   background: var(--color-brand-primary);
   color: white;
+}
+
+/* ========================================
+   Neon / glow utilities
+   ======================================== */
+.glow-primary {
+  box-shadow:
+    0 0 0 1px rgba(var(--glow-primary) / 0.4),
+    0 8px 24px -4px rgba(var(--glow-primary) / 0.35),
+    0 0 60px -12px rgba(var(--glow-primary) / 0.5);
+}
+
+.glow-primary-hover:hover {
+  box-shadow:
+    0 0 0 1px rgba(var(--glow-primary) / 0.5),
+    0 12px 32px -4px rgba(var(--glow-primary) / 0.5),
+    0 0 80px -12px rgba(var(--glow-primary) / 0.7);
+}
+
+.text-glow-primary {
+  text-shadow:
+    0 0 12px rgba(var(--glow-primary) / 0.5),
+    0 0 32px rgba(var(--glow-primary) / 0.3);
+}
+
+/* ========================================
+   Pixel art utilities (vintage acentos)
+   ======================================== */
+.pixel-corners {
+  clip-path: polygon(
+    0 4px, 4px 4px, 4px 0,
+    calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+    4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px)
+  );
+}
+
+.font-pixel {
+  font-family: 'Press Start 2P', 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   Scroll progress bar (top)
+   ======================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-brand-primary);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 90;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ========================================
+   ASCII section dividers
+   ======================================== */
+.ascii-divider {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--color-fg-subtle);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem 0;
+  user-select: none;
+}
+
+/* ========================================
+   CRT scanlines (terminal effect)
+   ======================================== */
+.crt-scanlines {
+  position: relative;
+}
+
+.crt-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.04) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.dark .crt-scanlines::after {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(255, 255, 255, 0.025) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+}
+
+/* ========================================
+   Dot grid background
+   ======================================== */
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--color-fg-subtle) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* ========================================
+   Cursor custom (hero zone)
+   ======================================== */
+.cursor-crosshair {
+  cursor: crosshair;
 }
 
 /* Reduce motion for accessibility */

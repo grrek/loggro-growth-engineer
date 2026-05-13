@@ -3,76 +3,92 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Honesty - Loggro VE-1770" description="Ejemplos buenos y malos de AI Audit Log. Por que la honestidad cuenta mas que la perfeccion.">
-  <main class="max-w-3xl mx-auto px-6 md:px-8 py-24">
-    <p class="text-xs font-mono text-fg-subtle tracking-wider mb-4">PAGINA SECRETA / HONESTY</p>
+  <main class="max-w-3xl mx-auto px-6 md:px-8 py-24 relative">
+    <!-- Top bar estilo terminal -->
+    <div class="font-mono text-[11px] text-fg-subtle mb-8 flex justify-between items-center select-none">
+      <span class="font-pixel text-[9px] text-brand-primary tracking-widest">{'> '}PAGINA_OCULTA / HONESTY</span>
+      <span class="font-mono text-[10px]">[ESC] volver</span>
+    </div>
+
     <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
       La honestidad cuenta<br />
-      <span class="text-brand-primary">mas que la perfeccion.</span>
+      <span class="text-brand-primary text-glow-primary">mas que la perfeccion.</span>
     </h1>
     <p class="text-lg text-fg-muted mb-12 leading-relaxed">
-      Llegaste a una pagina que no esta en el navegador principal. Aca te mostramos ejemplos reales de AI Audit Log para que entiendas que estamos evaluando cuando decimos "queremos criterio, no fanboys".
+      Llegaste a una pagina que no esta en el navegador principal. Aca te mostramos ejemplos reales de AI Audit Log para que entiendas que estamos evaluando cuando decimos: queremos criterio, no fanboys.
     </p>
 
+    <!-- Ejemplo bueno -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold mb-6">Ejemplo bueno</h2>
-      <div class="p-6 rounded-xl border border-green-500/30 bg-green-500/[0.04] font-mono text-sm leading-relaxed">
+      <p class="font-pixel text-[10px] text-green-600 dark:text-green-400 uppercase tracking-widest mb-3">
+        {'> '}EJEMPLO_BUENO.md
+      </p>
+      <div class="crt-scanlines p-6 rounded-xl border border-green-500/30 bg-green-500/[0.04] font-mono text-sm leading-relaxed relative overflow-hidden">
         <p class="mb-3"><strong>#7 - Claude Code (Opus 4.7)</strong></p>
-        <p class="mb-2 text-fg-muted">Tarea: Scaffolding del ResponseClassifier</p>
-        <p class="mb-2 text-fg-muted">Output util: Parcial 40%</p>
+        <p class="mb-2 text-fg-muted">Tarea: scaffolding del ResponseClassifier</p>
+        <p class="mb-2 text-fg-muted">Output util: parcial 40%</p>
         <p class="mb-2 text-fg-muted">Que tuve que corregir:</p>
-        <p class="mb-2 text-fg-muted pl-4">
-          Claude me propuso usar regex para detectar "interesado" buscando palabras clave (interesado, gracias, dale). Lo probe contra las 10 respuestas sinteticas y atrapaba 4 de 10 reales. Las 6 que fallaba tenian doble negacion ("no estamos interesados") o ambiguedad ("podria interesarme manana"). Descarte regex completo y use un prompt few-shot con Sonnet 4.6 con esos 6 casos especificos como ejemplos. Subio a 9 de 10 en mi eval.
+        <p class="mb-3 text-fg-muted pl-4">
+          Claude me propuso usar regex para detectar "interesado" buscando palabras clave (interesado, gracias, dale). Lo probe contra las 10 respuestas sinteticas y atrapaba 4 de 10. Las 6 que fallaba tenian doble negacion ("no estamos interesados") o ambiguedad ("podria interesarme manana"). Descarte regex completo y use un prompt few-shot con Sonnet 4.6 con esos 6 casos como ejemplos. Subio a 9 de 10 en mi eval.
         </p>
         <p class="mb-2 text-fg-muted">Aprendizaje:</p>
         <p class="text-fg-muted pl-4">
-          Claude default sugiere soluciones simples (regex) cuando el problema parece simple. Para clasificacion de lenguaje natural en espanol con doble negacion, el regex es trampa siempre. Vale la pena pagar la diferencia de costo de un LLM call para evitar bugs caros.
+          Claude default sugiere soluciones simples (regex) cuando el problema parece simple. Para clasificacion de lenguaje natural en espanol con doble negacion, regex es trampa siempre. Vale la pena pagar la diferencia de costo de un LLM call para evitar bugs caros.
         </p>
       </div>
-      <p class="mt-4 text-sm text-fg-subtle">
-        Por que es bueno: especifico (4 de 10), tecnico (mecanica del regex falla), aprendizaje generalizable (no "Claude es malo"), conciso, con numero medible.
+      <p class="mt-3 text-sm text-fg-subtle font-mono pl-2 border-l-2 border-green-500/40">
+        Por que es bueno: especifico (4 de 10), tecnico (mecanica del regex falla), aprendizaje generalizable, conciso, con numero medible.
       </p>
     </section>
 
+    <!-- Ejemplo malo -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold mb-6">Ejemplo malo</h2>
-      <div class="p-6 rounded-xl border border-red-500/30 bg-red-500/[0.04] font-mono text-sm leading-relaxed">
+      <p class="font-pixel text-[10px] text-red-600 dark:text-red-400 uppercase tracking-widest mb-3">
+        {'> '}EJEMPLO_MALO.md
+      </p>
+      <div class="crt-scanlines p-6 rounded-xl border border-red-500/30 bg-red-500/[0.04] font-mono text-sm leading-relaxed relative overflow-hidden">
         <p class="mb-3"><strong>#3 - Claude</strong></p>
-        <p class="mb-2 text-fg-muted">Tarea: Pipeline general</p>
-        <p class="mb-2 text-fg-muted">Output util: Si</p>
-        <p class="mb-2 text-fg-muted">Que tuve que corregir: Nada</p>
-        <p class="text-fg-muted">Aprendizaje: La IA es muy poderosa</p>
+        <p class="mb-2 text-fg-muted">Tarea: pipeline general</p>
+        <p class="mb-2 text-fg-muted">Output util: si</p>
+        <p class="mb-2 text-fg-muted">Que tuve que corregir: nada</p>
+        <p class="text-fg-muted">Aprendizaje: la IA es muy poderosa</p>
       </div>
-      <p class="mt-4 text-sm text-fg-subtle">
-        Por que es malo: no especifica tarea ni modelo, no documenta friccion (es muy improbable que un pipeline entero funcione "sin correcciones"), aprendizaje vacio. Si tu Audit Log entero parece esto, baja la nota.
+      <p class="mt-3 text-sm text-fg-subtle font-mono pl-2 border-l-2 border-red-500/40">
+        Por que es malo: no especifica tarea ni modelo, no documenta friccion (improbable que un pipeline entero funcione "sin correcciones"), aprendizaje vacio. Si tu log entero parece esto, baja la nota.
       </p>
     </section>
 
+    <!-- Anti-patrones -->
     <section class="mb-16">
-      <h2 class="text-2xl font-bold mb-6">Tres anti-patrones que vemos seguido</h2>
+      <p class="font-pixel text-[10px] text-fg uppercase tracking-widest mb-3">
+        {'> '}ANTIPATRONES.md
+      </p>
       <ol class="space-y-6 text-fg-muted leading-relaxed">
-        <li class="pl-6 relative">
-          <span class="absolute left-0 top-0 font-mono text-brand-primary font-bold">1.</span>
+        <li class="pl-12 relative">
+          <span class="absolute left-0 top-0 font-pixel text-brand-primary text-sm">01</span>
           <strong class="text-fg">Audit Log heroico:</strong> 10 entradas que dicen "Claude lo hizo bien al primer intento". No es creible. Si tu Audit Log tiene cero friccion, no estas mirando suficiente.
         </li>
-        <li class="pl-6 relative">
-          <span class="absolute left-0 top-0 font-mono text-brand-primary font-bold">2.</span>
-          <strong class="text-fg">Audit Log inflado:</strong> 50 entradas triviales del tipo "le pedi a Claude que me formateara este JSON". El volumen no compensa la falta de criterio. 12 entradas con substance > 50 sin.
+        <li class="pl-12 relative">
+          <span class="absolute left-0 top-0 font-pixel text-brand-primary text-sm">02</span>
+          <strong class="text-fg">Audit Log inflado:</strong> 50 entradas triviales tipo "le pedi a Claude que me formateara este JSON". El volumen no compensa la falta de criterio. 12 entradas con substance vencen a 50 sin.
         </li>
-        <li class="pl-6 relative">
-          <span class="absolute left-0 top-0 font-mono text-brand-primary font-bold">3.</span>
+        <li class="pl-12 relative">
+          <span class="absolute left-0 top-0 font-pixel text-brand-primary text-sm">03</span>
           <strong class="text-fg">Audit Log sin generalizacion:</strong> Aprendizajes especificos a la tarea ("para esto, esta version del prompt funciono"). El aprendizaje debe ser portable a otro proyecto.
         </li>
       </ol>
     </section>
 
-    <section class="p-6 rounded-xl border border-line bg-surface-alt">
-      <p class="text-sm text-fg-muted leading-relaxed">
-        <strong class="text-fg">Una cosa mas:</strong> si en tu Audit Log encontraste que la IA te dio algo malo, lo documentas, y el evaluador lo lee, eso suma. Es lo opuesto de lo que la mayoria piensa cuando entrega un take-home. Pensamos que estamos midiendo perfeccion. Estamos midiendo criterio.
+    <!-- Cita final -->
+    <section class="p-7 rounded-xl border-l-4 border-brand-primary bg-brand-primary/[0.04]">
+      <p class="text-sm text-fg leading-relaxed">
+        <strong>Una cosa mas:</strong> si en tu Audit Log encontraste que la IA te dio algo malo, lo documentas, y el evaluador lo lee, eso suma. Es lo opuesto de lo que la mayoria piensa cuando entrega un take-home. Pensamos que estamos midiendo perfeccion. Estamos midiendo criterio.
       </p>
     </section>
 
     <div class="mt-16 text-center">
       <a href="/reto" class="inline-flex items-center gap-2 px-6 py-3 border border-line rounded-md font-semibold hover:bg-surface-alt transition-colors">
+        <span aria-hidden="true">{'<-'}</span>
         Volver al microsite
       </a>
     </div>
