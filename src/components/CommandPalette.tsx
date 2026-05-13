@@ -4,7 +4,7 @@ interface Command {
   label: string;
   shortcut?: string;
   action: () => void;
-  group: 'nav' | 'extras' | 'secret';
+  group: 'nav' | 'extras';
 }
 
 const buildCommands = (): Command[] => [
@@ -15,7 +15,7 @@ const buildCommands = (): Command[] => [
   { label: 'Ir a La estructura', group: 'nav', action: () => scrollTo('#estructura') },
   { label: 'Ir a Qué recibes', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
   { label: 'Ir a Caso de negocio (A)', group: 'nav', action: () => scrollTo('#caso-negocio') },
-  { label: 'Ir a Los 4 tracks (B)', group: 'nav', action: () => scrollTo('#reto') },
+  { label: 'Ir a Los 4 escenarios (B)', group: 'nav', action: () => scrollTo('#reto') },
   { label: 'Ir a El apéndice', group: 'nav', action: () => scrollTo('#apendice') },
   { label: 'Ir a Sesión en vivo (C)', group: 'nav', action: () => scrollTo('#sesion-en-vivo') },
   { label: 'Ir a Cómo evaluamos', group: 'nav', action: () => scrollTo('#evaluacion') },
@@ -45,8 +45,8 @@ const buildCommands = (): Command[] => [
     group: 'extras',
     action: () => window.dispatchEvent(new CustomEvent('claudefm:open')),
   },
-  { label: 'Página secreta: AI Audit honesty', group: 'secret', action: () => (window.location.href = '/growth-engineer/honesty') },
-  { label: 'Página secreta: nuestro equipo', group: 'secret', action: () => (window.location.href = '/growth-engineer/team') },
+  { label: 'AI Audit Log: ejemplos buenos vs malos', group: 'extras', action: () => (window.location.href = '/growth-engineer/honesty') },
+  { label: 'Conocer al equipo de Marketing & Growth', group: 'extras', action: () => (window.location.href = '/growth-engineer/team') },
 ];
 
 const scrollTo = (sel: string) => {
@@ -165,11 +165,10 @@ export default function CommandPalette() {
 
   if (!open) return null;
 
-  const groups: Array<Command['group']> = ['nav', 'extras', 'secret'];
+  const groups: Array<Command['group']> = ['nav', 'extras'];
   const groupLabels: Record<Command['group'], string> = {
     nav: 'Navegación',
     extras: 'Acciones',
-    secret: 'Secretos',
   };
 
   return (
