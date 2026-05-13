@@ -41,18 +41,21 @@ const general = [
   },
 ];
 
+const REPO_BLOB = 'https://github.com/grrek/loggro-ai-challenge/blob/main';
+const REPO_TREE = 'https://github.com/grrek/loggro-ai-challenge/tree/main';
+
 const porTrack = [
   {
     id: 'a',
     code: 'Track A',
     name: 'Prospección Automatizada (Outbound)',
     color: '#E75E1E',
+    brief_url: `${REPO_BLOB}/data/track-a-outbound/BRIEF.md`,
     inputs: [
-      'ICP escrito en ICP.md (criterios + señales + fuentes sugeridas)',
-      'Tu trabajo: identificar ~100 cuentas nuevas que matcheen el ICP usando fuentes públicas',
-      '30 cuentas ejemplo en formato canónico (solo referencia, NO es tu input)',
-      '10 respuestas sintéticas con ground_truth para el clasificador',
-      'Brand voice guide de Loggro',
+      { text: 'ICP.md — criterios + señales + fuentes sugeridas', url: `${REPO_BLOB}/data/track-a-outbound/ICP.md` },
+      { text: 'accounts_example.json — 30 cuentas en formato canónico (solo referencia)', url: `${REPO_BLOB}/data/track-a-outbound/accounts_example.json` },
+      { text: 'responses_sample.json — 10 respuestas con groundtruth_intent', url: `${REPO_BLOB}/data/track-a-outbound/responses_sample.json` },
+      { text: 'Brand voice guide de Loggro', url: `${REPO_BLOB}/docs/BRAND_VOICE.md` },
     ],
   },
   {
@@ -60,10 +63,11 @@ const porTrack = [
     code: 'Track B',
     name: 'Insights de Campañas de Marketing',
     color: '#03A3F8',
+    brief_url: `${REPO_BLOB}/data/track-b-insights/BRIEF.md`,
     inputs: [
-      '124 campañas reales Q1-Q2 2026 (Google Ads + Meta Ads + LinkedIn) en JSON',
-      'Métricas completas por etapa del funnel y por canal',
-      'Anomalías plantadas que tu pipeline debe detectar',
+      { text: 'campaigns.json — 124 campañas reales Q1-Q2 2026 (Google + Meta + LinkedIn)', url: `${REPO_BLOB}/data/track-b-insights/campaigns.json` },
+      { text: '7 productos cubiertos · 3 canales · funnel completo + CAC + audiencia', url: null },
+      { text: '3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas vanity', url: null },
     ],
   },
   {
@@ -71,10 +75,13 @@ const porTrack = [
     code: 'Track C',
     name: 'Generador de Piezas',
     color: '#DD1C4B',
+    brief_url: `${REPO_BLOB}/data/track-c-pieces/BRIEF.md`,
     inputs: [
-      '3 briefs de campaña en JSON (DIAN, cross-sell POS, retención Nómina)',
-      'Brand voice guide de Loggro',
-      'Referencias reales en Meta Ad Library de Loggro',
+      { text: 'briefs.json — 3 briefs reales (DIAN, cross-sell POS, retención Nómina)', url: `${REPO_BLOB}/data/track-c-pieces/briefs.json` },
+      { text: 'good_pieces.json — 10 piezas REALES extraídas de Meta Ad Library', url: `${REPO_BLOB}/data/track-c-pieces/good_pieces.json` },
+      { text: 'bad_pieces.json — 10 piezas sintéticas con violations documentadas (11 tipos)', url: `${REPO_BLOB}/data/track-c-pieces/bad_pieces.json` },
+      { text: 'screenshots/ — 10 imágenes (7 anuncios + 3 video posters)', url: `${REPO_TREE}/data/track-c-pieces/screenshots` },
+      { text: 'Brand voice guide + Meta Ad Library live de Loggro', url: 'https://www.facebook.com/ads/library/?country=CO&q=loggro' },
     ],
   },
   {
@@ -82,11 +89,12 @@ const porTrack = [
     code: 'Track D',
     name: 'Inteligencia de Conversaciones',
     color: '#149E71',
+    brief_url: `${REPO_BLOB}/data/track-d-intel/BRIEF.md`,
     inputs: [
-      '9 grabaciones REALES del equipo comercial Loggro Q2 2026 (5 obligatorias + 4 opcionales)',
-      '~80 min totales: cancelación, prospecto largo, cliente molesto, contactado extendido, edge cases',
-      'speaker_map.json con metadata por audio (escenario + señales esperadas)',
-      'Schema fijo de insights.json + Whisper self-hosted opcional + virtual key LLM Broker',
+      { text: '9 grabaciones REALES Q2 2026 (5 obligatorias + 4 opcionales, ~80 min)', url: 'https://labs.loggro.com/growth-engineer/audio/' },
+      { text: 'speaker_map.json — metadata por audio (escenario + señales esperadas)', url: `${REPO_BLOB}/data/track-d-intel/speaker_map.json` },
+      { text: 'insights_schema.json — schema fijo del output esperado', url: `${REPO_BLOB}/schemas/insights_schema.json` },
+      { text: 'Whisper self-hosted opcional (gratis) + virtual key LLM Broker', url: null },
     ],
   },
 ];
@@ -130,7 +138,7 @@ const porTrack = [
       <div class="grid md:grid-cols-2 gap-4">
         {porTrack.map((t) => (
           <div class="p-6 rounded-xl border border-line" style={`border-left: 4px solid ${t.color};`}>
-            <div class="flex items-baseline gap-3 mb-3">
+            <div class="flex items-baseline gap-3 mb-3 flex-wrap">
               <span
                 class="font-pixel text-xs font-bold text-white px-2 py-1 pixel-corners"
                 style={`background-color: ${t.color};`}
@@ -140,11 +148,33 @@ const porTrack = [
               <span class="text-xs font-mono text-fg-subtle">{t.code}</span>
               <h3 class="font-semibold">{t.name}</h3>
             </div>
-            <ul class="text-sm text-fg-muted space-y-1.5 pl-1">
+            <ul class="text-sm text-fg-muted space-y-1.5 pl-1 mb-4">
               {t.inputs.map((i) => (
-                <li class="flex gap-2"><span class="text-brand-primary-text shrink-0">+</span> {i}</li>
+                <li class="flex gap-2">
+                  <span class="text-brand-primary-text shrink-0">+</span>
+                  {i.url ? (
+                    <a
+                      href={i.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="underline decoration-dotted underline-offset-2 hover:text-brand-primary-text transition-colors"
+                    >{i.text} <span aria-hidden="true" class="text-fg-subtle">↗</span></a>
+                  ) : (
+                    <span>{i.text}</span>
+                  )}
+                </li>
               ))}
             </ul>
+            <a
+              href={t.brief_url}
+              target="_blank"
+              rel="noopener"
+              data-track={`brief_link_${t.id}`}
+              class="inline-flex items-center gap-1 text-xs font-mono font-semibold pl-1"
+              style={`color: ${t.color};`}
+            >
+              <span aria-hidden="true">↗</span> Leer BRIEF.md completo
+            </a>
           </div>
         ))}
       </div>
