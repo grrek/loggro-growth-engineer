@@ -8,7 +8,7 @@
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["Scraper / Enricher", "MessageWriter", "ResponseClassifier"],
     "inputs": [
-      "Buyer persona objetivo (CFO o Contador General, 50 a 500 empleados)",
+      "Buyer persona objetivo (dueño de empresa, director de finanzas, emprendedor)",
       "Brand voice guide de Loggro",
       "Virtual key del LLM Broker"
     ],

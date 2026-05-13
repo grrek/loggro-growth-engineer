@@ -1,5 +1,5 @@
 ---
-import { Terminal, GitBranch, FileText, FileCheck, Send } from 'lucide-react';
+import { Terminal, GitBranch, FileText, FileCheck, Send, ShieldCheck } from 'lucide-react';
 
 const pasos = [
   {
@@ -46,7 +46,7 @@ const pasos = [
     </div>
     <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Cómo arrancar</h2>
     <p class="text-lg text-fg-muted mb-12 max-w-2xl">
-      Haz estos 5 pasos antes del cronómetro. Te toma 15 minutos y dejas tu base lista.
+      Haz estos 5 pasos antes del cronómetro. 15 minutos. Después arranca el reloj.
     </p>
 
     <ol class="space-y-4">
@@ -68,6 +68,19 @@ const pasos = [
         </li>
       ))}
     </ol>
+
+    <!-- Disclaimer propiedad intelectual -->
+    <div class="mt-10 p-6 bg-surface border-pixel shadow-pixel-md">
+      <div class="flex items-start gap-3 mb-3">
+        <ShieldCheck size={20} class="text-brand-primary-text shrink-0 mt-0.5" />
+        <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">
+          {'> '} PROPIEDAD INTELECTUAL
+        </p>
+      </div>
+      <p class="text-sm md:text-base text-fg-muted leading-relaxed">
+        Mantienes la propiedad de lo que construyes. Si no te contratamos, no usamos comercialmente tu entrega. Si te contratamos, lo que hiciste se vuelve base de tu onboarding y puedes seguir mejorándolo dentro de Loggro. Si decidimos no contratarte pero queremos licenciar algo específico, te buscamos para una conversación separada con compensación.
+      </p>
+    </div>
 
     <div class="mt-10 text-center">
       <a

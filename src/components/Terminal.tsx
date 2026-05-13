@@ -1,67 +1,74 @@
 import { useEffect, useState } from 'react';
 
 interface Command {
-  prompt: string;
   cmd: string;
   output: string;
 }
 
-const MASCOT = `   _____
-  |o   o|
-  |  ^  |
-  |  _  |
-  '-----'`;
+const MOTD = ` ██╗      ██████╗   ██████╗   ██████╗  ██████╗   ██████╗
+ ██║     ██╔═══██╗ ██╔════╝  ██╔════╝  ██╔══██╗ ██╔═══██╗
+ ██║     ██║   ██║ ██║  ███╗ ██║  ███╗ ██████╔╝ ██║   ██║
+ ██║     ██║   ██║ ██║   ██║ ██║   ██║ ██╔══██╗ ██║   ██║
+ ███████╗╚██████╔╝ ╚██████╔╝ ╚██████╔╝ ██║  ██║ ╚██████╔╝
+ ╚══════╝ ╚═════╝   ╚═════╝   ╚═════╝  ╚═╝  ╚═╝  ╚═════╝
+                                          challenge_VE-1770
+
+Last login: today.  Welcome, player_one.`;
 
 const COMMANDS: Command[] = [
   {
-    prompt: '$ ',
-    cmd: 'claude --version',
-    output: 'Claude Code 2.5.1 (Opus 4.7, 1M context)',
+    cmd: 'whoami',
+    output: 'growth-engineer',
   },
   {
-    prompt: '$ ',
-    cmd: '/insights',
-    output: '30d active. $124 USD spent.\nopus-4-7 (62%) + sonnet-4-6 (35%) + haiku-4-5 (3%)',
+    cmd: 'docker ps --filter name=n8n',
+    output: 'CONTAINER   IMAGE            STATUS\n7b3f1a2c   n8nio/n8n:1.74   Up 23 days',
   },
   {
-    prompt: '$ ',
-    cmd: 'npm run eval',
-    output: 'Held-out: 4/5 PASS · reasoning 0.84\nThreshold: cleared',
+    cmd: 'curl -s $LLM_BROKER_URL/health | jq .',
+    output: '{\n  "status": "ok",\n  "models": ["claude-opus-4-7", "gpt-5", "gemini-2.5-pro"],\n  "budget_remaining": "$47.20"\n}',
   },
   {
-    prompt: '$ ',
-    cmd: '/agents list',
-    output: 'Enricher · MessageWriter · Reviewer · Judge\n4 sub-agents online · all green',
+    cmd: 'claude --version && claude /insights',
+    output: 'Claude Code 2.5.1 (Opus 4.7, 1M context)\n30d active · $124 spent · opus (62%) sonnet (35%) haiku (3%)',
   },
   {
-    prompt: '$ ',
-    cmd: '/mascot',
-    output: MASCOT + '\n  "ready to ship."',
+    cmd: 'npm run eval -- --held-out',
+    output: 'Running 5 held-out cases...\n  [✓] case_01 · score 0.91\n  [✓] case_02 · score 0.88\n  [✓] case_03 · score 0.82\n  [✗] case_04 · score 0.61\n  [✓] case_05 · score 0.87\nReasoning quality: 0.84\nThreshold: cumplido',
   },
 ];
 
 const TYPE_SPEED = 50;
-const PAUSE_AFTER_CMD = 260;
+const PAUSE_AFTER_CMD = 280;
 const PAUSE_AFTER_OUTPUT = 1100;
-const RESTART_PAUSE = 4200;
+const INITIAL_MOTD_DELAY = 700;
 
-type Phase = 'typing' | 'pause-cmd' | 'output' | 'pause-output';
+type Phase = 'motd' | 'typing' | 'pause-cmd' | 'pause-output' | 'done';
 
 export default function Terminal() {
   const [history, setHistory] = useState<string[]>([]);
   const [currentCmd, setCurrentCmd] = useState('');
   const [step, setStep] = useState(0);
-  const [phase, setPhase] = useState<Phase>('typing');
+  const [phase, setPhase] = useState<Phase>('motd');
+  const [motdShown, setMotdShown] = useState(false);
 
   useEffect(() => {
+    if (phase === 'done') return;
+
+    if (phase === 'motd') {
+      if (!motdShown) {
+        const t = setTimeout(() => {
+          setMotdShown(true);
+          setPhase('typing');
+        }, INITIAL_MOTD_DELAY);
+        return () => clearTimeout(t);
+      }
+      return;
+    }
+
     if (step >= COMMANDS.length) {
-      const t = setTimeout(() => {
-        setHistory([]);
-        setCurrentCmd('');
-        setStep(0);
-        setPhase('typing');
-      }, RESTART_PAUSE);
-      return () => clearTimeout(t);
+      setPhase('done');
+      return;
     }
 
     const cmd = COMMANDS[step];
@@ -79,7 +86,7 @@ export default function Terminal() {
     }
 
     if (phase === 'pause-cmd') {
-      setHistory((h) => [...h, `${cmd.prompt}${cmd.cmd}`, cmd.output]);
+      setHistory((h) => [...h, `$ ${cmd.cmd}`, cmd.output]);
       setCurrentCmd('');
       setPhase('pause-output');
       return;
@@ -92,37 +99,72 @@ export default function Terminal() {
       }, PAUSE_AFTER_OUTPUT);
       return () => clearTimeout(t);
     }
-  }, [phase, currentCmd, step]);
+  }, [phase, currentCmd, step, motdShown]);
 
   return (
     <div
       role="img"
-      aria-label="Demo de comandos en terminal con respuestas del sistema"
-      className="crt-scanlines font-mono text-[13px] leading-relaxed bg-black text-green-400 p-5 shadow-pixel-md border-2 border-fg min-h-[320px] overflow-hidden relative"
+      aria-label="Terminal demo: motd LOGGRO seguido de comandos en vivo"
+      className="crt-scanlines font-mono text-[13px] leading-relaxed bg-black text-green-400 shadow-pixel-md border-2 border-fg overflow-hidden relative"
       style={{ textShadow: '0 0 6px rgba(74, 222, 128, 0.3)' }}
     >
-      <div className="flex gap-1.5 mb-4 relative z-10 items-center">
-        <span className="w-3 h-3 bg-red-500/80 border border-red-700" aria-hidden="true"></span>
-        <span className="w-3 h-3 bg-yellow-500/80 border border-yellow-700" aria-hidden="true"></span>
-        <span className="w-3 h-3 bg-green-500/80 border border-green-700" aria-hidden="true"></span>
-        <span className="ml-2 text-xs text-neutral-500 font-mono">~/loggro-ai-challenge</span>
-        <span className="ml-auto text-xs text-neutral-600 font-mono">·  P1</span>
+      {/* Title bar */}
+      <div className="flex gap-1.5 px-5 py-3 relative z-10 items-center border-b border-neutral-800 bg-black">
+        <span className="w-3 h-3 bg-red-500/80 border border-red-700" aria-hidden="true" />
+        <span className="w-3 h-3 bg-yellow-500/80 border border-yellow-700" aria-hidden="true" />
+        <span className="w-3 h-3 bg-green-500/80 border border-green-700" aria-hidden="true" />
+        <span className="ml-2 text-xs text-neutral-500 font-mono">
+          ~/loggro-ai-challenge — zsh
+        </span>
+        <span className="ml-auto flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-green-400 animate-pulse rounded-none" aria-hidden="true" />
+          <span className="text-[9px] text-neutral-500 uppercase tracking-widest">live</span>
+        </span>
       </div>
-      <pre className="whitespace-pre-wrap break-words relative z-10">
+
+      <pre className="whitespace-pre-wrap break-words relative z-10 leading-[1.55] px-5 py-4 min-h-[260px]">
+        {motdShown && (
+          <>
+            {MOTD}
+            {'\n\n'}
+          </>
+        )}
         {history.length > 0 && (
           <>
             {history.join('\n')}
             {'\n'}
           </>
         )}
-        {step < COMMANDS.length && (
+        {phase === 'motd' && !motdShown && (
+          <span className="animate-blink text-green-400">█</span>
+        )}
+        {(phase === 'typing' || phase === 'pause-cmd' || phase === 'pause-output') && (
           <>
-            {COMMANDS[step].prompt}
+            {'$ '}
             {currentCmd}
-            <span className="animate-blink">_</span>
+            <span className="animate-blink text-green-400">█</span>
+          </>
+        )}
+        {phase === 'done' && (
+          <>
+            {'$ '}
+            <span className="animate-blink text-green-400">█</span>
           </>
         )}
       </pre>
+
+      {/* Status bar */}
+      <div className="flex items-center justify-between gap-3 px-5 py-2 border-t border-neutral-800 bg-neutral-950 text-[9px] uppercase tracking-widest text-neutral-500 font-mono">
+        <div className="flex items-center gap-3">
+          <span className="flex items-center gap-1">
+            <span className="w-1.5 h-1.5 bg-green-400 animate-pulse" aria-hidden="true" />
+            connected
+          </span>
+          <span>lat 24ms</span>
+          <span className="hidden md:inline">mem 312M</span>
+        </div>
+        <span>opus 4.7 · 1M</span>
+      </div>
     </div>
   );
 }

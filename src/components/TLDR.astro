@@ -1,32 +1,110 @@
 ---
-import { Clock, Target, Layers, Award } from 'lucide-react';
+import { Clock, Target, Layers, Award, FileCheck, ScrollText, Mic, Github, ArrowDown, Trophy, Sparkles, Star } from 'lucide-react';
+import PixelSprite from './PixelSprite.astro';
 
 const stats = [
-  { Icon: Clock, label: 'Plazo', value: '48 h', sub: 'sin extensiones' },
-  { Icon: Target, label: 'Esfuerzo', value: '5 a 7 h', sub: 'dentro de la ventana' },
-  { Icon: Layers, label: 'Estructura', value: '6 partes', sub: '4 tracks a elegir' },
-  { Icon: Award, label: 'Sesión cierre', value: '60 min', sub: 'en vivo, vale 35%' },
+  { Icon: Clock, label: 'Timer', value: '48 h', sub: 'sin extensiones' },
+  { Icon: Target, label: 'Gameplay', value: '5 a 7 h', sub: 'dentro de la ventana' },
+  { Icon: Layers, label: 'Stages', value: '6 partes', sub: '4 tracks a elegir' },
+  { Icon: Award, label: 'Boss fight', value: '60 min', sub: 'en vivo, vale 35%' },
+];
+
+const misionesPrimarias = [
+  { code: 'A', name: 'Caso de negocio', detail: '6 preguntas sobre el funnel real. 60 min · 15%' },
+  { code: 'B', name: 'Build (eliges 1 de 4 tracks)', detail: 'Pipeline con 3+ sub-agentes + eval. 3-4h · 30%' },
+  { code: 'Apéndice', name: 'AI Audit Log + Stack + Loom', detail: 'Documentas cómo trabajaste con IA. 45 min · 15%' },
+  { code: 'C', name: 'Sesión en vivo', detail: 'Plan / Build / Review / Defensa. 60 min · 35%' },
+];
+
+const misionesSecundarias = [
+  { name: 'Wildcard (Parte D)', detail: 'Sorpréndenos con algo extra. Hasta +5% XP' },
+  { name: 'GitHub voluntario', detail: 'Tu perfil + top 3 repos + MCP propio si tienes. Suma' },
+  { name: 'Encuentra los easter eggs', detail: 'Hay varios escondidos en el microsite. Lo curioso suma' },
+];
+
+const entregables = [
+  { Icon: Github, name: 'Tu repo público', detail: 'loggro-{track}-{tu-apellido} en GitHub o GitLab' },
+  { Icon: ScrollText, name: 'Documento Parte A', detail: 'Max 1.5 páginas / 700 palabras' },
+  { Icon: FileCheck, name: 'Apéndice obligatorio', detail: 'Audit Log + Stack + Judge extension' },
+  { Icon: Mic, name: 'Video 5 a 10 min', detail: 'Loom o YouTube unlisted defendiendo 3 decisiones' },
 ];
 
 const reglasHonestidad = [
   'El AI Audit Log es obligatorio. Sin eso, no se evalúa.',
-  'Cita los supuestos. Si te inventas un dato, márcalo como [supuesto] y di por qué.',
-  'Si una parte te tomó más de lo razonable porque te trabaste, escríbelo. Eso suma, no resta.',
+  'Cita los supuestos. Si te inventas un dato, márcalo [supuesto] y di por qué.',
+  'Si te trabaste más de lo razonable, escríbelo. Eso suma, no resta.',
   'Si usas un agente, no le permitas modificar el eval harness ni el dataset. Verificamos con git diff.',
 ];
 ---
 
 <section id="tldr" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
   <div class="max-w-5xl mx-auto">
+    <!-- Sprites pixel art animados -->
+    <div aria-hidden="true" class="flex items-center gap-3 mb-4 text-brand-primary-text">
+      <PixelSprite type="coin" size={28} animated />
+      <span class="font-pixel text-[9px] text-fg-subtle">x3</span>
+      <PixelSprite type="star" size={28} class="text-arcade-yellow-bright" animated />
+      <PixelSprite type="mushroom" size={28} class="text-arcade-red-bright" animated />
+    </div>
+
     <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
-      {'> '} LEE ESTO PRIMERO
+      {'> '} LEE_ESTO_PRIMERO
     </p>
-    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">
-      Resumen rápido.
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-3 leading-[1.05] tracking-tight">
+      TL;DR <span class="text-fg-subtle font-mono text-lg md:text-xl">// resumen rápido</span>
     </h2>
-    <p class="text-lg md:text-xl text-fg-muted mb-12 max-w-3xl leading-relaxed">
+    <p class="text-lg md:text-xl text-fg-muted mb-6 max-w-3xl leading-relaxed">
       Si solo lees una sección de esta página, que sea esta.
     </p>
+
+    <!-- Stage indicator: dónde estás en el proceso -->
+    <div class="mb-10 p-6 bg-surface border-pixel shadow-pixel-md max-w-3xl" style="border-color: var(--arcade-yellow-bright);">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
+        {'> '} STAGE 4 OF 5 · PLAYER 1 READY
+      </p>
+      <p class="text-base text-fg leading-relaxed mb-3">
+        Llegaste hasta acá porque las tres primeras fases salieron bien: <strong class="text-fg">fit cultural</strong>, <strong class="text-fg">entrevista con el director</strong> y <strong class="text-fg">pruebas psicotécnicas</strong> ya están superadas. Nos gustó cómo eres y cómo piensas.
+      </p>
+      <p class="text-base text-fg-muted leading-relaxed">
+        Esto es el último filtro técnico antes de la oferta. Sirve para vos y para nosotros: vos ves cómo se vería un día real del rol; nosotros vemos cómo operas con IA bajo un escenario realista.
+      </p>
+      <div class="mt-5 flex flex-wrap items-center gap-2 font-pixel text-[9px] uppercase tracking-widest">
+        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">fit</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">entrevista</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">psicotécnicas</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black animate-pulse">reto técnico</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle">oferta</span>
+      </div>
+    </div>
+
+    <!-- El rol al que estás aplicando -->
+    <div class="mb-12 p-6 bg-surface border-pixel shadow-pixel-md max-w-3xl">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
+        {'> '} EL_ROL
+      </p>
+      <p class="text-xl md:text-2xl font-extrabold mb-2 leading-tight">Growth Engineer — Automatización & IA</p>
+      <p class="text-sm text-fg-subtle font-mono mb-4">Pilar MarkOps · Modalidad alternancia · Aumento de capacidad del equipo</p>
+      <p class="text-base text-fg-muted leading-relaxed mb-3">
+        Mitad RevOps, mitad laboratorio. Vas a <strong class="text-fg">operar</strong> el stack de revenue de Loggro (HubSpot + n8n + WhatsApp + GA4 + Meta/Google/LinkedIn) para que Marketing, Ventas y Servicio funcionen como un solo embudo con datos confiables — y al mismo tiempo, <strong class="text-fg">proponer y experimentar</strong> con herramientas de IA aplicadas a growth: clasificadores, agentes, apps prototipo, automatizaciones nuevas.
+      </p>
+      <p class="text-base text-fg-muted leading-relaxed">
+        No es solo "configurar workflows". Es generar ideas, construir el prototipo, medir si funciona con usuarios reales, y decidir si escala o si pivota. La IA es el sistema operativo del trabajo diario, no una curiosidad.
+      </p>
+    </div>
+
+    <!-- Párrafo humano de resumen -->
+    <div class="max-w-3xl mb-12 space-y-4">
+      <p class="text-base md:text-lg text-fg leading-relaxed">
+        Para este reto te damos una <strong>foto real</strong> (anonimizada) del embudo de marketing de Loggro, algunos escenarios reales, y 48 horas para mostrarnos cómo piensas. Eliges <strong>1 de 4 escenarios</strong> o tracks técnicos (prospección, calificación, contenido o atribución), construyes una solución con un <strong>pipeline IA con varios sub-agentes coordinados</strong>, lo evalúas, y documentas cómo trabajaste con IA.
+      </p>
+      <p class="text-base md:text-lg text-fg-muted leading-relaxed">
+        Después agendamos una <strong class="text-fg">sesión en vivo de 60 minutos</strong> donde planeas, construyes y defiendes una pieza nueva sobre tu mismo código. Esa sesión vale 35% del puntaje. La barra es alta: buscamos a alguien que sepa operar con IA mejor que la mayoría.
+      </p>
+    </div>
 
     <!-- 4 stats arcade -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
@@ -40,15 +118,108 @@ const reglasHonestidad = [
       ))}
     </div>
 
+    <!-- Tabla de contenido tipo RPG -->
+    <div class="grid md:grid-cols-2 gap-6 mb-16">
+      <!-- Misiones primarias -->
+      <div class="p-7 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
+        <div class="flex items-center gap-2 mb-5">
+          <Trophy size={18} class="text-brand-primary-text" />
+          <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">
+            {'> '} MISIONES PRIMARIAS
+          </p>
+        </div>
+        <p class="text-xs text-fg-subtle mb-5 font-mono">Obligatorias. Las hacemos todos.</p>
+        <ul class="space-y-4">
+          {misionesPrimarias.map((m) => (
+            <li class="flex gap-3 items-start">
+              <span class="shrink-0 font-pixel text-xs px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black min-w-[40px] text-center">
+                {m.code}
+              </span>
+              <div class="flex-1">
+                <p class="font-semibold leading-tight">{m.name}</p>
+                <p class="text-xs text-fg-muted font-mono mt-1">{m.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Misiones secundarias -->
+      <div class="p-7 bg-surface border-pixel shadow-pixel-md">
+        <div class="flex items-center gap-2 mb-5">
+          <Sparkles size={18} class="text-brand-primary-text" />
+          <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">
+            {'> '} MISIONES SECUNDARIAS
+          </p>
+        </div>
+        <p class="text-xs text-fg-subtle mb-5 font-mono">Opcionales. Suman XP.</p>
+        <ul class="space-y-4">
+          {misionesSecundarias.map((m) => (
+            <li class="flex gap-3 items-start">
+              <Star size={18} class="text-brand-primary-text shrink-0 mt-0.5" />
+              <div class="flex-1">
+                <p class="font-semibold leading-tight">{m.name}</p>
+                <p class="text-xs text-fg-muted font-mono mt-1">{m.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Diagrama de flujo simple -->
+    <div class="mb-16 p-6 bg-surface border-pixel shadow-pixel-md">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-5">
+        {'> '} FLUJO COMPLETO
+      </p>
+      <div class="flex flex-wrap items-center gap-3 font-mono text-xs md:text-sm">
+        <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt">0 · setup</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black">A · negocio</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black">B · build</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black">Apéndice</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black">C · boss fight</span>
+        <span class="text-fg-subtle">→</span>
+        <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt">offer?</span>
+      </div>
+      <p class="mt-4 text-xs text-fg-muted font-sans leading-relaxed">
+        Las partes A · Apéndice corren en async dentro de tus 48 horas. La parte C es en vivo,
+        se agenda después de tu entrega. La parte D (wildcard) la haces cuando quieras dentro de las 48h.
+      </p>
+    </div>
+
+    <!-- Qué se espera entregar -->
+    <div class="mb-16">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-6">
+        {'> '} QUÉ ENTREGAS
+      </p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {entregables.map(({ Icon, name, detail }) => (
+          <div class="flex gap-4 items-start p-5 bg-surface border-pixel shadow-pixel-md">
+            <div class="shrink-0 w-11 h-11 grid place-items-center border-2 border-fg bg-brand-primary/15 text-brand-primary-text pixel-corners">
+              <Icon size={20} />
+            </div>
+            <div>
+              <p class="font-semibold leading-tight">{name}</p>
+              <p class="text-xs text-fg-muted font-mono mt-1">{detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
     <!-- Carta abierta condensada -->
     <div class="grid md:grid-cols-2 gap-8 mb-12">
       <div>
         <h3 class="text-xl md:text-2xl font-bold mb-4 leading-tight">Lo que evaluamos</h3>
         <p class="text-base text-fg-muted leading-relaxed mb-4">
-          No es si <em>terminas todo</em>. Es <strong class="text-fg">cómo piensas</strong>, cómo decides, dónde le pones rigor, dónde sueltas, y cómo detectas cuando la IA te está dando algo mediocre disfrazado de bueno.
+          No es si <em>terminas todo</em>. Es <strong class="text-fg">cómo piensas</strong>, cómo decides, dónde le pones rigor, dónde sueltas, y cómo tu curiosidad te empuja a aprender mientras desarrollas y piensas en grande.
         </p>
         <p class="text-base text-fg-muted leading-relaxed">
-          Buscamos a alguien que sepa <strong class="text-fg">operar con IA mejor que la mayoría</strong>. La barra es alta. Asume que comparamos tu entregable contra otros candidatos con Claude Code abierto todos los días.
+          Buscamos a alguien que sepa <strong class="text-fg">operar con IA mejor que la mayoría</strong>. La barra es alta.
         </p>
       </div>
       <div>
@@ -65,7 +236,7 @@ const reglasHonestidad = [
     <!-- Reglas de honestidad -->
     <div class="p-7 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
       <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
-        {'> '} REGLAS DE HONESTIDAD
+        {'> '} REGLAS DEL JUEGO
       </p>
       <ul class="space-y-3">
         {reglasHonestidad.map((regla) => (
@@ -78,6 +249,14 @@ const reglasHonestidad = [
       <p class="mt-6 text-sm font-semibold text-fg italic">
         La honestidad cuenta más que la perfección.
       </p>
+    </div>
+
+    <!-- Hint de scroll -->
+    <div class="mt-12 text-center">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-fg-subtle mb-2">
+        scroll para entrar en detalle
+      </p>
+      <ArrowDown size={18} class="text-brand-primary-text mx-auto animate-bob" />
     </div>
   </div>
 </section>

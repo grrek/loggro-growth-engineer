@@ -1,0 +1,52 @@
+---
+import { Map } from 'lucide-react';
+
+const sections = [
+  { id: 'tldr', label: 'TL;DR', tag: '01', hint: 'Resumen' },
+  { id: 'rol', label: 'El rol', tag: '02', hint: 'A qué aplicas' },
+  { id: 'espiritu', label: 'El espíritu', tag: '03', hint: 'Cómo pensamos esto' },
+  { id: 'estructura', label: 'La estructura', tag: '04', hint: '6 partes' },
+  { id: 'lo-que-recibis', label: 'Qué recibes', tag: '05', hint: 'Datos + repo' },
+  { id: 'caso-negocio', label: 'Caso de negocio', tag: 'A', hint: 'Conceptual · 15%' },
+  { id: 'reto', label: 'El reto', tag: 'B', hint: 'Implementación · 30%' },
+  { id: 'apendice', label: 'Apéndice', tag: '+', hint: 'AI Audit · 15%' },
+  { id: 'sesion-en-vivo', label: 'Sesión en vivo', tag: 'C', hint: 'Boss fight · 35%' },
+  { id: 'wildcard', label: 'Wildcard', tag: 'D', hint: 'Opcional · +5%' },
+  { id: 'evaluacion', label: 'Cómo evaluamos', tag: '06', hint: 'Rúbrica' },
+  { id: 'arrancar', label: 'Cómo arrancar', tag: '07', hint: 'Setup' },
+  { id: 'faq', label: 'FAQ', tag: '08', hint: 'Preguntas' },
+];
+---
+
+<nav id="toc" aria-label="Tabla de contenidos" class="py-14 md:py-16 px-6 md:px-8 bg-surface-alt border-y-2 border-fg">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-baseline gap-3 mb-3 flex-wrap">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} MAPA_DEL_RETO</p>
+      <span class="font-pixel text-[9px] text-fg-subtle">presiona <kbd class="px-1.5 py-0.5 border border-fg-subtle font-mono">/</kbd> o <kbd class="px-1.5 py-0.5 border border-fg-subtle font-mono">⌘K</kbd> para búsqueda</span>
+    </div>
+    <h2 class="text-2xl md:text-4xl font-extrabold mb-2 leading-tight">Tabla de contenidos</h2>
+    <p class="text-sm text-fg-muted mb-8 font-mono">
+      13 secciones · todo enlazable · clic en cualquiera para saltar
+    </p>
+
+    <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 list-none">
+      {sections.map((s) => (
+        <li>
+          <a
+            href={`#${s.id}`}
+            class="group flex items-center gap-3 p-3 bg-surface border-pixel shadow-pixel-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-pixel-md transition-all"
+          >
+            <span class="shrink-0 font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black min-w-[36px] text-center">
+              {s.tag}
+            </span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-semibold text-sm leading-tight group-hover:text-brand-primary-text transition-colors">{s.label}</span>
+              <span class="block text-[11px] text-fg-subtle font-mono">{s.hint}</span>
+            </span>
+            <span aria-hidden="true" class="text-fg-subtle group-hover:text-brand-primary-text font-mono shrink-0">→</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>

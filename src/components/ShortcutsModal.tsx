@@ -4,7 +4,8 @@ import { X, Keyboard } from 'lucide-react';
 const SHORTCUTS = [
   { keys: ['/'], desc: 'Abrir command palette' },
   { keys: ['Cmd', 'K'], desc: 'Abrir command palette (alternativa)' },
-  { keys: ['T'], desc: 'Cambiar tema claro / oscuro (desde palette)' },
+  { keys: ['T'], desc: 'Cambiar tema claro / oscuro' },
+  { keys: ['M'], desc: 'Encender / apagar Claude FM' },
   { keys: ['?'], desc: 'Abrir esta lista de atajos' },
   { keys: ['Esc'], desc: 'Cerrar modal abierto' },
 ];

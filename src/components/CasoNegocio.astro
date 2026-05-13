@@ -47,10 +47,66 @@ const preguntas = [
       <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE A · OBLIGATORIA</p>
       <span class="font-pixel text-[9px] text-fg-subtle">peso: 15% · 60 minutos · todos la hacen</span>
     </div>
-    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">El caso de negocio</h2>
-    <p class="text-lg text-fg-muted mb-4 max-w-3xl leading-relaxed">
-      Recibís un snapshot real (anonimizado) del último mes del funnel de Loggro para un producto: 3.600 contactos, 1.368 MQL, 561 SQL, 42 clientes nuevos. Stack HubSpot + n8n + Meta/Google/LinkedIn + WhatsApp + GA4.
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">El caso de negocio <span class="text-fg-subtle font-mono text-xl md:text-2xl">(conceptual)</span></h2>
+    <p class="text-lg text-fg-muted mb-8 max-w-3xl leading-relaxed">
+      Recibes un snapshot real (anonimizado) del último mes del funnel de Loggro para un producto. Stack actual: HubSpot + n8n + Meta/Google/LinkedIn + WhatsApp + GA4.
     </p>
+
+    <!-- Snapshot del funnel -->
+    <p class="font-pixel text-[10px] uppercase tracking-widest text-fg-subtle mb-3">
+      {'> '} SNAPSHOT DEL ÚLTIMO MES
+    </p>
+    <div class="overflow-x-auto bg-surface border-pixel shadow-pixel-md mb-6">
+      <table class="w-full text-sm">
+        <thead class="bg-surface-alt border-b-2 border-fg">
+          <tr>
+            <th class="text-left p-3 font-semibold">Etapa</th>
+            <th class="text-right p-3 font-semibold">Volumen</th>
+            <th class="text-right p-3 font-semibold">Conversión</th>
+            <th class="text-left p-3 font-semibold hidden md:table-cell">Costo / dato extra</th>
+          </tr>
+        </thead>
+        <tbody class="font-mono text-sm">
+          <tr class="border-b border-line">
+            <td class="p-3 font-sans">Contactos (form / WhatsApp / chatbot)</td>
+            <td class="p-3 text-right font-semibold">3.600</td>
+            <td class="p-3 text-right text-brand-primary-text">38% → MQL</td>
+            <td class="p-3 text-fg-muted hidden md:table-cell font-sans text-xs">$180 MM COP paid del Q</td>
+          </tr>
+          <tr class="border-b border-line">
+            <td class="p-3 font-sans">MQL</td>
+            <td class="p-3 text-right font-semibold">1.368</td>
+            <td class="p-3 text-right text-brand-primary-text">41% → SQL</td>
+            <td class="p-3 text-fg-muted hidden md:table-cell">·</td>
+          </tr>
+          <tr class="border-b border-line">
+            <td class="p-3 font-sans">SQL</td>
+            <td class="p-3 text-right font-semibold">561</td>
+            <td class="p-3 text-right text-brand-primary-text">22% → Cliente</td>
+            <td class="p-3 text-fg-muted hidden md:table-cell">·</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-sans">Clientes nuevos</td>
+            <td class="p-3 text-right font-semibold">42</td>
+            <td class="p-3 text-right text-fg-subtle">·</td>
+            <td class="p-3 text-fg-muted hidden md:table-cell font-sans text-xs">Ticket: $850K COP/mes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Datos extra -->
+    <div class="grid md:grid-cols-2 gap-3 mb-10 text-sm">
+      <div class="p-4 bg-surface border-pixel shadow-pixel-sm">
+        <p class="font-pixel text-[9px] uppercase tracking-widest text-brand-primary-text mb-2">Calidad</p>
+        <p class="text-fg-muted leading-snug">28% sin Lead Source en HubSpot · 19% MQL marcados "mala calidad" · 15% leads vienen vía WhatsApp (Lia) con campos vacíos</p>
+      </div>
+      <div class="p-4 bg-surface border-pixel shadow-pixel-sm">
+        <p class="font-pixel text-[9px] uppercase tracking-widest text-brand-primary-text mb-2">Operación</p>
+        <p class="text-fg-muted leading-snug">SLA: MQL contactado ≤2h hábiles · Hoy cumple 60% · Capacidad real ~1.000 MQL/mes (recibimos 1.368) · LTV ≈ 28 meses</p>
+      </div>
+    </div>
+
     <p class="text-base text-fg-muted mb-12 max-w-3xl leading-relaxed">
       <strong class="text-fg">Documento de máximo 1.5 páginas o 700 palabras</strong>. Si no vienes de marketing, no pasa nada: responde desde primeros principios y declara los supuestos que necesites. Te leerán el Director de Marketing y el Director Comercial.
     </p>

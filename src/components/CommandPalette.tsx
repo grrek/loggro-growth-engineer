@@ -9,11 +9,17 @@ interface Command {
 
 const buildCommands = (): Command[] => [
   { label: 'Ir al Hero', group: 'nav', action: () => scrollTo('#top') },
+  { label: 'Ir a TL;DR', group: 'nav', action: () => scrollTo('#tldr') },
   { label: 'Ir a El rol', group: 'nav', action: () => scrollTo('#rol') },
-  { label: 'Ir a Los 4 tracks', group: 'nav', action: () => scrollTo('#reto') },
-  { label: 'Ir a Qué recibes', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
   { label: 'Ir a El espíritu', group: 'nav', action: () => scrollTo('#espiritu') },
+  { label: 'Ir a La estructura', group: 'nav', action: () => scrollTo('#estructura') },
+  { label: 'Ir a Qué recibes', group: 'nav', action: () => scrollTo('#lo-que-recibis') },
+  { label: 'Ir a Caso de negocio (A)', group: 'nav', action: () => scrollTo('#caso-negocio') },
+  { label: 'Ir a Los 4 tracks (B)', group: 'nav', action: () => scrollTo('#reto') },
+  { label: 'Ir a El apéndice', group: 'nav', action: () => scrollTo('#apendice') },
+  { label: 'Ir a Sesión en vivo (C)', group: 'nav', action: () => scrollTo('#sesion-en-vivo') },
   { label: 'Ir a Cómo evaluamos', group: 'nav', action: () => scrollTo('#evaluacion') },
+  { label: 'Ir a Cómo arrancar', group: 'nav', action: () => scrollTo('#arrancar') },
   { label: 'Ir a FAQ', group: 'nav', action: () => scrollTo('#faq') },
   {
     label: 'Abrir repo template en GitHub',
@@ -39,8 +45,8 @@ const buildCommands = (): Command[] => [
     group: 'extras',
     action: () => window.dispatchEvent(new CustomEvent('claudefm:open')),
   },
-  { label: 'Página secreta: AI Audit honesty', group: 'secret', action: () => (window.location.href = '/reto/honesty') },
-  { label: 'Página secreta: nuestro equipo', group: 'secret', action: () => (window.location.href = '/reto/team') },
+  { label: 'Página secreta: AI Audit honesty', group: 'secret', action: () => (window.location.href = '/growth-engineer/honesty') },
+  { label: 'Página secreta: nuestro equipo', group: 'secret', action: () => (window.location.href = '/growth-engineer/team') },
 ];
 
 const scrollTo = (sel: string) => {
@@ -71,9 +77,47 @@ export default function CommandPalette() {
         setOpen(true);
         return;
       }
-      if (!open && (e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) {
+      if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey) && !inInput) {
         e.preventDefault();
-        setOpen(true);
+        e.stopPropagation();
+        if (!open) setOpen(true);
+        return;
+      }
+      // T global: toggle theme cuando NO hay modal abierto y NO estas en input
+      const anyDialogOpen = !!document.querySelector('[role="dialog"]');
+      if (
+        !open &&
+        !inInput &&
+        !anyDialogOpen &&
+        (e.key === 't' || e.key === 'T') &&
+        !e.metaKey &&
+        !e.ctrlKey &&
+        !e.altKey &&
+        !e.shiftKey
+      ) {
+        e.preventDefault();
+        const dark = document.documentElement.classList.toggle('dark');
+        try {
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        } catch {
+          /* noop */
+        }
+        return;
+      }
+      // M global: toggle Claude FM
+      if (
+        !open &&
+        !inInput &&
+        !anyDialogOpen &&
+        (e.key === 'm' || e.key === 'M') &&
+        !e.metaKey &&
+        !e.ctrlKey &&
+        !e.altKey &&
+        !e.shiftKey
+      ) {
+        e.preventDefault();
+        const isActive = sessionStorage.getItem('claude-fm-active') === 'true';
+        window.dispatchEvent(new CustomEvent(isActive ? 'claudefm:close' : 'claudefm:open'));
         return;
       }
       if (open && e.key === 'Escape') {
@@ -100,8 +144,9 @@ export default function CommandPalette() {
         }
       }
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    // capture: true para que nuestro listener corra ANTES que cualquier listener del browser/extension
+    window.addEventListener('keydown', onKey, { capture: true });
+    return () => window.removeEventListener('keydown', onKey, { capture: true });
   }, [open, activeIndex, filtered]);
 
   useEffect(() => {
@@ -110,6 +155,13 @@ export default function CommandPalette() {
       setTimeout(() => inputRef.current?.focus(), 50);
     }
   }, [open]);
+
+  // Listener para abrir el palette desde otros componentes (ej. boton del Header)
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener('palette:open', onOpen);
+    return () => window.removeEventListener('palette:open', onOpen);
+  }, []);
 
   if (!open) return null;
 

@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://labs.loggro.com',
-  base: '/reto',
+  base: '/growth-engineer',
   trailingSlash: 'never',
   build: {
     format: 'file',

@@ -16,6 +16,8 @@ import ComoArrancar from '../components/ComoArrancar.astro';
 import Referencias from '../components/Referencias.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
+import LoggroBrand from '../components/LoggroBrand.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import AsciiDivider from '../components/AsciiDivider.astro';
 import CommandPalette from '../components/CommandPalette';
 import KonamiOverlay from '../components/KonamiOverlay';
@@ -24,34 +26,37 @@ import KonamiOverlay from '../components/KonamiOverlay';
 <Base title="Loggro - Reto VE-1770" description="Reto técnico para el rol de Especialista en Automatización, IA y Growth en Loggro. 48 horas. 4 tracks. Tu criterio en primer plano.">
   <main id="top">
     <Hero />
+    <TableOfContents />
     <AsciiDivider variant="dots" />
     <TLDR />
     <AsciiDivider variant="angle" />
     <RoleSection />
     <AsciiDivider variant="dashes" />
+    <Espiritu />
+    <AsciiDivider variant="brackets" />
     <Estructura />
     <AsciiDivider variant="plus" />
+    <LoQueRecibis />
+    <AsciiDivider variant="dashes" />
     <CasoNegocio />
     <AsciiDivider variant="brackets" />
     <TrackCards />
     <AsciiDivider variant="dashes" />
-    <LoQueRecibis />
-    <AsciiDivider variant="brackets" />
     <Apendice />
     <AsciiDivider variant="angle" />
     <SesionEnVivo />
     <AsciiDivider variant="plus" />
     <Wildcard />
     <AsciiDivider variant="wave" />
-    <Espiritu />
-    <AsciiDivider variant="dashes" />
     <ComoEvaluamos />
     <AsciiDivider variant="brackets" />
     <ComoArrancar />
     <AsciiDivider variant="dots" />
-    <Referencias />
-    <AsciiDivider variant="dots" />
     <FAQ />
+    <AsciiDivider variant="dots" />
+    <Referencias />
+    <AsciiDivider variant="plus" />
+    <LoggroBrand />
   </main>
   <Footer />
   <CommandPalette client:idle />

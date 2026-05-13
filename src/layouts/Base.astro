@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description = 'Reto técnico para el rol de Especialista en Automatización, IA y Growth en Loggro.',
-  ogImage = '/reto/og.png',
+  ogImage = '/growth-engineer/og.png',
 } = Astro.props;
 
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://labs.loggro.com${ogImage}`;
@@ -31,10 +31,10 @@ const fullTitle = title.startsWith('Loggro') ? title : `${title} | Loggro`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageAbsolute} />
-    <meta property="og:url" content="https://labs.loggro.com/reto" />
+    <meta property="og:url" content="https://labs.loggro.com/growth-engineer" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href="/reto/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/growth-engineer/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Fonts via preload + media trick para no bloquear render -->
