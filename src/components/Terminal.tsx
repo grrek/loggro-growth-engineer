@@ -1,24 +1,47 @@
 import { useEffect, useState } from 'react';
+import candidatos from '../data/candidatos.json';
 
 interface Command {
   cmd: string;
   output: string;
 }
 
-const MOTD = ` ██╗      ██████╗   ██████╗   ██████╗  ██████╗   ██████╗
+interface Candidato {
+  code: string;
+  firstName: string;
+}
+
+// Resuelve el handle del candidato desde el query param ?n=
+// Ejemplos: "edison-growth-engineer", "cristian-s-growth-engineer", o "growth-engineer" si no hay match
+const resolveWhoami = (): string => {
+  if (typeof window === 'undefined') return 'growth-engineer';
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('n');
+  if (!code) return 'growth-engineer';
+  const c = (candidatos as Candidato[]).find((x) => x.code.toLowerCase() === code.toLowerCase());
+  if (!c) return 'growth-engineer';
+  // Slug: primer nombre + inicial apellido si lo trae (ej. "Cristian S.")
+  const slug = c.firstName
+    .toLowerCase()
+    .replace(/\./g, '')
+    .replace(/\s+/g, '-')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+  return `${slug}-growth-engineer`;
+};
+
+const MOTD_BASE = ` ██╗      ██████╗   ██████╗   ██████╗  ██████╗   ██████╗
  ██║     ██╔═══██╗ ██╔════╝  ██╔════╝  ██╔══██╗ ██╔═══██╗
  ██║     ██║   ██║ ██║  ███╗ ██║  ███╗ ██████╔╝ ██║   ██║
  ██║     ██║   ██║ ██║   ██║ ██║   ██║ ██╔══██╗ ██║   ██║
  ███████╗╚██████╔╝ ╚██████╔╝ ╚██████╔╝ ██║  ██║ ╚██████╔╝
  ╚══════╝ ╚═════╝   ╚═════╝   ╚═════╝  ╚═╝  ╚═╝  ╚═════╝
-                                          challenge_VE-1770
+                                          challenge_VE-1770`;
 
-Last login: today.  Welcome, player_one.`;
-
-const COMMANDS: Command[] = [
+const buildCommands = (whoamiOutput: string): Command[] => [
   {
     cmd: 'whoami',
-    output: 'growth-engineer',
+    output: whoamiOutput,
   },
   {
     cmd: 'docker ps --filter name=n8n',
@@ -51,6 +74,12 @@ export default function Terminal() {
   const [step, setStep] = useState(0);
   const [phase, setPhase] = useState<Phase>('motd');
   const [motdShown, setMotdShown] = useState(false);
+  const [whoamiOutput] = useState<string>(() => resolveWhoami());
+  const [motd] = useState<string>(() => {
+    const welcomeName = resolveWhoami() === 'growth-engineer' ? 'player_one' : resolveWhoami();
+    return `${MOTD_BASE}\n\nLast login: today.  Welcome, ${welcomeName}.`;
+  });
+  const COMMANDS = buildCommands(whoamiOutput);
 
   useEffect(() => {
     if (phase === 'done') return;
@@ -125,7 +154,7 @@ export default function Terminal() {
       <pre className="whitespace-pre-wrap break-words relative z-10 leading-[1.55] px-5 py-4 min-h-[260px]">
         {motdShown && (
           <>
-            {MOTD}
+            {motd}
             {'\n\n'}
           </>
         )}

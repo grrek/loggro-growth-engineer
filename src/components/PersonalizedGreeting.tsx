@@ -12,8 +12,13 @@ const findCandidato = (code: string): Candidato | null => {
   return c ?? null;
 };
 
+interface GreetingState {
+  text: string;
+  matched: boolean;
+}
+
 export default function PersonalizedGreeting() {
-  const [greeting, setGreeting] = useState<string>('');
+  const [greeting, setGreeting] = useState<GreetingState | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -25,14 +30,14 @@ export default function PersonalizedGreeting() {
       setCode(codeFromUrl);
       const c = findCandidato(codeFromUrl);
       if (c) {
-        setGreeting(`Hola, ${c.firstName}.`);
+        setGreeting({ text: `Hola, ${c.firstName}`, matched: true });
         track({ event: 'view', extra: { match: '1' } });
       } else {
-        setGreeting('Hola!');
+        setGreeting({ text: 'Hola!', matched: false });
         track({ event: 'view', extra: { match: '0' } });
       }
     } else {
-      setGreeting('Hola!');
+      setGreeting({ text: 'Hola!', matched: false });
       track({ event: 'view' });
     }
 
@@ -54,21 +59,23 @@ export default function PersonalizedGreeting() {
     return () => window.removeEventListener('pagehide', onLeave);
   }, []);
 
-  // No render until mounted (SSR-safe, evita flash con saludo equivocado)
+  // No render until mounted (SSR-safe, evita flash con saludo equivocado).
+  // Reservamos el alto del saludo grande para evitar layout shift en match.
   if (!mounted || !greeting) {
+    return <div aria-hidden="true" className="mb-4 h-7 md:h-10 opacity-0" />;
+  }
+
+  if (greeting.matched) {
     return (
-      <p
-        aria-hidden="true"
-        className="font-pixel text-[11px] uppercase tracking-widest text-brand-primary-text mb-4 opacity-0"
-      >
-        Hola.
+      <p className="mb-4 animate-fade-in text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05]">
+        <span className="text-brand-primary-text text-glow-primary">{greeting.text}.</span>
       </p>
     );
   }
 
   return (
     <p className="font-pixel text-[11px] uppercase tracking-widest text-brand-primary-text mb-4 animate-fade-in">
-      {greeting}
+      {greeting.text}
     </p>
   );
 }
