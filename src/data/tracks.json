@@ -8,11 +8,12 @@
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["AccountFinder + Enricher", "MessageWriter", "ResponseClassifier"],
     "inputs": [
-      "ICP escrito (sector + tamaño + ciudad + señales de pain)",
-      "30 cuentas ejemplo en formato canónico (referencia de output)",
-      "10 respuestas sintéticas con ground_truth para el clasificador",
-      "Buyer persona: dueño de empresa, director de finanzas, emprendedor",
-      "Virtual key del LLM Broker"
+      { "text": "ICP.md — criterios + señales + fuentes sugeridas", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/ICP.md" },
+      { "text": "accounts_example.json — 30 cuentas en formato canónico (solo referencia)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/accounts_example.json" },
+      { "text": "responses_sample.json — 10 respuestas con groundtruth_intent", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/responses_sample.json" },
+      { "text": "Buyer persona: dueño de empresa, director de finanzas, emprendedor", "url": null },
+      { "text": "Brand voice guide de Loggro", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/docs/BRAND_VOICE.md" },
+      { "text": "Virtual key del LLM Broker", "url": null }
     ],
     "outputs": [
       "accounts.json con ~100 cuentas nuevas + sources (URLs reales) + confidence + icp_match_score",
@@ -39,11 +40,10 @@
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["DataIngestor", "CampaignAnalyzer", "InsightPrioritizer"],
     "inputs": [
-      "JSON con 124 campañas reales Q1-Q2 2026 anonimizadas",
-      "Funnel completo: impressions → clicks → leads → MQL → SQL → customers + CAC",
-      "7 productos · 3 canales · lessons_learned en ~15 campañas",
-      "3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas",
-      "Virtual key del LLM Broker"
+      { "text": "campaigns.json — 124 campañas reales Q1-Q2 2026 (Google + Meta + LinkedIn)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-b-insights/campaigns.json" },
+      { "text": "7 productos · 3 canales · funnel completo + CAC + audiencia", "url": null },
+      { "text": "3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas vanity", "url": null },
+      { "text": "Virtual key del LLM Broker", "url": null }
     ],
     "outputs": [
       "anomalies_detected con campaign_id + anomaly_type + signals + confidence + recommended_action",
@@ -70,11 +70,11 @@
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["Copywriter", "BrandVoiceReviewer", "FormatPublisher", "ImagePromptWriter"],
     "inputs": [
-      "3 briefs reales de Loggro (DIAN, cross-sell POS, retención Nómina)",
-      "10 piezas REALES extraídas de Meta Ad Library de Loggro (con brand_voice_compliance y UTMs)",
-      "10 piezas malas sintéticas con violations documentadas (11 tipos)",
-      "10 screenshots (7 imagen + 3 video posters)",
-      "Brand voice guide de Loggro + Meta Ad Library live"
+      { "text": "briefs.json — 3 briefs reales (DIAN, cross-sell POS, retención Nómina)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/briefs.json" },
+      { "text": "good_pieces.json — 10 piezas REALES extraídas de Meta Ad Library", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/good_pieces.json" },
+      { "text": "bad_pieces.json — 10 piezas sintéticas con violations documentadas (11 tipos)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/bad_pieces.json" },
+      { "text": "screenshots/ — 10 imágenes (7 anuncios + 3 video posters)", "url": "https://github.com/grrek/loggro-ai-challenge/tree/main/data/track-c-pieces/screenshots" },
+      { "text": "Brand voice guide + Meta Ad Library live de Loggro", "url": "https://www.facebook.com/ads/library/?country=CO&q=loggro" }
     ],
     "outputs": [
       "Por brief: LinkedIn post + email A/B/C + WhatsApp + Meta ad + landing hooks + image prompts",
@@ -109,11 +109,11 @@
       "FollowUpDrafter"
     ],
     "inputs": [
-      "9 MP3 reales Q2 2026 (5 obligatorios + 4 opcionales que suman puntos)",
-      "~80 minutos totales: cancelación, prospecto, cliente molesto, contactado, edge cases",
-      "speaker_map.json con metadata por audio (escenario + señales esperadas)",
-      "Brand voice guide de Loggro",
-      "Whisper self-hosted Loggro Labs gratis + virtual key LLM Broker"
+      { "text": "9 MP3 reales Q2 2026 (5 obligatorios + 4 opcionales que suman puntos, ~80 min)", "url": "https://labs.loggro.com/growth-engineer/audio/" },
+      { "text": "speaker_map.json — metadata por audio (escenario + señales esperadas)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-d-intel/speaker_map.json" },
+      { "text": "insights_schema.json — schema fijo del output esperado", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/schemas/insights_schema.json" },
+      { "text": "Whisper self-hosted Loggro Labs (gratis, modelo small con Basic Auth)", "url": "https://labs.loggro.com/whisper/docs" },
+      { "text": "Virtual key del LLM Broker", "url": null }
     ],
     "outputs": [
       "insights.json por llamada conforme al schema (transcript + diarization + objeciones + competidores + compliance + next_steps + risk_score + follow_up_email)",

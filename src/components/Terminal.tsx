@@ -52,10 +52,6 @@ const COMMANDS: Command[] = [
     cmd: 'claude --version && claude /insights',
     output: 'Claude Code 2.5.1 (Opus 4.7, 1M context)\n30d active · $124 spent · opus (62%) sonnet (35%) haiku (3%)',
   },
-  {
-    cmd: 'curl -u $WHISPER_USER:$WHISPER_PASSWORD -F audio_file=@call-01.mp3 -F language=es $WHISPER_URL/asr | jq -r .text | head -3',
-    output: 'gracias por contactar a Loggro. Mira, te cuento, la verdad\nes que ya venimos pensando en cambiarnos hace rato pero no\nencontramos algo que cuadre con nuestro modelo de negocio...',
-  },
 ];
 
 const TYPE_SPEED = 50;

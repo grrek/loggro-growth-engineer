@@ -41,63 +41,6 @@ const general = [
   },
 ];
 
-const REPO_BLOB = 'https://github.com/grrek/loggro-ai-challenge/blob/main';
-const REPO_TREE = 'https://github.com/grrek/loggro-ai-challenge/tree/main';
-
-const porTrack = [
-  {
-    id: 'a',
-    code: 'Escenario A',
-    name: 'Prospección Automatizada (Outbound)',
-    color: '#E75E1E',
-    brief_url: `${REPO_BLOB}/data/track-a-outbound/BRIEF.md`,
-    inputs: [
-      { text: 'ICP.md — criterios + señales + fuentes sugeridas', url: `${REPO_BLOB}/data/track-a-outbound/ICP.md` },
-      { text: 'accounts_example.json — 30 cuentas en formato canónico (solo referencia)', url: `${REPO_BLOB}/data/track-a-outbound/accounts_example.json` },
-      { text: 'responses_sample.json — 10 respuestas con groundtruth_intent', url: `${REPO_BLOB}/data/track-a-outbound/responses_sample.json` },
-      { text: 'Brand voice guide de Loggro', url: `${REPO_BLOB}/docs/BRAND_VOICE.md` },
-    ],
-  },
-  {
-    id: 'b',
-    code: 'Escenario B',
-    name: 'Insights de Campañas de Marketing',
-    color: '#03A3F8',
-    brief_url: `${REPO_BLOB}/data/track-b-insights/BRIEF.md`,
-    inputs: [
-      { text: 'campaigns.json — 124 campañas reales Q1-Q2 2026 (Google + Meta + LinkedIn)', url: `${REPO_BLOB}/data/track-b-insights/campaigns.json` },
-      { text: '7 productos cubiertos · 3 canales · funnel completo + CAC + audiencia', url: null },
-      { text: '3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas vanity', url: null },
-    ],
-  },
-  {
-    id: 'c',
-    code: 'Escenario C',
-    name: 'Generador de Piezas',
-    color: '#DD1C4B',
-    brief_url: `${REPO_BLOB}/data/track-c-pieces/BRIEF.md`,
-    inputs: [
-      { text: 'briefs.json — 3 briefs reales (DIAN, cross-sell POS, retención Nómina)', url: `${REPO_BLOB}/data/track-c-pieces/briefs.json` },
-      { text: 'good_pieces.json — 10 piezas REALES extraídas de Meta Ad Library', url: `${REPO_BLOB}/data/track-c-pieces/good_pieces.json` },
-      { text: 'bad_pieces.json — 10 piezas sintéticas con violations documentadas (11 tipos)', url: `${REPO_BLOB}/data/track-c-pieces/bad_pieces.json` },
-      { text: 'screenshots/ — 10 imágenes (7 anuncios + 3 video posters)', url: `${REPO_TREE}/data/track-c-pieces/screenshots` },
-      { text: 'Brand voice guide + Meta Ad Library live de Loggro', url: 'https://www.facebook.com/ads/library/?country=CO&q=loggro' },
-    ],
-  },
-  {
-    id: 'd',
-    code: 'Escenario D',
-    name: 'Inteligencia de Conversaciones',
-    color: '#149E71',
-    brief_url: `${REPO_BLOB}/data/track-d-intel/BRIEF.md`,
-    inputs: [
-      { text: '9 grabaciones REALES Q2 2026 (5 obligatorias + 4 opcionales, ~80 min)', url: 'https://labs.loggro.com/growth-engineer/audio/' },
-      { text: 'speaker_map.json — metadata por audio (escenario + señales esperadas)', url: `${REPO_BLOB}/data/track-d-intel/speaker_map.json` },
-      { text: 'insights_schema.json — schema fijo del output esperado', url: `${REPO_BLOB}/schemas/insights_schema.json` },
-      { text: 'Whisper self-hosted opcional (gratis) + virtual key LLM Broker', url: null },
-    ],
-  },
-];
 ---
 
 <section id="lo-que-recibis" class="py-20 md:py-28 px-6 md:px-8">
@@ -127,57 +70,8 @@ const porTrack = [
       </div>
     </div>
 
-    <!-- Por track -->
-    <div>
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-6">
-        {'> '} INPUTS ESPECÍFICOS POR ESCENARIO
-      </p>
-      <p class="text-sm text-fg-muted mb-6">
-        Cada escenario recibe datasets propios. Solo usarás los del escenario que elegiste.
-      </p>
-      <div class="grid md:grid-cols-2 gap-4">
-        {porTrack.map((t) => (
-          <div class="p-6 rounded-xl border border-line" style={`border-left: 4px solid ${t.color};`}>
-            <div class="flex items-baseline gap-3 mb-3 flex-wrap">
-              <span
-                class="font-pixel text-xs font-bold text-white px-2 py-1 pixel-corners"
-                style={`background-color: ${t.color};`}
-              >
-                {t.id.toUpperCase()}
-              </span>
-              <span class="text-xs font-mono text-fg-subtle">{t.code}</span>
-              <h3 class="font-semibold">{t.name}</h3>
-            </div>
-            <ul class="text-sm text-fg-muted space-y-1.5 pl-1 mb-4">
-              {t.inputs.map((i) => (
-                <li class="flex gap-2">
-                  <span class="text-brand-primary-text shrink-0">+</span>
-                  {i.url ? (
-                    <a
-                      href={i.url}
-                      target="_blank"
-                      rel="noopener"
-                      class="underline decoration-dotted underline-offset-2 hover:text-brand-primary-text transition-colors"
-                    >{i.text} <span aria-hidden="true" class="text-fg-subtle">↗</span></a>
-                  ) : (
-                    <span>{i.text}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={t.brief_url}
-              target="_blank"
-              rel="noopener"
-              data-track={`brief_link_${t.id}`}
-              class="inline-flex items-center gap-1 text-xs font-mono font-semibold pl-1"
-              style={`color: ${t.color};`}
-            >
-              <span aria-hidden="true">↗</span> Leer BRIEF.md completo
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
+    <p class="text-sm text-fg-subtle font-mono text-center">
+      {'> '} Los inputs específicos de cada escenario están en su sección correspondiente abajo (al expandir cada card en "El reto").
+    </p>
   </div>
 </section>

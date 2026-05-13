@@ -1,4 +1,8 @@
 ---
+interface InputItem {
+  text: string;
+  url: string | null;
+}
 interface Track {
   id: string;
   code: string;
@@ -7,7 +11,7 @@ interface Track {
   perfil_si: string;
   tiempo: string;
   sub_agentes: string[];
-  inputs: string[];
+  inputs: InputItem[];
   outputs?: string[];
   rules?: string[];
   bonus?: string;
@@ -88,7 +92,20 @@ const repoUrl = import.meta.env.PUBLIC_REPO_URL ?? 'https://github.com/grrek/log
         <p class="text-[10px] font-pixel uppercase tracking-widest text-fg-subtle mb-3">{'> '} INPUTS QUE RECIBES</p>
         <ul class="space-y-1.5 text-sm font-sans">
           {track.inputs.map((i) => (
-            <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel">+</span> <span>{i}</span></li>
+            <li class="flex gap-2">
+              <span class="text-brand-primary-text shrink-0 font-pixel">+</span>
+              {i.url ? (
+                <a
+                  href={i.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="underline decoration-dotted underline-offset-2 hover:opacity-80 transition-opacity"
+                  style={`color: ${track.color};`}
+                >{i.text} <span aria-hidden="true" class="text-fg-subtle">↗</span></a>
+              ) : (
+                <span>{i.text}</span>
+              )}
+            </li>
           ))}
         </ul>
       </div>
