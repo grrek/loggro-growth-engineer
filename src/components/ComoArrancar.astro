@@ -1,0 +1,84 @@
+---
+import { Terminal, GitBranch, FileText, FileCheck, Send } from 'lucide-react';
+
+const pasos = [
+  {
+    Icon: Terminal,
+    code: '01',
+    title: 'Asegurate de tener Claude Code instalado',
+    desc: 'O tu equivalente: Cursor, Windsurf, Codex. Si no:',
+    code_block: 'npm install -g @anthropic-ai/claude-code',
+  },
+  {
+    Icon: GitBranch,
+    code: '02',
+    title: 'Cloná el template y creá tu repo',
+    desc: 'Marcá el repo como público. Nombrá así:',
+    code_block: 'loggro-{track}-{tu-apellido}\n# ej. loggro-intel-rodriguez',
+  },
+  {
+    Icon: FileText,
+    code: '03',
+    title: 'Iniciá con tu CLAUDE.md propio',
+    desc: 'Primer commit "init". El skeleton viene en el template, lo vas llenando a medida que construís.',
+  },
+  {
+    Icon: FileCheck,
+    code: '04',
+    title: 'Leé y firmá los 2 documentos legales',
+    desc: 'Consentimiento Habeas Data (Ley 1581/2012) y propiedad intelectual. Los firmás digital y los guardás en /legal/ de tu repo.',
+  },
+  {
+    Icon: Send,
+    code: '05',
+    title: 'Mandanos el link de tu repo',
+    desc: 'Confirmando que arrancás y qué track elegiste. El reloj de 48 horas empieza desde ese correo.',
+    code_block: 'mailto: garistizabal@loggro.com',
+  },
+];
+---
+
+<section id="arrancar" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-baseline gap-3 mb-3">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary">{'> '} PARTE 0 · PREREQUISITOS</p>
+      <span class="text-xs font-mono text-fg-subtle">15 min · no cuenta en las 48h</span>
+    </div>
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Cómo arrancar</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+      Hacé estos 5 pasos antes del cronómetro. Te toma 15 minutos y dejás tu base lista.
+    </p>
+
+    <ol class="space-y-4">
+      {pasos.map(({ Icon, code, title, desc, code_block }) => (
+        <li class="flex gap-5 p-6 rounded-xl border border-line bg-surface">
+          <div class="shrink-0 flex flex-col items-center">
+            <span class="font-pixel text-sm text-brand-primary mb-2">{code}</span>
+            <div class="w-10 h-10 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
+              <Icon size={18} />
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-bold mb-1.5">{title}</h3>
+            <p class="text-sm text-fg-muted leading-relaxed mb-2">{desc}</p>
+            {code_block && (
+              <pre class="text-xs font-mono bg-surface-alt rounded-md p-3 overflow-x-auto border border-line whitespace-pre">{code_block}</pre>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-10 text-center">
+      <a
+        href="https://github.com/grrek/loggro-ai-challenge"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 px-7 py-4 bg-brand-primary text-black rounded-md font-bold text-lg hover:opacity-90 transition-all glow-primary glow-primary-hover"
+      >
+        Ir al repo template
+        <span aria-hidden="true">{'->'}</span>
+      </a>
+    </div>
+  </div>
+</section>
