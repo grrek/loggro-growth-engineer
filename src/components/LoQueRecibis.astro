@@ -1,0 +1,78 @@
+---
+import {
+  Github,
+  Database,
+  Mic,
+  FileCode,
+  Palette,
+  KeyRound,
+  Server,
+  MessageCircle,
+} from 'lucide-react';
+
+const items = [
+  {
+    Icon: Github,
+    title: 'Repo template publico',
+    desc: 'grrek/loggro-ai-challenge marcado como GitHub template. Lo clonas con un comando y arrancas con estructura completa.',
+  },
+  {
+    Icon: Database,
+    title: 'Datasets sinteticos por track',
+    desc: 'Track A: 30 cuentas + 10 respuestas. Track B: 20 campanas + 5 reportes GA + 3 transcripts. Track C: 3 briefs + 20 piezas etiquetadas.',
+  },
+  {
+    Icon: Mic,
+    title: '9 audios MP3 en espanol Colombia',
+    desc: 'Track D: 3 demos obligatorios (contadora, CFO, negociacion) + edge case consentimiento + 5 opcionales (hospitalidad, nomina, etc.).',
+  },
+  {
+    Icon: FileCode,
+    title: 'Schemas y judge prompt publico',
+    desc: 'HubSpot mock schema, insights schema, judge_prompt.md v1.0 con rubrica de 5 dimensiones que extendes en el Apendice.',
+  },
+  {
+    Icon: Palette,
+    title: 'Brand voice de Loggro',
+    desc: 'Extracto operativo del manual: vocabulario, palabras prohibidas, ejemplos buenos y malos por canal.',
+  },
+  {
+    Icon: KeyRound,
+    title: 'Virtual key del LLM Broker',
+    desc: 'Una key llm_brk_* con budget cap pre-asignado. Cero costo personal de tooling. Apunta a labs.loggro.com/llm_broker.',
+  },
+  {
+    Icon: Server,
+    title: 'Whisper self-hosted (opcional)',
+    desc: 'Endpoint para Track D si preferis no usar STT comercial. Latencia baja, costo cero.',
+  },
+  {
+    Icon: MessageCircle,
+    title: 'Canal de soporte',
+    desc: 'GitHub Issues del repo template. Respondemos en <2h en horario laboral Colombia (9am a 7pm COT).',
+  },
+];
+---
+
+<section id="lo-que-recibis" class="py-20 md:py-28 px-6 md:px-8">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Lo que recibis</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+      Todo el material y herramientas para que el unico costo sea tu tiempo y tu criterio.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {items.map(({ Icon, title, desc }) => (
+        <div class="flex gap-4 items-start p-6 rounded-xl border border-line hover:border-brand-primary/40 transition-colors">
+          <div class="shrink-0 w-11 h-11 grid place-items-center rounded-lg bg-brand-primary/10 text-brand-primary">
+            <Icon size={20} />
+          </div>
+          <div>
+            <h3 class="font-semibold mb-1.5">{title}</h3>
+            <p class="text-sm text-fg-muted leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

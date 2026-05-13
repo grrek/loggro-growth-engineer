@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Honesty - Loggro VE-1770" description="Ejemplos buenos y malos de AI Audit Log. Por que la honestidad cuenta mas que la perfeccion.">
+  <main class="max-w-3xl mx-auto px-6 md:px-8 py-24">
+    <p class="text-xs font-mono text-fg-subtle tracking-wider mb-4">PAGINA SECRETA / HONESTY</p>
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+      La honestidad cuenta<br />
+      <span class="text-brand-primary">mas que la perfeccion.</span>
+    </h1>
+    <p class="text-lg text-fg-muted mb-12 leading-relaxed">
+      Llegaste a una pagina que no esta en el navegador principal. Aca te mostramos ejemplos reales de AI Audit Log para que entiendas que estamos evaluando cuando decimos "queremos criterio, no fanboys".
+    </p>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Ejemplo bueno</h2>
+      <div class="p-6 rounded-xl border border-green-500/30 bg-green-500/[0.04] font-mono text-sm leading-relaxed">
+        <p class="mb-3"><strong>#7 - Claude Code (Opus 4.7)</strong></p>
+        <p class="mb-2 text-fg-muted">Tarea: Scaffolding del ResponseClassifier</p>
+        <p class="mb-2 text-fg-muted">Output util: Parcial 40%</p>
+        <p class="mb-2 text-fg-muted">Que tuve que corregir:</p>
+        <p class="mb-2 text-fg-muted pl-4">
+          Claude me propuso usar regex para detectar "interesado" buscando palabras clave (interesado, gracias, dale). Lo probe contra las 10 respuestas sinteticas y atrapaba 4 de 10 reales. Las 6 que fallaba tenian doble negacion ("no estamos interesados") o ambiguedad ("podria interesarme manana"). Descarte regex completo y use un prompt few-shot con Sonnet 4.6 con esos 6 casos especificos como ejemplos. Subio a 9 de 10 en mi eval.
+        </p>
+        <p class="mb-2 text-fg-muted">Aprendizaje:</p>
+        <p class="text-fg-muted pl-4">
+          Claude default sugiere soluciones simples (regex) cuando el problema parece simple. Para clasificacion de lenguaje natural en espanol con doble negacion, el regex es trampa siempre. Vale la pena pagar la diferencia de costo de un LLM call para evitar bugs caros.
+        </p>
+      </div>
+      <p class="mt-4 text-sm text-fg-subtle">
+        Por que es bueno: especifico (4 de 10), tecnico (mecanica del regex falla), aprendizaje generalizable (no "Claude es malo"), conciso, con numero medible.
+      </p>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Ejemplo malo</h2>
+      <div class="p-6 rounded-xl border border-red-500/30 bg-red-500/[0.04] font-mono text-sm leading-relaxed">
+        <p class="mb-3"><strong>#3 - Claude</strong></p>
+        <p class="mb-2 text-fg-muted">Tarea: Pipeline general</p>
+        <p class="mb-2 text-fg-muted">Output util: Si</p>
+        <p class="mb-2 text-fg-muted">Que tuve que corregir: Nada</p>
+        <p class="text-fg-muted">Aprendizaje: La IA es muy poderosa</p>
+      </div>
+      <p class="mt-4 text-sm text-fg-subtle">
+        Por que es malo: no especifica tarea ni modelo, no documenta friccion (es muy improbable que un pipeline entero funcione "sin correcciones"), aprendizaje vacio. Si tu Audit Log entero parece esto, baja la nota.
+      </p>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">Tres anti-patrones que vemos seguido</h2>
+      <ol class="space-y-6 text-fg-muted leading-relaxed">
+        <li class="pl-6 relative">
+          <span class="absolute left-0 top-0 font-mono text-brand-primary font-bold">1.</span>
+          <strong class="text-fg">Audit Log heroico:</strong> 10 entradas que dicen "Claude lo hizo bien al primer intento". No es creible. Si tu Audit Log tiene cero friccion, no estas mirando suficiente.
+        </li>
+        <li class="pl-6 relative">
+          <span class="absolute left-0 top-0 font-mono text-brand-primary font-bold">2.</span>
+          <strong class="text-fg">Audit Log inflado:</strong> 50 entradas triviales del tipo "le pedi a Claude que me formateara este JSON". El volumen no compensa la falta de criterio. 12 entradas con substance > 50 sin.
+        </li>
+        <li class="pl-6 relative">
+          <span class="absolute left-0 top-0 font-mono text-brand-primary font-bold">3.</span>
+          <strong class="text-fg">Audit Log sin generalizacion:</strong> Aprendizajes especificos a la tarea ("para esto, esta version del prompt funciono"). El aprendizaje debe ser portable a otro proyecto.
+        </li>
+      </ol>
+    </section>
+
+    <section class="p-6 rounded-xl border border-line bg-surface-alt">
+      <p class="text-sm text-fg-muted leading-relaxed">
+        <strong class="text-fg">Una cosa mas:</strong> si en tu Audit Log encontraste que la IA te dio algo malo, lo documentas, y el evaluador lo lee, eso suma. Es lo opuesto de lo que la mayoria piensa cuando entrega un take-home. Pensamos que estamos midiendo perfeccion. Estamos midiendo criterio.
+      </p>
+    </section>
+
+    <div class="mt-16 text-center">
+      <a href="/reto" class="inline-flex items-center gap-2 px-6 py-3 border border-line rounded-md font-semibold hover:bg-surface-alt transition-colors">
+        Volver al microsite
+      </a>
+    </div>
+  </main>
+</Base>

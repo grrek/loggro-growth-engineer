@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import RoleSection from '../components/RoleSection.astro';
+import TrackCards from '../components/TrackCards.astro';
+import LoQueRecibis from '../components/LoQueRecibis.astro';
+import Espiritu from '../components/Espiritu.astro';
+import ComoEvaluamos from '../components/ComoEvaluamos.astro';
+import Referencias from '../components/Referencias.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette';
+import KonamiOverlay from '../components/KonamiOverlay';
+---
+
+<Base title="Loggro - Reto VE-1770" description="Reto tecnico para el rol de Especialista en Automatizacion, IA y Growth en Loggro. 48 horas. 4 tracks. Tu criterio en primer plano.">
+  <main id="top">
+    <Hero />
+    <RoleSection />
+    <TrackCards />
+    <LoQueRecibis />
+    <Espiritu />
+    <ComoEvaluamos />
+    <Referencias />
+    <FAQ />
+  </main>
+  <Footer />
+  <CommandPalette client:idle />
+  <KonamiOverlay client:idle />
+</Base>

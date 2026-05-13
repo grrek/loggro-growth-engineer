@@ -1,0 +1,64 @@
+---
+const LOOM_URL = import.meta.env.PUBLIC_LOOM_URL ?? '';
+---
+
+<section id="rol" class="py-20 md:py-28 px-6 md:px-8">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">El rol</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+      No buscamos a alguien que sepa programar sin IA. Buscamos a alguien que opere con IA mejor que el promedio.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-12 mb-16">
+      <div>
+        <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="w-1 h-6 bg-brand-primary rounded-full"></span>
+          Loggro en 3 frases
+        </h3>
+        <p class="text-fg-muted mb-3 leading-relaxed">
+          SaaS colombiano de ERP y contable con +30 anos y +15.000 clientes en 200+ municipios.
+        </p>
+        <p class="text-fg-muted mb-3 leading-relaxed">
+          Equipo de Marketing y Growth de 9 personas operando HubSpot, n8n, Meta, Google, LinkedIn, WhatsApp y GA4. Stack diario con IA.
+        </p>
+        <p class="text-fg-muted leading-relaxed">
+          Decidimos que la IA no es un add-on, es la nueva forma de operar. Este rol existe por esa decision.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="w-1 h-6 bg-brand-secondary rounded-full"></span>
+          Que buscamos
+        </h3>
+        <p class="text-fg-muted mb-3 leading-relaxed">
+          Operador AI-native: usas Claude Code todos los dias, tenes opinion sobre como descomponer prompts, sabes cuando NO automatizar.
+        </p>
+        <p class="text-fg-muted mb-3 leading-relaxed">
+          Mentalidad de Plan / Build / Review. Cero arrogancia tecnica. Curiosidad por contadores, no solo por modelos.
+        </p>
+        <p class="text-fg-muted leading-relaxed">
+          Te interesa el angulo growth y no solo el tech. El cliente final es contador o gerente, no developer.
+        </p>
+      </div>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden bg-black aspect-video border border-line shadow-2xl">
+      {LOOM_URL ? (
+        <iframe
+          src={LOOM_URL}
+          frameborder="0"
+          allowfullscreen
+          class="w-full h-full"
+          title="Video de bienvenida de Grego Aristizabal, Director de Crecimiento y Marketing de Loggro"
+        ></iframe>
+      ) : (
+        <div class="w-full h-full flex flex-col items-center justify-center text-white/60 p-8 text-center">
+          <p class="font-mono text-sm uppercase tracking-wider mb-3 text-white/40">Loading</p>
+          <p class="text-lg">Video de bienvenida de Grego (2 a 3 min)</p>
+          <p class="text-sm mt-2 text-white/40">Proximamente</p>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

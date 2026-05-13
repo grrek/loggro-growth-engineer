@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+
+const team = [
+  { name: 'Gregorio Aristizabal', role: 'Director de Crecimiento y Marketing', pilar: 'Direccion Estrategica' },
+  { name: 'Kathy Porras Eslava', role: 'Analista Marketing Digital (Lider)', pilar: 'Performance & Growth' },
+  { name: 'Adrian Montoya Calle', role: 'Analista Marketing Digital', pilar: 'Performance & Growth' },
+  { name: 'Kissy Marin Galeano', role: 'Analista Marketing Digital (SEO)', pilar: 'Organic Growth & Brand Authority' },
+  { name: 'Ana Maria Roldan Ospina', role: 'Comunicadora Digital', pilar: 'Organic Growth & Brand Authority' },
+  { name: 'Ana Marly Orrego Parra', role: 'Disenadora UI y Video', pilar: 'Creative' },
+  { name: 'Albert Anaya Pitalua', role: 'Disenador UI/UX', pilar: 'Creative' },
+  { name: 'Sergio Rendon G.', role: 'Webmaster', pilar: 'MarkOps' },
+  { name: '<el que llegue al rol VE-1770>', role: 'Especialista en Automatizacion, IA y Growth', pilar: 'MarkOps', highlight: true },
+];
+---
+
+<Base title="El equipo - Loggro VE-1770" description="Conoce al equipo de Marketing y Growth de Loggro al que te uniras si llegas al rol.">
+  <main class="max-w-4xl mx-auto px-6 md:px-8 py-24">
+    <p class="text-xs font-mono text-fg-subtle tracking-wider mb-4">PAGINA SECRETA / TEAM</p>
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+      A este equipo<br />
+      <span class="text-brand-primary">te unis.</span>
+    </h1>
+    <p class="text-lg text-fg-muted mb-12 leading-relaxed">
+      9 personas operando Marketing y Growth de Loggro. Aca esta el equipo al que reportarias, y la silla que va a ocupar quien gane el VE-1770.
+    </p>
+
+    <div class="rounded-2xl overflow-hidden border border-line mb-12 bg-surface-alt aspect-[2/1] grid place-items-center">
+      <!-- Foto del equipo: Grego pasa el archivo a public/team.jpg y reemplazamos este placeholder -->
+      <img
+        src="/reto/team.jpg"
+        alt="Equipo de Marketing y Growth de Loggro en un evento"
+        class="w-full h-full object-cover"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hidden w-full h-full flex-col items-center justify-center p-8 text-center text-fg-muted">
+        <p class="font-mono text-xs tracking-wider mb-2">[LOADING]</p>
+        <p>Foto del equipo proximamente.</p>
+        <p class="text-sm text-fg-subtle mt-2">Mientras tanto, los nombres y roles abajo.</p>
+      </div>
+    </div>
+
+    <ul class="grid md:grid-cols-2 gap-3">
+      {team.map((p) => (
+        <li class={`p-5 rounded-lg border ${p.highlight ? 'border-brand-primary bg-brand-primary/[0.06]' : 'border-line'}`}>
+          <p class={`font-semibold ${p.highlight ? 'text-brand-primary' : ''}`}>{p.name}</p>
+          <p class="text-sm text-fg-muted mt-0.5">{p.role}</p>
+          <p class="text-xs text-fg-subtle font-mono mt-1.5 uppercase tracking-wider">{p.pilar}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-12 p-6 rounded-xl border border-line">
+      <p class="text-sm text-fg-muted leading-relaxed">
+        <strong class="text-fg">Reportas a Grego.</strong> Trabajas dia a dia al lado de Adrian Montoya (Performance Analyst que ya esta en el equipo y te complementa). Coordinas con Kathy (Performance Lead), Kissy (SEO), Ana Maria (Comunicacion). Edison Castro (Tech Lead de Loggro) te apoya en arquitectura de automatizaciones complejas.
+      </p>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/reto" class="inline-flex items-center gap-2 px-6 py-3 border border-line rounded-md font-semibold hover:bg-surface-alt transition-colors">
+        Volver al microsite
+      </a>
+    </div>
+  </main>
+</Base>

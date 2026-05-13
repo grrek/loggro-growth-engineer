@@ -1,0 +1,20 @@
+---
+import TrackCard from './TrackCard.astro';
+import tracks from '../data/tracks.json';
+---
+
+<section id="reto" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">El reto</h2>
+    <p class="text-lg text-fg-muted mb-4 max-w-2xl">
+      4 tracks. Eliges 1. La rubrica es la misma para los 4: medimos como pensas, no que track sabes mas.
+    </p>
+    <p class="text-sm text-fg-subtle mb-12 font-mono">
+      Que track elijas es senal por si misma: ¿elegis lo comodo o lo desafiante para tu perfil? Lo evaluamos.
+    </p>
+
+    <div class="space-y-4">
+      {tracks.map((track) => <TrackCard track={track} />)}
+    </div>
+  </div>
+</section>

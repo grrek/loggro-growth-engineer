@@ -1,0 +1,64 @@
+---
+import { X, Check } from 'lucide-react';
+
+const noEs = [
+  'Un cuestionario de preguntas con respuesta correcta',
+  'Un test de personalidad disfrazado',
+  'Un LeetCode con timer',
+  '"Demostrame que sos genio en 48 horas"',
+  'Pulida de 5 dias seguidos',
+];
+
+const siEs = [
+  '48 horas para construir algo real con tu criterio en primer plano',
+  'Con todas las herramientas IA que uses normalmente',
+  'Vamos a ver como pensas cuando te trabas',
+  'Documentar honesto cuando la IA te dio algo malo (eso suma)',
+  'Defender tus decisiones en vivo con conocimiento de causa',
+];
+---
+
+<section id="espiritu" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">El espiritu</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+      Para evitarnos malentendidos sobre que tipo de prueba es esta.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-7 rounded-xl border border-red-500/30 bg-red-500/[0.03]">
+        <h3 class="text-lg font-bold mb-5 flex items-center gap-2 text-red-600 dark:text-red-400">
+          <X size={20} /> Esto NO es
+        </h3>
+        <ul class="space-y-3">
+          {noEs.map((item) => (
+            <li class="flex gap-3 items-start text-sm leading-relaxed">
+              <span class="text-red-500/60 shrink-0 mt-1 font-mono">x</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="p-7 rounded-xl border border-green-500/30 bg-green-500/[0.03]">
+        <h3 class="text-lg font-bold mb-5 flex items-center gap-2 text-green-600 dark:text-green-400">
+          <Check size={20} /> Esto SI es
+        </h3>
+        <ul class="space-y-3">
+          {siEs.map((item) => (
+            <li class="flex gap-3 items-start text-sm leading-relaxed">
+              <span class="text-green-500/60 shrink-0 mt-1 font-mono">+</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 p-7 rounded-xl border border-line bg-surface">
+      <p class="text-sm text-fg-muted leading-relaxed">
+        <strong class="text-fg">Por que 48 horas:</strong> queremos ver como decidis bajo presion realista, no como pulis 5 dias seguidos. Si necesitas pausar para dormir, trabajar o vivir, eso es parte del ejercicio. Lo que entregas a la hora 48 es lo que evaluamos.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+const refs = [
+  { name: 'Anthropic', what: 'AI-resistant technical evaluations', url: 'https://www.anthropic.com/engineering/AI-resistant-technical-evaluations' },
+  { name: 'Sierra', what: 'Estructura Plan / Build / Review', url: 'https://sierra.ai/blog/the-ai-native-interview' },
+  { name: 'OpenAI FDE', what: 'Loom obligatorio + defensa', url: 'https://gaijineer.co/openai-forward-deployed-engineer-interview-process' },
+  { name: 'Hex', what: 'Held-out eval set secreto', url: 'https://github.com/hex-inc/ai-eng-takehome' },
+  { name: 'Vercel', what: 'Eval-driven development + three-lens grading', url: 'https://vercel.com/blog/eval-driven-development-build-better-ai-faster' },
+  { name: 'Hamel Husain', what: 'Your AI product needs evals', url: 'https://hamel.dev/blog/posts/evals/' },
+  { name: 'AgentLint', what: 'Verificacion CLAUDE.md en vivo', url: 'https://www.agentlint.app/' },
+  { name: 'Pluely', what: 'Open source meeting AI assistant', url: 'https://github.com/iamsrikanthnani/pluely' },
+  { name: 'Clay', what: 'GTM Engineer interview structure', url: 'https://www.clay.com/blog/gtm-engineering' },
+  { name: 'Rootly', what: 'Re-thinking takehomes in the AI era', url: 'https://rootly.com/blog/re-thinking-candidates-take-homes-in-the-ai-era-transcripts-over-code' },
+];
+---
+
+<section class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Referencias del proceso</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+      No inventamos nada. Esta prueba se inspira en lo publicado por equipos que hiring para roles AI-native lo estan haciendo bien.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-3">
+      {refs.map((r) => (
+        <a
+          href={r.url}
+          target="_blank"
+          rel="noopener"
+          class="group flex items-baseline justify-between gap-4 p-4 rounded-lg border border-line hover:border-brand-primary/50 transition-colors"
+        >
+          <div class="min-w-0">
+            <p class="font-semibold mb-0.5">{r.name}</p>
+            <p class="text-sm text-fg-muted truncate">{r.what}</p>
+          </div>
+          <span class="text-fg-subtle group-hover:text-brand-primary transition-colors text-xs font-mono shrink-0" aria-hidden="true">->_</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

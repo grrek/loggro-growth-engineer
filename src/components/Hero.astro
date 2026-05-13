@@ -1,0 +1,49 @@
+---
+import Terminal from './Terminal';
+---
+
+<section class="relative min-h-[88vh] flex items-center justify-center px-6 md:px-8 pt-24 pb-16 overflow-hidden">
+  <!-- Subtle background grid -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 opacity-[0.04] dark:opacity-[0.08]"
+    style="background-image: linear-gradient(var(--color-fg) 1px, transparent 1px), linear-gradient(90deg, var(--color-fg) 1px, transparent 1px); background-size: 48px 48px;"
+  ></div>
+
+  <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <div class="animate-fade-in">
+      <p class="text-xs md:text-sm font-mono text-fg-muted mb-6 tracking-wider">
+        VE-1770 / ESPECIALISTA EN AUTOMATIZACION, IA Y GROWTH
+      </p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-6 tracking-tight">
+        Construi con IA.
+        <span class="block text-brand-primary">Como vivis.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-fg-muted mb-10 max-w-xl leading-relaxed">
+        48 horas, 4 tracks, tu criterio en primer plano. No buscamos perfeccion. Buscamos como pensas cuando la IA te da algo mediocre disfrazado de bueno.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="#reto"
+          class="inline-flex items-center gap-2 px-7 py-4 bg-brand-primary text-white rounded-md font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-brand-primary/20"
+        >
+          Aceptar el reto
+          <span aria-hidden="true">{'->'}</span>
+        </a>
+        <a
+          href="#espiritu"
+          class="inline-flex items-center px-7 py-4 border border-line rounded-md font-semibold hover:bg-surface-alt transition-colors"
+        >
+          Ver el espiritu primero
+        </a>
+      </div>
+      <p class="mt-8 text-sm text-fg-subtle font-mono">
+        Probalo: presiona <kbd class="px-1.5 py-0.5 rounded border border-line bg-surface-alt text-fg">/</kbd> para abrir el command palette
+      </p>
+    </div>
+
+    <div class="md:pl-8">
+      <Terminal client:idle />
+    </div>
+  </div>
+</section>

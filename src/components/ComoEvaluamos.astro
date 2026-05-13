@@ -1,0 +1,112 @@
+---
+const dimensiones = [
+  {
+    name: 'Workflow decomposition',
+    pobre: 'No mapea proceso humano',
+    bueno: 'Lo mapea + restricciones + decisiones de no-build con razon',
+  },
+  {
+    name: 'AI / tool fluency',
+    pobre: 'Un prompt gigante sin estructura',
+    bueno: 'Prompts modulares + tool use + caching + eval de prompts',
+  },
+  {
+    name: 'Eval discipline',
+    pobre: 'No hay eval',
+    bueno: 'Eval set + threshold + edge cases + plan A/B',
+  },
+  {
+    name: 'Cost / latency',
+    pobre: 'No menciona',
+    bueno: 'Estima + benchmarks + plan de bajada A/B',
+  },
+  {
+    name: 'Defense en vivo',
+    pobre: 'Cambia al primer "por que"',
+    bueno: 'Defiende con criterio, admite limites, propone alternativa',
+  },
+];
+
+const thresholds = [
+  { name: 'Code-based (held-out 5 casos)', value: '>= 3/5 + reasoning 0.7' },
+  { name: 'LLM-as-judge', value: '>= 0.7 promedio' },
+  { name: 'AgentLint sobre tu CLAUDE.md', value: '>= 60 / 100' },
+  { name: 'Human review (Grego + Edison)', value: '>= 7.0 / 10' },
+  { name: 'AI Audit Log con criterio', value: 'presente y no trivial' },
+];
+
+const lentes = [
+  { name: 'Code-based (objetivo)', desc: 'Automatico. Corremos tu eval.py contra held-out (5 casos secretos)' },
+  { name: 'Human review en frio', desc: 'Grego + Edison Castro califican por separado antes de hablar entre ellos' },
+  { name: 'LLM-as-judge async', desc: 'Script automatizado con prompt versionado en eval/judge_prompt.md' },
+  { name: 'LLM review post-sesion', desc: 'Grabacion de Parte C procesada con Claude usando rubrica predefinida' },
+];
+---
+
+<section id="evaluacion" class="py-20 md:py-28 px-6 md:px-8">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Como te evaluamos</h2>
+    <p class="text-lg text-fg-muted mb-12 max-w-2xl">
+      Todo publico. Sin sorpresas en la nota final.
+    </p>
+
+    <div class="mb-16">
+      <h3 class="text-xl font-bold mb-6">5 dimensiones (1 a 10 cada una)</h3>
+      <div class="overflow-x-auto rounded-xl border border-line">
+        <table class="w-full text-sm">
+          <thead class="bg-surface-alt border-b border-line">
+            <tr>
+              <th class="text-left p-4 font-semibold">Dimension</th>
+              <th class="text-left p-4 font-semibold text-red-600 dark:text-red-400">Pobre (1-3)</th>
+              <th class="text-left p-4 font-semibold text-green-600 dark:text-green-400">Excelente (9-10)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dimensiones.map((d) => (
+              <tr class="border-b border-line last:border-0">
+                <td class="p-4 font-semibold">{d.name}</td>
+                <td class="p-4 text-fg-muted">{d.pobre}</td>
+                <td class="p-4 text-fg-muted">{d.bueno}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <h3 class="text-xl font-bold mb-6">5 thresholds para avanzar a entrevista final</h3>
+      <div class="grid md:grid-cols-2 gap-3">
+        {thresholds.map((t) => (
+          <div class="p-4 rounded-lg border border-line bg-surface-alt flex justify-between items-center">
+            <span class="text-sm font-medium">{t.name}</span>
+            <span class="text-sm font-mono text-brand-primary font-semibold">{t.value}</span>
+          </div>
+        ))}
+      </div>
+      <p class="text-sm text-fg-subtle mt-4">
+        Si pasas los 5: entrevista final. Si pasas 3-4: conversacion para revisar. Si pasas menos de 3: descarte respetuoso con feedback escrito.
+      </p>
+    </div>
+
+    <div class="mb-16">
+      <h3 class="text-xl font-bold mb-6">4 lentes de grading</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        {lentes.map((l, i) => (
+          <div class="p-5 rounded-lg border border-line">
+            <p class="text-xs font-mono text-fg-subtle mb-2">Lente {i + 1}</p>
+            <h4 class="font-semibold mb-2">{l.name}</h4>
+            <p class="text-sm text-fg-muted leading-relaxed">{l.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="p-7 rounded-xl border border-amber-500/30 bg-amber-500/[0.04]">
+      <h3 class="text-lg font-bold mb-3 text-amber-700 dark:text-amber-400">Honestidad sobre lo que NO sabemos medir bien</h3>
+      <p class="text-sm text-fg-muted leading-relaxed">
+        Esta rubrica mide bien decomposicion, fluency y disciplina de eval. Lo que mide peor: creatividad de producto, intuicion de growth, habilidad para construir relaciones con contadores. Esas las vamos a ver mejor cuando trabajemos juntos (si llegamos ahi). Decimoslo de frente porque la prueba no es perfecta y no queremos vendertelo como si lo fuera.
+      </p>
+    </div>
+  </div>
+</section>

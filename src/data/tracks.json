@@ -1,0 +1,73 @@
+[
+  {
+    "id": "a",
+    "code": "Track A",
+    "name": "Outbound Automation",
+    "tagline": "Construis un sistema autonomo de prospeccion outbound para Loggro: scraping + enriquecimiento + secuencia email + WhatsApp + clasificacion de respuestas.",
+    "perfil_si": "SDR, growth con experiencia en cold outreach, alguien que entiende que un asunto malo mata cualquier secuencia",
+    "tiempo": "3 a 4 horas",
+    "sub_agentes": ["Enricher", "MessageWriter", "ResponseClassifier"],
+    "inputs": [
+      "30 cuentas objetivo (empresas colombianas mid-market)",
+      "Buyer persona objetivo (CFO o Contador General 50-500 empleados)",
+      "Brand voice guide de Loggro",
+      "Virtual key del LLM Broker"
+    ],
+    "color": "#E75E1E"
+  },
+  {
+    "id": "b",
+    "code": "Track B",
+    "name": "Marketing Insights",
+    "tagline": "Construis un sistema que cruza 20 campanas + 5 reportes GA + 3 transcripciones de equipo y genera 3 insights priorizados para la retro mensual de Marketing.",
+    "perfil_si": "Analytics, data-oriented, comodo cruzando JSON con CSV con transcripts",
+    "tiempo": "3 a 4 horas",
+    "sub_agentes": ["DataIngestor", "CampaignAnalyzer", "InsightPrioritizer"],
+    "inputs": [
+      "20 campanas (anonimizadas pero realistas) en JSON",
+      "5 reportes Google Analytics simulados en CSV",
+      "3 transcripciones cortas de reuniones de Marketing/Growth",
+      "Schema HubSpot mock"
+    ],
+    "color": "#03A3F8"
+  },
+  {
+    "id": "c",
+    "code": "Track C",
+    "name": "Generador de Piezas",
+    "tagline": "Construis un agente que recibe brief de campana y genera piezas multi-canal consistentes en brand voice, con reviewer que bloquea las que no pasan umbral.",
+    "perfil_si": "Creativos tecnicos, content ops, marketing + IA generativa",
+    "tiempo": "3 a 4 horas",
+    "sub_agentes": ["Copywriter", "BrandVoiceReviewer", "FormatPublisher", "ImagePromptWriter"],
+    "inputs": [
+      "3 briefs de campana en JSON (DIAN, cross-sell POS, retencion Nomina)",
+      "Brand voice guide de Loggro con ejemplos buenos y malos",
+      "10 piezas buenas etiquetadas + 10 piezas malas",
+      "Schema HubSpot mock para campanas"
+    ],
+    "color": "#DD1C4B"
+  },
+  {
+    "id": "d",
+    "code": "Track D",
+    "name": "Inteligencia de Conversaciones",
+    "tagline": "Procesas audios de llamadas comerciales en espanol Colombia. STT + extraccion de objeciones + competidores + senales DIAN + risk score + email follow-up.",
+    "perfil_si": "RevOps, sales ops, builders hibridos con apetito por audio + multi-agente",
+    "tiempo": "3 a 4 horas (incluye setup de STT)",
+    "sub_agentes": [
+      "TranscriptionAgent",
+      "ObjectionExtractor",
+      "CompetitorMentionAgent",
+      "ComplianceSignalAgent",
+      "RiskScorer",
+      "FollowUpDrafter"
+    ],
+    "inputs": [
+      "9 audios MP3 en espanol Colombia (3 obligatorios + 1 edge case + 5 opcionales)",
+      "Speaker map por archivo",
+      "Schema fijo de insights.json",
+      "Whisper self-hosted opcional"
+    ],
+    "color": "#149E71"
+  }
+]
