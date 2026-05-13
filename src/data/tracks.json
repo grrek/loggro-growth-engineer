@@ -14,38 +14,83 @@
       "Buyer persona: dueño de empresa, director de finanzas, emprendedor",
       "Virtual key del LLM Broker"
     ],
+    "outputs": [
+      "accounts.json con ~100 cuentas nuevas + sources (URLs reales) + confidence + icp_match_score",
+      "Pipeline reproducible que genera las cuentas desde fuentes públicas",
+      "Secuencia outbound 2-touchpoint (cold + bump 1) adaptada por sector + rol",
+      "Clasificador de respuestas (4 intents) con accuracy reportada",
+      "README con: % ICP match · diversidad sectorial · costo · plan a 1000 cuentas/mes"
+    ],
+    "rules": [
+      "No outreach real (el reto es construir, no enviar)",
+      "Cita fuentes en cada cuenta (sin fuente → confidence: low + justificación)",
+      "Respeta TOS (LinkedIn scraping agresivo está prohibido)",
+      "Empresas reales se tratan como hipotéticas en demos"
+    ],
+    "brief_url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/BRIEF.md",
     "color": "#E75E1E"
   },
   {
     "id": "b",
     "code": "Track B",
     "name": "Insights de Campañas de Marketing",
-    "tagline": "Construyes un sistema que analiza 124 campañas reales y genera 3 hallazgos priorizados con detección de anomalías para la retro mensual.",
-    "perfil_si": "Analítica, data-oriented, cómodo cruzando JSON y detectando patrones no obvios",
+    "tagline": "Construyes un sistema que analiza 124 campañas reales de Loggro Q1-Q2 2026 y genera 3 hallazgos priorizados + detección de anomalías + flag de vanity metrics.",
+    "perfil_si": "Analítica, data-oriented, cómodo cruzando JSON y separando vanity de señal real",
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["DataIngestor", "CampaignAnalyzer", "InsightPrioritizer"],
     "inputs": [
-      "JSON con 124 campañas reales (Q1-Q2 2026) anonimizadas",
-      "Funnel completo por campaña: impressions → clicks → leads → MQL → SQL → customers + CAC",
-      "Métricas: CTR, CPC, frecuencia, alcance, costo/MQL, audiencia, brief",
+      "JSON con 124 campañas reales Q1-Q2 2026 anonimizadas",
+      "Funnel completo: impressions → clicks → leads → MQL → SQL → customers + CAC",
+      "7 productos · 3 canales · lessons_learned en ~15 campañas",
       "3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas",
       "Virtual key del LLM Broker"
     ],
+    "outputs": [
+      "anomalies_detected con campaign_id + anomaly_type + signals + confidence + recommended_action",
+      "3 insights_prioritized con hipótesis + métrica + acción + número específico + impacto esperado",
+      "vanity_metrics_flagged con las 2 campañas engañosas detectadas",
+      "Tablero agregado (markdown, Streamlit, Next.js, libre)",
+      "README con arquitectura + 1 hallazgo personal no obvio"
+    ],
+    "rules": [
+      "Detectar las 3 anomalías. Si flageás las 2 engañosas como anomalías → resta puntos",
+      "CAC = null cuando customers = 0. No las descartes, mirá el funnel completo",
+      "Status paused/active: ambas tienen señal",
+      "MQL = 0 en awareness no es bug, es diseño del funnel"
+    ],
+    "brief_url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-b-insights/BRIEF.md",
     "color": "#03A3F8"
   },
   {
     "id": "c",
     "code": "Track C",
     "name": "Generador de Piezas",
-    "tagline": "Construyes un agente que recibe brief de campaña y genera piezas multi-canal consistentes en brand voice, con reviewer que bloquea las que no pasan umbral.",
-    "perfil_si": "Creativos técnicos, content ops, marketing + IA generativa",
+    "tagline": "Construyes un agente que recibe brief de campaña y genera piezas multi-canal consistentes en brand voice, con un reviewer que bloquea las que no pasan umbral.",
+    "perfil_si": "Creativos técnicos, content ops, marketing + IA generativa, perfiles híbridos copywriter-developer",
     "tiempo": "3 a 4 horas",
     "sub_agentes": ["Copywriter", "BrandVoiceReviewer", "FormatPublisher", "ImagePromptWriter"],
     "inputs": [
-      "3 briefs de campaña en JSON (DIAN, cross-sell POS, retención Nómina)",
-      "Brand voice guide de Loggro",
-      "Referencias en Meta Ad Library de Loggro (ejemplos reales)"
+      "3 briefs reales de Loggro (DIAN, cross-sell POS, retención Nómina)",
+      "10 piezas REALES extraídas de Meta Ad Library de Loggro (con brand_voice_compliance y UTMs)",
+      "10 piezas malas sintéticas con violations documentadas (11 tipos)",
+      "10 screenshots (7 imagen + 3 video posters)",
+      "Brand voice guide de Loggro + Meta Ad Library live"
     ],
+    "outputs": [
+      "Por brief: LinkedIn post + email A/B/C + WhatsApp + Meta ad + landing hooks + image prompts",
+      "Reviewer agent que califica contra brand voice y bloquea piezas",
+      "Tests: corre reviewer contra good_pieces (debe aprobar ≥9/10) y bad_pieces (debe rechazar ≥8/10)",
+      "Matriz de confusión por violation type",
+      "README con costo por brief + ejemplo de pieza rechazada + feedback del reviewer"
+    ],
+    "rules": [
+      "Cero em-dashes en tu output (hardcodéalo en el reviewer)",
+      "Brand voice consistente: español Colombia, sin ChatGPT-corporativo",
+      "No mock competidores en piezas generadas",
+      "Disclaimers DIAN cuando aplique (factura electrónica, retención, RUT)",
+      "Cifras específicas, no redondas tipo '300%'"
+    ],
+    "brief_url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/BRIEF.md",
     "color": "#DD1C4B"
   },
   {
@@ -68,8 +113,23 @@
       "~80 minutos totales: cancelación, prospecto, cliente molesto, contactado, edge cases",
       "speaker_map.json con metadata por audio (escenario + señales esperadas)",
       "Brand voice guide de Loggro",
-      "Whisper self-hosted opcional + virtual key LLM Broker"
+      "Whisper self-hosted Loggro Labs gratis + virtual key LLM Broker"
     ],
+    "outputs": [
+      "insights.json por llamada conforme al schema (transcript + diarization + objeciones + competidores + compliance + next_steps + risk_score + follow_up_email)",
+      "Tablero agregado: talk ratio, top objeciones, competidores, deals en riesgo",
+      "Patch al CRM (HubSpot mock)",
+      "5 emails de seguimiento (uno por obligatoria)",
+      "README con arquitectura + costo total con y sin prompt caching"
+    ],
+    "rules": [
+      "No redistribuir las grabaciones (uso único)",
+      "No usar nombres reales en outputs públicos (redactar a [CLIENTE])",
+      "Si pipeline detecta negación de consentimiento → marcar y limitar extracción de ese punto",
+      "Cero em-dashes en el follow-up email"
+    ],
+    "bonus": "Encontrar UNA vulnerabilidad de prompt injection en tu pipeline + mitigación documentada. Vale 10% del peso de B",
+    "brief_url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-d-intel/BRIEF.md",
     "color": "#149E71"
   }
 ]

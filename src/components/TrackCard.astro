@@ -8,6 +8,10 @@ interface Track {
   tiempo: string;
   sub_agentes: string[];
   inputs: string[];
+  outputs?: string[];
+  rules?: string[];
+  bonus?: string;
+  brief_url?: string;
   color: string;
 }
 interface Props {
@@ -22,7 +26,6 @@ const repoUrl = import.meta.env.PUBLIC_REPO_URL ?? 'https://github.com/grrek/log
   style={`--track-color: ${track.color};`}
 >
   <summary class="cursor-pointer list-none p-6 md:p-8 flex items-start gap-5 [&::-webkit-details-marker]:hidden">
-    <!-- Pixel badge con sombra solida 8-bit -->
     <div class="shrink-0 relative">
       <div
         class="w-16 h-16 grid place-items-center font-pixel text-base font-bold text-white pixel-corners border-2 border-fg transition-transform group-hover:rotate-[-2deg]"
@@ -58,8 +61,9 @@ const repoUrl = import.meta.env.PUBLIC_REPO_URL ?? 'https://github.com/grrek/log
   </summary>
 
   <div class="px-6 md:px-8 pb-8 pt-2">
+    <!-- Resumen rapido: para ti si / tiempo / sub-agentes -->
     <div
-      class="border-t-[3px] pt-6 grid md:grid-cols-3 gap-6 mb-6"
+      class="border-t-[3px] pt-6 grid md:grid-cols-3 gap-6 mb-8"
       style={`border-color: ${track.color};`}
     >
       <div>
@@ -78,21 +82,73 @@ const repoUrl = import.meta.env.PUBLIC_REPO_URL ?? 'https://github.com/grrek/log
       </div>
     </div>
 
-    <div class="mb-6">
-      <p class="text-[10px] font-pixel uppercase tracking-widest text-fg-subtle mb-2">Inputs que recibes</p>
-      <ul class="grid md:grid-cols-2 gap-1 text-sm font-sans">
-        {track.inputs.map((i) => <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel">+</span> {i}</li>)}
-      </ul>
+    <!-- Inputs + Outputs en 2 columnas -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div>
+        <p class="text-[10px] font-pixel uppercase tracking-widest text-fg-subtle mb-3">{'> '} INPUTS QUE RECIBES</p>
+        <ul class="space-y-1.5 text-sm font-sans">
+          {track.inputs.map((i) => (
+            <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel">+</span> <span>{i}</span></li>
+          ))}
+        </ul>
+      </div>
+
+      {track.outputs && (
+        <div>
+          <p class="text-[10px] font-pixel uppercase tracking-widest text-fg-subtle mb-3">{'> '} OUTPUTS ESPERADOS</p>
+          <ul class="space-y-1.5 text-sm font-sans">
+            {track.outputs.map((o) => (
+              <li class="flex gap-2"><span class="font-pixel shrink-0" style={`color: ${track.color};`}>★</span> <span>{o}</span></li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
 
-    <a
-      href={repoUrl}
-      target="_blank"
-      rel="noopener"
-      class="group/cta inline-flex items-center gap-2 px-5 py-3 bg-fg text-surface font-pixel text-[10px] uppercase tracking-widest border-2 border-fg btn-pixel hover:bg-brand-primary hover:text-black"
-    >
-      Ir al repo de este track
-      <span aria-hidden="true" class="transition-transform group-hover/cta:translate-x-1">{'->'}</span>
-    </a>
+    <!-- Reglas duras -->
+    {track.rules && (
+      <div class="mb-8 p-5 border-2 border-fg bg-surface-alt pixel-corners">
+        <p class="text-[10px] font-pixel uppercase tracking-widest text-brand-primary-text mb-3">{'> '} REGLAS DURAS DEL TRACK</p>
+        <ul class="space-y-1.5 text-sm font-sans">
+          {track.rules.map((r) => (
+            <li class="flex gap-2"><span class="text-fg-subtle shrink-0 font-pixel">!</span> <span>{r}</span></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <!-- Bonus si existe -->
+    {track.bonus && (
+      <div class="mb-8 p-5 border-2 border-fg bg-brand-primary/[0.08] pixel-corners">
+        <p class="text-[10px] font-pixel uppercase tracking-widest text-brand-primary-text mb-2">{'> '} BONUS QUE SUMA PUNTOS</p>
+        <p class="text-sm leading-relaxed font-sans">{track.bonus}</p>
+      </div>
+    )}
+
+    <!-- CTAs -->
+    <div class="flex flex-wrap gap-3">
+      {track.brief_url && (
+        <a
+          href={track.brief_url}
+          target="_blank"
+          rel="noopener"
+          data-track={`brief_link_${track.id}`}
+          class="group/cta inline-flex items-center gap-2 px-5 py-3 bg-brand-primary text-black font-pixel text-[10px] uppercase tracking-widest border-2 border-fg btn-pixel"
+        >
+          Leer BRIEF.md completo
+          <span aria-hidden="true" class="transition-transform group-hover/cta:translate-x-1">↗</span>
+        </a>
+      )}
+      <a
+        href={repoUrl}
+        target="_blank"
+        rel="noopener"
+        data-track={`repo_link_${track.id}`}
+        class="group/cta inline-flex items-center gap-2 px-5 py-3 bg-fg text-surface font-pixel text-[10px] uppercase tracking-widest border-2 border-fg btn-pixel hover:bg-brand-primary hover:text-black"
+      >
+        Ir al repo template
+        <span aria-hidden="true" class="transition-transform group-hover/cta:translate-x-1">{'->'}</span>
+      </a>
+    </div>
   </div>
 </details>
