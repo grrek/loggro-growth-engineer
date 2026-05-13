@@ -72,6 +72,7 @@ html {
   background: var(--color-surface);
   color: var(--color-fg);
   font-family: 'Open Sans', system-ui, sans-serif;
+  font-size: 17px;
   font-display: optional;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
@@ -109,13 +110,14 @@ html.dark {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', system-ui, sans-serif;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 1.1;
 }
 
 h4, h5, h6 {
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
 }
 
 code, pre, .font-mono {

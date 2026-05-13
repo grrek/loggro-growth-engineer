@@ -1,8 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import TLDR from '../components/TLDR.astro';
 import RoleSection from '../components/RoleSection.astro';
 import Estructura from '../components/Estructura.astro';
+import CasoNegocio from '../components/CasoNegocio.astro';
 import TrackCards from '../components/TrackCards.astro';
 import LoQueRecibis from '../components/LoQueRecibis.astro';
 import Apendice from '../components/Apendice.astro';
@@ -23,10 +25,14 @@ import KonamiOverlay from '../components/KonamiOverlay';
   <main id="top">
     <Hero />
     <AsciiDivider variant="dots" />
-    <RoleSection />
+    <TLDR />
     <AsciiDivider variant="angle" />
+    <RoleSection />
+    <AsciiDivider variant="dashes" />
     <Estructura />
     <AsciiDivider variant="plus" />
+    <CasoNegocio />
+    <AsciiDivider variant="brackets" />
     <TrackCards />
     <AsciiDivider variant="dashes" />
     <LoQueRecibis />

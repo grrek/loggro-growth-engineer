@@ -4,25 +4,25 @@ import { Compass, Hammer, Eye, Shield } from 'lucide-react';
 const bloques = [
   {
     Icon: Compass,
-    code: '00:00 a 00:15',
+    code: '00:00 a 00:05',
     title: 'Plan',
-    desc: 'Te presentamos una mini-funcionalidad adicional al track que entregaste. La planeás en voz alta: qué harías, en qué orden, con qué tradeoffs. Acá no se programa nada, solo se piensa.',
+    desc: 'Te presentamos una mini-funcionalidad adicional al track que entregaste. La planeas en voz alta: qué harías, en qué orden, con qué concesiones. Acá no se programa nada, solo se piensa.',
   },
   {
     Icon: Hammer,
-    code: '00:15 a 00:45',
+    code: '00:05 a 00:30',
     title: 'Build',
-    desc: 'Implementas la mini-funcionalidad en vivo. Tu IA de preferencia (Claude Code, Cursor, Codex, lo que uses). El equipo evaluador observa en silencio o responde preguntas de contexto si las necesitas.',
+    desc: 'Discutimos cómo implementarías la mini-funcionalidad en vivo. Tu IA de preferencia (Claude Code, Cursor, Codex, lo que uses). El equipo evaluador observa en silencio o responde preguntas de contexto.',
   },
   {
     Icon: Eye,
-    code: '00:45 a 01:15',
-    title: 'Review',
+    code: '00:30 a 00:50',
+    title: 'Review con sorpresas',
     desc: 'Revisamos tu setup real contigo. Hay sorpresas para validar huella de uso de IA. Después, 5 preguntas de criterio sin herramientas: qué NO automatizarías, cuándo pararías un experimento aunque los números se vean bien, etc.',
   },
   {
     Icon: Shield,
-    code: '01:15 a 01:30',
+    code: '00:50 a 01:00',
     title: 'Defensa',
     desc: 'Te hacemos preguntas duras sobre 2 decisiones de tu entregable. Defiéndelas con criterio, admitiendo límites donde aplique.',
   },
@@ -33,7 +33,7 @@ const bloques = [
   <div class="max-w-5xl mx-auto">
     <div class="flex items-baseline gap-3 mb-3">
       <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE C</p>
-      <span class="text-xs font-mono text-fg-subtle">peso: 35% · 90 minutos · en vivo</span>
+      <span class="text-xs font-mono text-fg-subtle">peso: 35% · 60 minutos · en vivo</span>
     </div>
     <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">La sesión en vivo</h2>
     <p class="text-lg text-fg-muted mb-4 max-w-2xl">

@@ -2,17 +2,11 @@ import { useEffect, useState } from 'react';
 import { X, Keyboard } from 'lucide-react';
 
 const SHORTCUTS = [
-  { keys: ['/', 'Cmd', 'K'], desc: 'Abrir Command Palette' },
+  { keys: ['/'], desc: 'Abrir command palette' },
+  { keys: ['Cmd', 'K'], desc: 'Abrir command palette (alternativa)' },
   { keys: ['T'], desc: 'Cambiar tema claro / oscuro (desde palette)' },
-  { keys: ['?'], desc: 'Abrir esta lista de shortcuts' },
-  { keys: ['Esc'], desc: 'Cerrar modales abiertos' },
-];
-
-const SECRETS = [
-  { name: 'Konami code', keys: ['↑', '↑', '↓', '↓', '←', '→', '←', '→', 'B', 'A'], desc: 'Achievement unlocked' },
-  { name: 'View source', keys: ['Cmd', 'U'], desc: 'Hay un comment escondido al final del body' },
-  { name: 'Ruta secreta', keys: ['/honesty'], desc: 'Página con ejemplos buenos y malos de AI Audit Log' },
-  { name: 'Ruta secreta', keys: ['/team'], desc: 'Conoce al equipo de Marketing y Growth' },
+  { keys: ['?'], desc: 'Abrir esta lista de atajos' },
+  { keys: ['Esc'], desc: 'Cerrar modal abierto' },
 ];
 
 export default function ShortcutsModal() {
@@ -70,9 +64,9 @@ export default function ShortcutsModal() {
 
         <div className="p-6">
           <p className="font-pixel text-[10px] uppercase tracking-widest text-fg-subtle mb-4">
-            {'> '} TECLADO
+            {'> '} ATAJOS DE TECLADO
           </p>
-          <ul className="space-y-3 mb-8">
+          <ul className="space-y-3">
             {SHORTCUTS.map((s) => (
               <li key={s.desc} className="flex justify-between items-center gap-4">
                 <span className="text-sm text-fg font-sans">{s.desc}</span>
@@ -84,27 +78,6 @@ export default function ShortcutsModal() {
                         {k}
                       </kbd>
                     </span>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <p className="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
-            {'> '} SECRETOS
-          </p>
-          <ul className="space-y-3">
-            {SECRETS.map((s, idx) => (
-              <li key={idx} className="flex justify-between items-start gap-4">
-                <div>
-                  <p className="text-sm font-semibold font-sans">{s.name}</p>
-                  <p className="text-xs text-fg-muted font-sans mt-0.5">{s.desc}</p>
-                </div>
-                <div className="flex gap-1 shrink-0 flex-wrap justify-end max-w-[180px]">
-                  {s.keys.map((k, i) => (
-                    <kbd key={i} className="px-1.5 py-0.5 border-2 border-fg bg-surface-alt font-pixel text-[9px] uppercase">
-                      {k}
-                    </kbd>
                   ))}
                 </div>
               </li>

@@ -60,35 +60,38 @@ export default function Header() {
 
   if (!mounted) {
     return (
-      <header className="fixed top-0 right-0 p-4 z-50 flex gap-2" aria-hidden="true">
-        <div className="w-10 h-10 border-2 border-transparent" />
-        <div className="w-10 h-10 border-2 border-transparent" />
-        <div className="w-10 h-10 border-2 border-transparent" />
-        <div className="w-10 h-10 border-2 border-transparent" />
+      <header className="fixed top-3 right-3 md:top-4 md:right-4 z-50 flex gap-2" aria-hidden="true">
+        <div className="w-11 h-11" />
+        <div className="w-11 h-11" />
+        <div className="w-11 h-11" />
+        <div className="w-11 h-11" />
       </header>
     );
   }
 
   const baseBtn =
-    'w-10 h-10 grid place-items-center border-2 border-fg bg-surface text-fg hover:bg-brand-primary hover:text-black transition-colors';
+    'w-11 h-11 grid place-items-center border-2 border-fg bg-surface text-fg hover:bg-brand-primary hover:text-black shadow-pixel-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-pixel transition-all';
 
   return (
-    <header className="fixed top-0 right-0 p-4 z-50 flex gap-2">
+    <header
+      className="fixed top-3 right-3 md:top-4 md:right-4 z-50 flex gap-2"
+      aria-label="Barra de herramientas"
+    >
       <button
         onClick={openShortcuts}
-        aria-label="Ver atajos de teclado"
+        aria-label="Ver atajos de teclado (?)"
         title="Atajos (?)"
         className={baseBtn}
       >
-        <Keyboard size={18} />
+        <Keyboard size={20} strokeWidth={2.5} />
       </button>
       <button
         onClick={openPalette}
-        aria-label="Abrir command palette"
+        aria-label="Abrir command palette (/)"
         title="Command palette (/)"
         className={baseBtn}
       >
-        <Search size={18} />
+        <Search size={20} strokeWidth={2.5} />
       </button>
       <button
         onClick={toggleAudio}
@@ -96,7 +99,7 @@ export default function Header() {
         title={audioOn ? 'Claude FM activo' : 'Claude FM (música ambient de Anthropic)'}
         className={`${baseBtn} ${audioOn ? 'bg-brand-primary text-black' : ''}`}
       >
-        {audioOn ? <Headphones size={18} /> : <HeadphoneOff size={18} />}
+        {audioOn ? <Headphones size={20} strokeWidth={2.5} /> : <HeadphoneOff size={20} strokeWidth={2.5} />}
       </button>
       <button
         onClick={toggleTheme}
@@ -104,7 +107,7 @@ export default function Header() {
         title={isDark ? 'Modo claro' : 'Modo oscuro'}
         className={baseBtn}
       >
-        {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        {isDark ? <Sun size={20} strokeWidth={2.5} /> : <Moon size={20} strokeWidth={2.5} />}
       </button>
     </header>
   );

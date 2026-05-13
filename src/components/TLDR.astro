@@ -1,0 +1,83 @@
+---
+import { Clock, Target, Layers, Award } from 'lucide-react';
+
+const stats = [
+  { Icon: Clock, label: 'Plazo', value: '48 h', sub: 'sin extensiones' },
+  { Icon: Target, label: 'Esfuerzo', value: '5 a 7 h', sub: 'dentro de la ventana' },
+  { Icon: Layers, label: 'Estructura', value: '6 partes', sub: '4 tracks a elegir' },
+  { Icon: Award, label: 'Sesión cierre', value: '60 min', sub: 'en vivo, vale 35%' },
+];
+
+const reglasHonestidad = [
+  'El AI Audit Log es obligatorio. Sin eso, no se evalúa.',
+  'Cita los supuestos. Si te inventas un dato, márcalo como [supuesto] y di por qué.',
+  'Si una parte te tomó más de lo razonable porque te trabaste, escríbelo. Eso suma, no resta.',
+  'Si usas un agente, no le permitas modificar el eval harness ni el dataset. Verificamos con git diff.',
+];
+---
+
+<section id="tldr" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-5xl mx-auto">
+    <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
+      {'> '} LEE ESTO PRIMERO
+    </p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">
+      Resumen rápido.
+    </h2>
+    <p class="text-lg md:text-xl text-fg-muted mb-12 max-w-3xl leading-relaxed">
+      Si solo lees una sección de esta página, que sea esta.
+    </p>
+
+    <!-- 4 stats arcade -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      {stats.map(({ Icon, label, value, sub }) => (
+        <div class="p-5 bg-surface border-pixel shadow-pixel-md">
+          <Icon size={22} class="text-brand-primary-text mb-3" />
+          <p class="font-pixel text-[9px] uppercase tracking-widest text-fg-subtle mb-1">{label}</p>
+          <p class="text-2xl md:text-3xl font-extrabold leading-none mb-1">{value}</p>
+          <p class="text-xs text-fg-muted">{sub}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Carta abierta condensada -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div>
+        <h3 class="text-xl md:text-2xl font-bold mb-4 leading-tight">Lo que evaluamos</h3>
+        <p class="text-base text-fg-muted leading-relaxed mb-4">
+          No es si <em>terminas todo</em>. Es <strong class="text-fg">cómo piensas</strong>, cómo decides, dónde le pones rigor, dónde sueltas, y cómo detectas cuando la IA te está dando algo mediocre disfrazado de bueno.
+        </p>
+        <p class="text-base text-fg-muted leading-relaxed">
+          Buscamos a alguien que sepa <strong class="text-fg">operar con IA mejor que la mayoría</strong>. La barra es alta. Asume que comparamos tu entregable contra otros candidatos con Claude Code abierto todos los días.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl md:text-2xl font-bold mb-4 leading-tight">Por qué 48 horas</h3>
+        <p class="text-base text-fg-muted leading-relaxed mb-4">
+          Queremos ver cómo decides bajo un escenario realista de MVP usando todas las herramientas de IA, no cómo pules 5 días seguidos.
+        </p>
+        <p class="text-base text-fg-muted leading-relaxed">
+          Si necesitas pausar para descansar, trabajar o vivir, eso es parte del ejercicio. <strong class="text-fg">Lo que entregas a la hora 48 es lo que evaluamos</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Reglas de honestidad -->
+    <div class="p-7 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
+        {'> '} REGLAS DE HONESTIDAD
+      </p>
+      <ul class="space-y-3">
+        {reglasHonestidad.map((regla) => (
+          <li class="flex gap-3 items-start text-sm md:text-base text-fg-muted leading-relaxed">
+            <span class="text-brand-primary-text font-pixel shrink-0 mt-0.5">+</span>
+            <span>{regla}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-fg italic">
+        La honestidad cuenta más que la perfección.
+      </p>
+    </div>
+  </div>
+</section>

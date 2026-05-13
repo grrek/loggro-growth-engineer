@@ -1,0 +1,85 @@
+---
+import { TrendingUp, Users, DollarSign, Compass, Zap, Scissors } from 'lucide-react';
+
+const preguntas = [
+  {
+    code: 'A1',
+    Icon: TrendingUp,
+    title: 'Tres intervenciones para el trimestre',
+    desc: 'Por cada una: hipótesis, acción, métrica de éxito, estimación numérica de impacto (con cálculo a la vista), riesgo principal.',
+  },
+  {
+    code: 'A2',
+    Icon: Users,
+    title: 'Capacidad comercial vs volumen real',
+    desc: 'El equipo procesa bien ~1000 MQL pero le pasamos 1.368 al mes. ¿Qué harías? Concesiones + Plan B.',
+  },
+  {
+    code: 'A3',
+    Icon: Compass,
+    title: 'Modelo de atribución a 4 semanas',
+    desc: 'Si tuvieras 4 semanas para mejorar atribución: ¿qué modelo (last-touch, lineal, time-decay, position-based, data-driven) y por qué? ¿Cómo lo configurarías en HubSpot?',
+  },
+  {
+    code: 'A4',
+    Icon: DollarSign,
+    title: 'Número clave para defender paid',
+    desc: '¿Cuál reportarías al CEO? Bonus: ¿qué número NO reportarías aunque se vea bonito?',
+  },
+  {
+    code: 'A5',
+    Icon: Zap,
+    title: 'Escalar si comercial se duplica',
+    desc: 'Si el equipo comercial se duplica de un mes para otro, ¿qué acciones sugerirías para escalar de forma responsable el alcance en marketing digital?',
+  },
+  {
+    code: 'A6',
+    Icon: Scissors,
+    title: 'Reducción de costos a la mitad',
+    desc: 'Asume que tu arquitectura cuesta $X procesar una unidad (lead, llamada, pieza). Loggro escala 10x. ¿Cómo bajas el costo a la mitad sin perder calidad significativa?',
+  },
+];
+---
+
+<section id="caso-negocio" class="py-20 md:py-28 px-6 md:px-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-baseline gap-3 mb-4 flex-wrap">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE A · OBLIGATORIA</p>
+      <span class="font-pixel text-[9px] text-fg-subtle">peso: 15% · 60 minutos · todos la hacen</span>
+    </div>
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">El caso de negocio</h2>
+    <p class="text-lg text-fg-muted mb-4 max-w-3xl leading-relaxed">
+      Recibís un snapshot real (anonimizado) del último mes del funnel de Loggro para un producto: 3.600 contactos, 1.368 MQL, 561 SQL, 42 clientes nuevos. Stack HubSpot + n8n + Meta/Google/LinkedIn + WhatsApp + GA4.
+    </p>
+    <p class="text-base text-fg-muted mb-12 max-w-3xl leading-relaxed">
+      <strong class="text-fg">Documento de máximo 1.5 páginas o 700 palabras</strong>. Si no vienes de marketing, no pasa nada: responde desde primeros principios y declara los supuestos que necesites. Te leerán el Director de Marketing y el Director Comercial.
+    </p>
+
+    <p class="font-pixel text-[10px] uppercase tracking-widest text-fg-subtle mb-6">
+      {'> '} 6 PREGUNTAS QUE RESPONDES
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-5 mb-10">
+      {preguntas.map(({ code, Icon, title, desc }) => (
+        <div class="p-6 bg-surface border-pixel shadow-pixel-md">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="shrink-0 w-12 h-12 grid place-items-center border-2 border-fg bg-brand-primary/15 text-brand-primary-text pixel-corners">
+              <Icon size={22} />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-pixel text-xs text-fg-subtle mb-1">{code}</p>
+              <h3 class="text-base font-bold leading-snug">{title}</h3>
+            </div>
+          </div>
+          <p class="text-sm text-fg-muted leading-relaxed">{desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="p-7 bg-surface border-pixel shadow-pixel-md italic">
+      <p class="text-sm text-fg-muted leading-relaxed">
+        No buscamos fórmulas perfectas. Buscamos <strong class="text-fg not-italic">razonamiento aterrizado, supuestos explícitos, y comodidad con la incertidumbre</strong>.
+      </p>
+    </div>
+  </div>
+</section>
