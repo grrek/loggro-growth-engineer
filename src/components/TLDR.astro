@@ -11,10 +11,10 @@ const stats = [
 ];
 
 const misionesPrimarias = [
-  { code: 'A', name: 'Caso de negocio', detail: '6 preguntas sobre el funnel real. 60 min · 15%' },
-  { code: 'B', name: 'Build (eliges 1 de 4 tracks)', detail: 'Pipeline con 3+ sub-agentes + eval. 3-4h · 30%' },
-  { code: 'Apéndice', name: 'AI Audit Log + Stack + Loom', detail: 'Documentas cómo trabajaste con IA. 45 min · 15%' },
-  { code: 'C', name: 'Sesión en vivo', detail: 'Plan / Build / Review / Defensa. 60 min · 35%' },
+  { code: 'A', name: 'Caso de negocio', detail: 'Analiza el caso y responde 6 preguntas sobre el funnel real. 60 min · 15%' },
+  { code: 'B', name: 'Build (eliges 1 de 4 tracks)', detail: 'Elije el escenario, analiza, desarrolla y sube a tu repo la solución con pipeline + documentación. 3-4h · 30%' },
+  { code: 'Apéndice', name: 'Completa el AI Audit Log + Stack + Loom', detail: 'Documentas cómo trabajaste con IA. 45 min · 15%' },
+  { code: 'C', name: 'Sesión en vivo', detail: 'Tengamos una charla sobre tu solución y enfoque. Plan / Build / Review / Sustentación. 60 min · 35%' },
 ];
 
 const misionesSecundarias = [
@@ -60,47 +60,53 @@ const reglasHonestidad = [
       Si solo lees una sección de esta página, que sea esta.
     </p>
 
-    <!-- Stage indicator + Video lado a lado -->
-    <div class="mb-10 grid md:grid-cols-[1fr_auto] gap-6 items-start max-w-5xl">
-      <div class="p-6 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
-        <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
-          {'> '} STAGE 4 OF 5 · PLAYER 1 READY
-        </p>
-        <p class="text-base text-fg leading-relaxed mb-3">
-          Llegaste hasta acá porque las tres primeras fases salieron bien: <strong class="text-fg">fit cultural</strong>, <strong class="text-fg">entrevista con el director</strong> y <strong class="text-fg">pruebas psicotécnicas</strong> ya están superadas. Nos gustó cómo eres y cómo piensas.
-        </p>
-        <p class="text-base text-fg-muted leading-relaxed">
-          Esto es el último filtro técnico antes de la oferta. Sirve para vos y para nosotros: vos ves cómo se vería un día real del rol; nosotros vemos cómo operas con IA bajo un escenario realista.
-        </p>
-        <div class="mt-5 flex flex-wrap items-center gap-2 font-pixel text-[9px] uppercase tracking-widest">
-          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">fit</span>
-          <span class="text-fg-subtle">→</span>
-          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">entrevista</span>
-          <span class="text-fg-subtle">→</span>
-          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">psicotécnicas</span>
-          <span class="text-fg-subtle">→</span>
-          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black animate-pulse">reto técnico</span>
-          <span class="text-fg-subtle">→</span>
-          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle">oferta</span>
+    <!-- Stage Indicator + EL_ROL (columna izquierda) + Video (columna derecha) -->
+    <div class="mb-12 grid md:grid-cols-[1fr_auto] gap-6 items-start max-w-5xl">
+      <div class="space-y-6 min-w-0">
+        <!-- Stage indicator -->
+        <div class="p-6 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
+          <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
+            {'> '} STAGE 4 OF 5 · PLAYER 1 READY
+          </p>
+          <p class="text-base text-fg leading-relaxed mb-3">
+            Llegaste hasta acá porque las tres primeras fases salieron bien: <strong class="text-fg">fit cultural</strong>, <strong class="text-fg">entrevista con el director</strong> y <strong class="text-fg">pruebas psicotécnicas</strong> ya están superadas. Nos gustó cómo eres y cómo piensas.
+          </p>
+          <p class="text-base text-fg-muted leading-relaxed">
+            Esto es el último filtro técnico antes de la oferta. Sirve para vos y para nosotros: vos ves cómo se vería un día real del rol; nosotros vemos cómo operas con IA bajo un escenario realista.
+          </p>
+          <div class="mt-5 flex flex-wrap items-center gap-2 font-pixel text-[9px] uppercase tracking-widest">
+            <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">fit</span>
+            <span class="text-fg-subtle">→</span>
+            <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">entrevista</span>
+            <span class="text-fg-subtle">→</span>
+            <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">psicotécnicas</span>
+            <span class="text-fg-subtle">→</span>
+            <span class="px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black animate-pulse">reto técnico</span>
+            <span class="text-fg-subtle">→</span>
+            <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle">oferta</span>
+          </div>
+        </div>
+
+        <!-- El rol al que estás aplicando -->
+        <div class="p-6 bg-surface border-pixel shadow-pixel-md">
+          <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
+            {'> '} EL_ROL
+          </p>
+          <p class="text-xl md:text-2xl font-extrabold mb-2 leading-tight">Growth Engineer — Automatización & IA</p>
+          <p class="text-sm text-fg-subtle font-mono mb-4">Pilar MarkOps · Modalidad alternancia · Aumento de capacidad del equipo</p>
+          <p class="text-base text-fg-muted leading-relaxed mb-3">
+            Mitad RevOps, mitad laboratorio. Vas a <strong class="text-fg">operar</strong> el stack de revenue de Loggro (HubSpot + n8n + WhatsApp + GA4 + Meta/Google/LinkedIn) para que Marketing, Ventas y Servicio funcionen como un solo embudo con datos confiables — y al mismo tiempo, <strong class="text-fg">proponer y experimentar</strong> con herramientas de IA aplicadas a growth: clasificadores, agentes, apps prototipo, automatizaciones nuevas.
+          </p>
+          <p class="text-base text-fg-muted leading-relaxed">
+            No es solo "configurar workflows". Es generar ideas, construir el prototipo, medir si funciona con usuarios reales, y decidir si escala o si pivota. La IA es el sistema operativo del trabajo diario, no una curiosidad.
+          </p>
         </div>
       </div>
 
-      <VideoBienvenida maxWidth="240px" />
-    </div>
-
-    <!-- El rol al que estás aplicando -->
-    <div class="mb-12 p-6 bg-surface border-pixel shadow-pixel-md max-w-3xl">
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
-        {'> '} EL_ROL
-      </p>
-      <p class="text-xl md:text-2xl font-extrabold mb-2 leading-tight">Growth Engineer — Automatización & IA</p>
-      <p class="text-sm text-fg-subtle font-mono mb-4">Pilar MarkOps · Modalidad alternancia · Aumento de capacidad del equipo</p>
-      <p class="text-base text-fg-muted leading-relaxed mb-3">
-        Mitad RevOps, mitad laboratorio. Vas a <strong class="text-fg">operar</strong> el stack de revenue de Loggro (HubSpot + n8n + WhatsApp + GA4 + Meta/Google/LinkedIn) para que Marketing, Ventas y Servicio funcionen como un solo embudo con datos confiables — y al mismo tiempo, <strong class="text-fg">proponer y experimentar</strong> con herramientas de IA aplicadas a growth: clasificadores, agentes, apps prototipo, automatizaciones nuevas.
-      </p>
-      <p class="text-base text-fg-muted leading-relaxed">
-        No es solo "configurar workflows". Es generar ideas, construir el prototipo, medir si funciona con usuarios reales, y decidir si escala o si pivota. La IA es el sistema operativo del trabajo diario, no una curiosidad.
-      </p>
+      <!-- Video sticky para que acompañe el scroll de los 2 bloques izquierda -->
+      <div class="md:sticky md:top-6">
+        <VideoBienvenida maxWidth="260px" />
+      </div>
     </div>
 
     <!-- Párrafo humano de resumen -->
