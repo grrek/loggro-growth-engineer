@@ -1,4 +1,24 @@
 [
-  { "code": "g1", "firstName": "Gregorio" },
+  { "code": "ga", "firstName": "Gregorio" },
+  { "code": "ec", "firstName": "Edison" },
+  { "code": "av", "firstName": "Alejandro" },
+
+  { "code": "cs", "firstName": "Cristian S." },
+  { "code": "ca", "firstName": "Cristian A." },
+  { "code": "em", "firstName": "Edwing" },
+  { "code": "es", "firstName": "Emanuel" },
+  { "code": "fl", "firstName": "Felipe" },
+  { "code": "jg", "firstName": "Juan" },
+  { "code": "sm", "firstName": "Sebastian" },
+
+  { "code": "am", "firstName": "Andrea" },
+  { "code": "ch", "firstName": "Christian H." },
+  { "code": "cc", "firstName": "Cristian C." },
+  { "code": "dp", "firstName": "Damian" },
+  { "code": "dq", "firstName": "David" },
+  { "code": "jc", "firstName": "Jesus" },
+  { "code": "jm", "firstName": "Jhon" },
+  { "code": "lp", "firstName": "Leonardo" },
+
   { "code": "demo", "firstName": "demo" }
 ]
