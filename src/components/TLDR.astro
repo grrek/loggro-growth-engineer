@@ -1,6 +1,7 @@
 ---
 import { Clock, Target, Layers, Award, FileCheck, ScrollText, Mic, Github, ArrowDown, Trophy, Sparkles, Star, Workflow, MessagesSquare } from 'lucide-react';
 import PixelSprite from './PixelSprite.astro';
+import VideoBienvenida from './VideoBienvenida.astro';
 
 const stats = [
   { Icon: Clock, label: 'Timer', value: '48 h', sub: 'sin extensiones' },
@@ -59,28 +60,32 @@ const reglasHonestidad = [
       Si solo lees una sección de esta página, que sea esta.
     </p>
 
-    <!-- Stage indicator: dónde estás en el proceso -->
-    <div class="mb-10 p-6 bg-surface border-pixel shadow-pixel-md max-w-3xl" style="border-color: var(--arcade-yellow-bright);">
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
-        {'> '} STAGE 4 OF 5 · PLAYER 1 READY
-      </p>
-      <p class="text-base text-fg leading-relaxed mb-3">
-        Llegaste hasta acá porque las tres primeras fases salieron bien: <strong class="text-fg">fit cultural</strong>, <strong class="text-fg">entrevista con el director</strong> y <strong class="text-fg">pruebas psicotécnicas</strong> ya están superadas. Nos gustó cómo eres y cómo piensas.
-      </p>
-      <p class="text-base text-fg-muted leading-relaxed">
-        Esto es el último filtro técnico antes de la oferta. Sirve para vos y para nosotros: vos ves cómo se vería un día real del rol; nosotros vemos cómo operas con IA bajo un escenario realista.
-      </p>
-      <div class="mt-5 flex flex-wrap items-center gap-2 font-pixel text-[9px] uppercase tracking-widest">
-        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">fit</span>
-        <span class="text-fg-subtle">→</span>
-        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">entrevista</span>
-        <span class="text-fg-subtle">→</span>
-        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">psicotécnicas</span>
-        <span class="text-fg-subtle">→</span>
-        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black animate-pulse">reto técnico</span>
-        <span class="text-fg-subtle">→</span>
-        <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle">oferta</span>
+    <!-- Stage indicator + Video lado a lado -->
+    <div class="mb-10 grid md:grid-cols-[1fr_auto] gap-6 items-start max-w-5xl">
+      <div class="p-6 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
+        <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-4">
+          {'> '} STAGE 4 OF 5 · PLAYER 1 READY
+        </p>
+        <p class="text-base text-fg leading-relaxed mb-3">
+          Llegaste hasta acá porque las tres primeras fases salieron bien: <strong class="text-fg">fit cultural</strong>, <strong class="text-fg">entrevista con el director</strong> y <strong class="text-fg">pruebas psicotécnicas</strong> ya están superadas. Nos gustó cómo eres y cómo piensas.
+        </p>
+        <p class="text-base text-fg-muted leading-relaxed">
+          Esto es el último filtro técnico antes de la oferta. Sirve para vos y para nosotros: vos ves cómo se vería un día real del rol; nosotros vemos cómo operas con IA bajo un escenario realista.
+        </p>
+        <div class="mt-5 flex flex-wrap items-center gap-2 font-pixel text-[9px] uppercase tracking-widest">
+          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">fit</span>
+          <span class="text-fg-subtle">→</span>
+          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">entrevista</span>
+          <span class="text-fg-subtle">→</span>
+          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle line-through">psicotécnicas</span>
+          <span class="text-fg-subtle">→</span>
+          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-brand-primary text-black animate-pulse">reto técnico</span>
+          <span class="text-fg-subtle">→</span>
+          <span class="px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt text-fg-subtle">oferta</span>
+        </div>
       </div>
+
+      <VideoBienvenida maxWidth="240px" />
     </div>
 
     <!-- El rol al que estás aplicando -->
