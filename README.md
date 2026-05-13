@@ -115,6 +115,76 @@ Copia `.env.example` a `.env` y rellena lo que aplique.
 - **Este repo:** [grrek/loggro-growth-engineer](https://github.com/grrek/loggro-growth-engineer) — código del microsite
 - **Repo template del candidato:** [grrek/loggro-ai-challenge](https://github.com/grrek/loggro-ai-challenge) — lo que clona el candidato con `gh repo create --template`
 
+## Personalización + tracking
+
+El microsite saluda por nombre a los candidatos invitados via query param. Sin terceros, sin GA4, sin n8n: solo Caddy logs.
+
+### Cómo invitar a alguien
+
+1. Agregar al candidato en [src/data/candidatos.json](src/data/candidatos.json):
+   ```json
+   { "code": "cs7", "firstName": "Cristian" }
+   ```
+2. Re-deploy (`./scripts/deploy.sh`)
+3. Mandarle el link: `https://labs.loggro.com/growth-engineer?n=cs7`
+4. El sitio lo saluda: "Hola, Cristian." Y cada hit queda registrado con su código.
+
+Si llega sin código o con uno inválido, ve "Hola!" genérico y el hit se registra con `code=none`.
+
+### Qué se trackea
+
+Eventos disparados con `navigator.sendBeacon` a `/growth-engineer/_t?n=<code>&e=<event>&...` (Caddy responde 204 y loggea el hit):
+
+| Evento | Cuándo |
+|---|---|
+| `view` | Al cargar la página, con `match=1` si el código existe en JSON |
+| `scroll` | Al pasar 25%, 50%, 75%, 100% de scroll |
+| `hero_cta` | Click en "Empezar el reto" del Hero |
+| `accept_cta` | Click en "Aceptar el reto" del Footer (el más importante: indica intención) |
+| `video_play` | Cuando arranca el video de bienvenida |
+| `exit` | En `pagehide`, con `duration` en segundos y `scroll` final |
+
+### Ver el reporte
+
+```bash
+./scripts/track-report.sh                  # último día
+./scripts/track-report.sh --since 7d       # 7 días
+./scripts/track-report.sh --code cs7       # solo un candidato
+./scripts/track-report.sh --raw            # JSON crudo
+```
+
+Output esperado:
+
+```
+==> Hits por código:
+   12 cs7
+    5 jh3
+    2 none
+
+==> Eventos por tipo:
+    8 view
+    6 scroll
+    3 video_play
+    2 accept_cta
+```
+
+### Cómo funciona por debajo
+
+- Frontend: [src/lib/track.ts](src/lib/track.ts) hace `navigator.sendBeacon` (no bloquea unload)
+- Caddy: bloque `handle /growth-engineer/_t* { respond 204 }` antes del `handle_path` del microsite
+- Logs: Caddy loggea todo a stdout en JSON (`log { output stdout; format json }`). El script `track-report.sh` lee `docker logs caddy` con `jq` y filtra por path `/growth-engineer*`
+
+Limitaciones honestas:
+- **Docker logs tienen rotación.** Por defecto Docker mantiene 10MB. Después de eso se pierde histórico. Para retención larga, agregar un cron que persista `docker logs --since 1h > archivo` cada hora
+- **No hay dashboard visual.** Solo CLI. Si querés UI, podemos plugar Plausible self-hosted después
+- **Si el candidato bloquea sendBeacon (raro)**, no se trackea el `exit` pero sí los hits server-side a páginas
+
+### Privacidad
+
+- El JSON de candidatos solo tiene `code + firstName`. Sin email, sin teléfono, sin nada PII más allá del nombre de pila
+- IP cliente queda en los logs (estándar HTTP), agregada después de 30 días en compliance con habeas data interno
+- No usamos cookies. Solo sessionStorage para mantener el código durante la visita
+
 ## Easter eggs y atajos
 
 - `/` o `⌘K` → command palette con búsqueda

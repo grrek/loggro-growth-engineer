@@ -1,5 +1,6 @@
 ---
 import Terminal from './Terminal';
+import PersonalizedGreeting from './PersonalizedGreeting';
 ---
 
 <section class="relative min-h-[92vh] flex items-center justify-center px-6 md:px-8 pt-24 pb-16 overflow-hidden cursor-crosshair">
@@ -40,6 +41,9 @@ import Terminal from './Terminal';
 
   <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center relative">
     <div class="animate-fade-in">
+      <!-- Saludo personalizado (hidrata client-side, lee ?n= y trackea via beacon) -->
+      <PersonalizedGreeting client:load />
+
       <!-- Insignia parpadeante con el rol -->
       <div class="inline-flex items-center gap-2 mb-8 px-3 py-2 border-2 border-fg bg-surface-alt shadow-pixel-sm pixel-corners">
         <span class="w-2 h-2 bg-brand-primary animate-blink"></span>
@@ -62,6 +66,7 @@ import Terminal from './Terminal';
       <div class="flex flex-wrap gap-4 items-center">
         <a
           href="#tldr"
+          data-track="hero_cta"
           class="group relative inline-flex items-center gap-2 px-7 py-4 bg-brand-primary text-black font-pixel text-xs uppercase tracking-widest border-2 border-fg btn-pixel"
         >
           <span>Empezar el reto</span>

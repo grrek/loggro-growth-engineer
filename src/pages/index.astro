@@ -21,6 +21,7 @@ import TableOfContents from '../components/TableOfContents.astro';
 import AsciiDivider from '../components/AsciiDivider.astro';
 import CommandPalette from '../components/CommandPalette';
 import KonamiOverlay from '../components/KonamiOverlay';
+import TrackingListener from '../components/TrackingListener';
 ---
 
 <Base title="Loggro - Reto VE-1770" description="Reto técnico para el rol de Especialista en Automatización, IA y Growth en Loggro. 48 horas. 4 tracks. Tu criterio en primer plano.">
@@ -61,4 +62,5 @@ import KonamiOverlay from '../components/KonamiOverlay';
   <Footer />
   <CommandPalette client:idle />
   <KonamiOverlay client:idle />
+  <TrackingListener client:idle />
 </Base>
