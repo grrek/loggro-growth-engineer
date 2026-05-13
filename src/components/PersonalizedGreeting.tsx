@@ -66,7 +66,7 @@ export default function PersonalizedGreeting() {
 
   if (greeting.matched) {
     return (
-      <p className="mb-6 animate-fade-in font-pixel text-xs md:text-sm uppercase tracking-widest text-brand-primary-text text-glow-primary leading-relaxed">
+      <p className="mb-6 animate-fade-in font-pixel text-base md:text-2xl lg:text-3xl uppercase tracking-widest text-brand-primary-text text-glow-primary leading-relaxed">
         <span aria-hidden="true">{'> '}</span>
         {greeting.text.toUpperCase()}.
         <span className="animate-blink ml-1">█</span>
@@ -75,7 +75,7 @@ export default function PersonalizedGreeting() {
   }
 
   return (
-    <p className="mb-6 animate-fade-in font-pixel text-[11px] uppercase tracking-widest text-brand-primary-text leading-relaxed">
+    <p className="mb-6 animate-fade-in font-pixel text-sm md:text-base uppercase tracking-widest text-brand-primary-text leading-relaxed">
       <span aria-hidden="true">{'> '}</span>
       {greeting.text}
       <span className="animate-blink ml-1">█</span>

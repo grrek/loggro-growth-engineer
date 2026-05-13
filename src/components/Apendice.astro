@@ -8,14 +8,19 @@ import {
   MessagesSquare,
 } from 'lucide-react';
 
+const REPO_URL = 'https://github.com/grrek/loggro-ai-challenge';
+const REPO_BLOB = `${REPO_URL}/blob/main`;
+const REPO_TREE = `${REPO_URL}/tree/main`;
+
 const items = [
   {
     Icon: ListChecks,
     code: 'A1',
     title: 'AI Audit Log',
     obligatorio: true,
-    desc: 'Registro de cada vez que usaste IA durante el reto: qué le pediste, qué te dio, qué tuviste que corregir, y qué aprendiste. Mínimo 10 entradas. No es para mostrarte prolijo, es para que veamos tu criterio real sobre la IA.',
+    desc: 'Registro de cada vez que usaste IA durante el reto: qué le pediste, qué te dio, qué tuviste que corregir, y qué aprendiste. Mínimo 10 entradas con fricción documentada.',
     file: 'docs/AI_AUDIT_LOG.md',
+    fileUrl: `${REPO_BLOB}/docs/AI_AUDIT_LOG_template.md`,
   },
   {
     Icon: Layers,
@@ -24,6 +29,7 @@ const items = [
     obligatorio: true,
     desc: 'Tu setup real de IA en el día a día. Modelos que usas, MCPs conectados, herramientas favoritas. Si no usas una categoría, dilo: no inventes.',
     file: 'docs/AI_STACK.md',
+    fileUrl: `${REPO_BLOB}/docs/AI_STACK_template.md`,
   },
   {
     Icon: Video,
@@ -32,6 +38,7 @@ const items = [
     obligatorio: true,
     desc: 'Defiendes 3 decisiones del entregable: una de arquitectura, una donde la IA te dio algo y lo cambiaste, una de "no construir". Hablas a cámara, no lees la pantalla.',
     file: 'URL en tu README final',
+    fileUrl: null,
   },
   {
     Icon: Github,
@@ -40,6 +47,7 @@ const items = [
     obligatorio: false,
     desc: 'Opcional. Si te sientes cómodo, mándanos tu perfil + top 3 repos + 1 línea por cada uno. Si tienes un MCP server propio, suma muchísimo.',
     file: 'enlace en README',
+    fileUrl: null,
   },
   {
     Icon: Gavel,
@@ -47,15 +55,17 @@ const items = [
     title: 'Extensión del judge prompt',
     obligatorio: true,
     desc: 'El repo trae eval/judge_prompt.md público (rúbrica de 5 dimensiones que usa un LLM para evaluarte). Lo extiendes con 2 a 3 criterios tuyos, corres un sabotage test contra 2 outputs deliberadamente malos, y reportas si tu judge atrapó el sabotaje. Este sub-ejercicio es el de más alto signal de toda la prueba.',
-    file: 'eval/judge_prompt_extended.md',
+    file: 'eval/judge_prompt.md',
+    fileUrl: `${REPO_BLOB}/eval/judge_prompt.md`,
   },
   {
     Icon: MessagesSquare,
     code: 'A6',
     title: 'Prompts versionados + transcripts/exports',
     obligatorio: true,
-    desc: 'Los prompts reales que tu pipeline usa (no los del Audit Log, esos son notas). Versionados en /prompts/ o /eval/prompts/ con un README breve por cada uno. Más: exports o screenshots de 2 a 3 sesiones representativas con tu agente (Claude Code /export, transcript de Cursor, screenshot del chat). No tiene que ser todo: lo que muestre cómo trabajaste.',
+    desc: 'Los prompts reales que tu pipeline usa (no los del Audit Log, esos son notas). Versionados en /prompts/ con un README breve por cada uno. Más: exports o screenshots de 2 a 3 sesiones representativas con tu agente (Claude Code /export, transcript de Cursor, screenshot del chat). No tiene que ser todo: lo que muestre cómo trabajaste.',
     file: 'prompts/ + docs/sessions/',
+    fileUrl: `${REPO_TREE}/prompts`,
   },
 ];
 ---
@@ -75,7 +85,7 @@ const items = [
     </p>
 
     <div class="grid md:grid-cols-2 gap-5">
-      {items.map(({ Icon, code, title, obligatorio, desc, file }) => (
+      {items.map(({ Icon, code, title, obligatorio, desc, file, fileUrl }) => (
         <div class={`p-6 bg-surface border-pixel shadow-pixel-md`}>
           <div class="flex items-start gap-4 mb-3">
             <div class="shrink-0 w-12 h-12 grid place-items-center border-2 border-fg bg-brand-primary/15 text-brand-primary-text pixel-corners">
@@ -90,9 +100,22 @@ const items = [
             </div>
           </div>
           <p class="text-sm text-fg-muted leading-relaxed mb-3 font-sans">{desc}</p>
-          <p class="text-[10px] text-fg-subtle font-mono pl-1">
-            <span class="text-brand-primary-text">{'>'}</span> {file}
-          </p>
+          {fileUrl ? (
+            <a
+              href={fileUrl}
+              target="_blank"
+              rel="noopener"
+              class="text-[10px] text-fg-subtle hover:text-brand-primary-text font-mono pl-1 inline-flex items-center gap-1 transition-colors"
+            >
+              <span class="text-brand-primary-text">{'>'}</span>
+              <span class="underline decoration-dotted underline-offset-2">{file}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <p class="text-[10px] text-fg-subtle font-mono pl-1">
+              <span class="text-brand-primary-text">{'>'}</span> {file}
+            </p>
+          )}
         </div>
       ))}
     </div>
