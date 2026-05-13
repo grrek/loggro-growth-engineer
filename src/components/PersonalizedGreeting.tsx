@@ -13,12 +13,17 @@ const findCandidato = (code: string): Candidato | null => {
 };
 
 interface GreetingState {
-  text: string;
+  fullText: string;
   matched: boolean;
 }
 
+const TYPE_SPEED = 70;
+const TYPE_PAUSE_BEFORE_CURSOR = 200;
+
 export default function PersonalizedGreeting() {
   const [greeting, setGreeting] = useState<GreetingState | null>(null);
+  const [typedText, setTypedText] = useState<string>('');
+  const [doneTyping, setDoneTyping] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -30,14 +35,14 @@ export default function PersonalizedGreeting() {
       setCode(codeFromUrl);
       const c = findCandidato(codeFromUrl);
       if (c) {
-        setGreeting({ text: `Hola, ${c.firstName}`, matched: true });
+        setGreeting({ fullText: `Hola, ${c.firstName}.`, matched: true });
         track({ event: 'view', extra: { match: '1' } });
       } else {
-        setGreeting({ text: 'Hola!', matched: false });
+        setGreeting({ fullText: 'Hola!', matched: false });
         track({ event: 'view', extra: { match: '0' } });
       }
     } else {
-      setGreeting({ text: 'Hola!', matched: false });
+      setGreeting({ fullText: 'Hola!', matched: false });
       track({ event: 'view' });
     }
 
@@ -59,6 +64,27 @@ export default function PersonalizedGreeting() {
     return () => window.removeEventListener('pagehide', onLeave);
   }, []);
 
+  // Efecto typewriter: cuando greeting está listo, tipea letra por letra
+  useEffect(() => {
+    if (!greeting) return;
+    const target = greeting.matched ? greeting.fullText.toUpperCase() : greeting.fullText;
+    setTypedText('');
+    setDoneTyping(false);
+
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      if (i > target.length) {
+        clearInterval(interval);
+        setTimeout(() => setDoneTyping(true), TYPE_PAUSE_BEFORE_CURSOR);
+        return;
+      }
+      setTypedText(target.slice(0, i));
+    }, TYPE_SPEED + Math.random() * 30);
+
+    return () => clearInterval(interval);
+  }, [greeting]);
+
   // Reserva un alto para no causar layout shift entre estados.
   if (!mounted || !greeting) {
     return <div aria-hidden="true" className="mb-6 h-5 md:h-6 opacity-0" />;
@@ -68,7 +94,7 @@ export default function PersonalizedGreeting() {
     return (
       <p className="mb-6 animate-fade-in font-pixel text-base md:text-2xl lg:text-3xl uppercase tracking-widest text-brand-primary-text text-glow-primary leading-relaxed">
         <span aria-hidden="true">{'> '}</span>
-        {greeting.text.toUpperCase()}.
+        {typedText}
         <span className="animate-blink ml-1">█</span>
       </p>
     );
@@ -77,7 +103,7 @@ export default function PersonalizedGreeting() {
   return (
     <p className="mb-6 animate-fade-in font-pixel text-sm md:text-base uppercase tracking-widest text-brand-primary-text leading-relaxed">
       <span aria-hidden="true">{'> '}</span>
-      {greeting.text}
+      {typedText}
       <span className="animate-blink ml-1">█</span>
     </p>
   );

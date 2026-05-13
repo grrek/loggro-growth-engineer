@@ -1,5 +1,6 @@
 ---
 import { Compass, Hammer, Eye, Shield } from 'lucide-react';
+import PixelSprite from './PixelSprite.astro';
 
 const bloques = [
   {
@@ -23,16 +24,20 @@ const bloques = [
   {
     Icon: Shield,
     code: '00:50 a 01:00',
-    title: 'Defensa',
-    desc: 'Te hacemos preguntas duras sobre las 3 decisiones que defendiste en tu Loom. Defiéndelas con criterio, admitiendo límites donde aplique.',
+    title: 'Sustentación',
+    desc: 'Te hacemos preguntas duras sobre las 3 decisiones que sustentaste en tu Loom. Sustentalas con criterio, admitiendo límites donde aplique.',
   },
 ];
 ---
 
 <section id="sesion-en-vivo" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
   <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-3">
+      <PixelSprite type="skull" size={26} class="text-arcade-red-bright" animated />
+      <PixelSprite type="sword" size={28} class="text-brand-primary-text" animated />
+    </div>
     <div class="flex items-baseline gap-3 mb-3">
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE C</p>
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE C · BOSS FIGHT</p>
       <span class="text-xs font-mono text-fg-subtle">peso: 35% · 60 minutos · en vivo</span>
     </div>
     <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">La sesión en vivo</h2>

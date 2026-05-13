@@ -53,8 +53,8 @@ const COMMANDS: Command[] = [
     output: 'Claude Code 2.5.1 (Opus 4.7, 1M context)\n30d active · $124 spent · opus (62%) sonnet (35%) haiku (3%)',
   },
   {
-    cmd: 'npm run eval -- --held-out',
-    output: 'Running 5 held-out cases...\n  [✓] case_01 · score 0.91\n  [✓] case_02 · score 0.88\n  [✓] case_03 · score 0.82\n  [✗] case_04 · score 0.61\n  [✓] case_05 · score 0.87\nReasoning quality: 0.84\nThreshold: cumplido',
+    cmd: 'curl -u $WHISPER_USER:$WHISPER_PASSWORD -F audio_file=@call-01.mp3 -F language=es $WHISPER_URL/asr | jq -r .text | head -3',
+    output: 'gracias por contactar a Loggro. Mira, te cuento, la verdad\nes que ya venimos pensando en cambiarnos hace rato pero no\nencontramos algo que cuadre con nuestro modelo de negocio...',
   },
 ];
 

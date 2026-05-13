@@ -1,44 +1,44 @@
 ---
 const dimensiones = [
   {
-    name: 'Workflow decomposition',
-    pobre: 'No mapea proceso humano',
-    bueno: 'Lo mapea + restricciones + decisiones de no-build con razón',
+    name: 'Descomposición del flujo',
+    pobre: 'No mapea el proceso humano',
+    bueno: 'Lo mapea con restricciones + decisiones de no-construir con razón',
   },
   {
-    name: 'AI / tool fluency',
+    name: 'Fluidez con IA y herramientas',
     pobre: 'Un prompt gigante sin estructura',
-    bueno: 'Prompts modulares + tool use + caching + eval de prompts',
+    bueno: 'Prompts modulares + tool use + caching + evaluación de prompts',
   },
   {
-    name: 'Eval discipline',
-    pobre: 'No hay eval',
-    bueno: 'Eval set + threshold + edge cases + plan A/B',
+    name: 'Disciplina de evaluación',
+    pobre: 'No tiene cómo medir si su pipeline funciona',
+    bueno: 'Extiende el juez con criterios propios + test de sabotaje que atrapa outputs malos',
   },
   {
-    name: 'Cost / latency',
-    pobre: 'No menciona',
-    bueno: 'Estima + benchmarks + plan de bajada A/B',
+    name: 'Costo y latencia',
+    pobre: 'No los menciona',
+    bueno: 'Los estima + referencias + plan de bajada A/B',
   },
   {
-    name: 'Defense en vivo',
+    name: 'Sustentación en vivo',
     pobre: 'Cambia al primer "por qué"',
-    bueno: 'Defiende con criterio, admite límites, propone alternativa',
+    bueno: 'Sustenta con criterio, admite límites, propone alternativa',
   },
 ];
 
-const thresholds = [
-  { name: 'LLM-as-judge async', value: '>= 0.7 promedio' },
+const criterios = [
+  { name: 'Revisión con LLM (asíncrona)', value: '>= 0.7 promedio' },
   { name: 'AgentLint sobre tu CLAUDE.md (en vivo)', value: '>= 60 / 100' },
-  { name: 'Human review (equipo evaluador)', value: '>= 7.0 / 10' },
-  { name: 'AI Audit Log con criterio', value: 'presente y no trivial' },
+  { name: 'Revisión humana (equipo evaluador)', value: '>= 7.0 / 10' },
+  { name: 'Bitácora de uso de IA con criterio', value: 'presente y no trivial' },
 ];
 
-const lentes = [
-  { name: 'LLM-as-judge async', desc: 'Script con Claude API + rúbrica versionada en eval/judge_prompt.md. Procesa todo tu entregable async después de tu push final.' },
-  { name: 'Human review en frío', desc: 'El líder del rol y el Tech Lead califican por separado antes de hablar entre ellos. Sobre el repo + el Loom.' },
-  { name: 'LLM review post-sesión en vivo', desc: 'Grabación de Parte C procesada con Claude usando rúbrica predefinida. Captura señales que se escapan en vivo.' },
-  { name: 'Judge extension + sabotage test (tu Apéndice.A5)', desc: 'Lo evalúa otro LLM: extendiste el judge bien? tu sabotage atrapó outputs malos? Lo más alto signal para este rol.' },
+const enfoques = [
+  { name: 'Revisión con LLM (asíncrona)', desc: 'Script con Claude API + rúbrica versionada en eval/judge_prompt.md. Procesa todo tu entregable después de tu push final.' },
+  { name: 'Revisión humana en frío', desc: 'El líder del rol y el Tech Lead califican por separado antes de hablar entre ellos. Sobre el repo + el Loom.' },
+  { name: 'Revisión con LLM de la sesión en vivo', desc: 'Grabación de la sesión en vivo procesada con Claude usando rúbrica predefinida. Captura señales que se escapan en vivo.' },
+  { name: 'Extensión del juez + prueba de sabotaje (tu Apéndice.A5)', desc: 'Lo evalúa otro LLM: ¿extendiste bien el juez? ¿tu prueba de sabotaje atrapó outputs malos? La señal más alta para este rol.' },
 ];
 ---
 
@@ -74,9 +74,9 @@ const lentes = [
     </div>
 
     <div class="mb-16">
-      <h3 class="text-xl font-bold mb-6">4 thresholds para avanzar a entrevista final</h3>
+      <h3 class="text-xl font-bold mb-6">4 criterios para avanzar a entrevista final</h3>
       <div class="grid md:grid-cols-2 gap-3">
-        {thresholds.map((t) => (
+        {criterios.map((t) => (
           <div class="p-4 rounded-lg border border-line bg-surface-alt flex justify-between items-center">
             <span class="text-sm font-medium">{t.name}</span>
             <span class="text-sm font-mono text-brand-primary-text font-semibold">{t.value}</span>
@@ -84,16 +84,16 @@ const lentes = [
         ))}
       </div>
       <p class="text-sm text-fg-subtle mt-4">
-        Si pasas los 5: entrevista final. Si pasas 3-4: conversación para revisar. Si pasas menos de 3: descarte respetuoso con feedback escrito.
+        Si pasas los 4: entrevista final. Si pasas 2-3: conversación para revisar. Si pasas menos de 2: descarte respetuoso con retroalimentación escrita.
       </p>
     </div>
 
     <div class="mb-16">
-      <h3 class="text-xl font-bold mb-6">4 lentes de grading</h3>
+      <h3 class="text-xl font-bold mb-6">4 enfoques de evaluación</h3>
       <div class="grid md:grid-cols-2 gap-4">
-        {lentes.map((l, i) => (
+        {enfoques.map((l, i) => (
           <div class="p-5 rounded-lg border border-line">
-            <p class="text-xs font-mono text-fg-subtle mb-2">Lente {i + 1}</p>
+            <p class="text-xs font-mono text-fg-subtle mb-2">Enfoque {i + 1}</p>
             <h4 class="font-semibold mb-2">{l.name}</h4>
             <p class="text-sm text-fg-muted leading-relaxed">{l.desc}</p>
           </div>
@@ -117,9 +117,9 @@ const lentes = [
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Cuestionas supuestos del enunciado de forma inteligente</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Propones Plan B cuando la decisión es difícil</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Tono propio (no "ChatGPT corporativo")</li>
-            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Honestidad en el Audit Log</li>
+            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Honestidad en la bitácora de uso de IA</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> GitHub voluntario con sustancia</li>
-            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Judge prompt bien extendido + sabotaje atrapado</li>
+            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Juez bien extendido + sabotaje atrapado</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Prompt injection encontrado y mitigado (Escenario D)</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> MCP server propio mostrado en la sesión en vivo</li>
           </ul>

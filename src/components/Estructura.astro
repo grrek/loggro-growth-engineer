@@ -36,7 +36,7 @@ const partes = [
   {
     code: 'C',
     name: 'Sesión en vivo',
-    desc: 'Plan / Build / Review con el equipo evaluador. Defensa de 3 decisiones',
+    desc: 'Plan / Build / Review con el equipo evaluador. Sustentación de 3 decisiones',
     tiempo: '60 min',
     peso: '35%',
     async: false,
@@ -51,10 +51,16 @@ const partes = [
     async: true,
   },
 ];
+
+import PixelSprite from './PixelSprite.astro';
 ---
 
 <section id="estructura" class="py-20 md:py-28 px-6 md:px-8">
   <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-3">
+      <PixelSprite type="cartridge" size={26} class="text-brand-primary-text" animated />
+      <PixelSprite type="controller" size={28} animated />
+    </div>
     <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
       {'> '} VISTA DE PÁJARO
     </p>

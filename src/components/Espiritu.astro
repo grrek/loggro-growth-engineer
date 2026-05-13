@@ -1,5 +1,6 @@
 ---
 import { X, Check } from 'lucide-react';
+import PixelSprite from './PixelSprite.astro';
 
 const noEs = [
   'Un cuestionario de preguntas con respuesta correcta',
@@ -20,6 +21,10 @@ const siEs = [
 
 <section id="espiritu" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
   <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-3">
+      <PixelSprite type="heart" size={26} class="text-arcade-red-bright" animated />
+      <PixelSprite type="star" size={26} class="text-arcade-yellow-bright" animated />
+    </div>
     <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
       {'> '} ESPÍRITU DEL RETO
     </p>
