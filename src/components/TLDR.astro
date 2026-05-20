@@ -5,7 +5,7 @@ import VideoBienvenida from './VideoBienvenida.astro';
 
 const stats = [
   { Icon: Clock, label: 'Plazo', value: '48 h', sub: 'para entregar' },
-  { Icon: Target, label: 'Ejercicio', value: '~2 h', sub: 'cronómetro target' },
+  { Icon: Target, label: 'Ejercicio', value: '~2 h', sub: 'dimensionado, sin reloj estricto' },
   { Icon: Layers, label: 'Stages', value: '4 + 2', sub: 'obligatorias + setup/bonus' },
   { Icon: Award, label: 'Sustentación', value: '60 min', sub: 'en vivo, vale 30%' },
 ];
@@ -18,7 +18,7 @@ const misionesPrimarias = [
 ];
 
 const misionesSecundarias = [
-  { name: 'Wildcard (Parte D)', detail: 'Sorpréndenos con algo extra. Hasta +5% XP. Dentro del plazo, fuera del cronómetro de 2h' },
+  { name: 'Wildcard (Parte D)', detail: 'Sorpréndenos con algo extra. Hasta +5% XP. Dentro del plazo de 48h, fuera del ejercicio principal' },
   { name: 'GitHub voluntario', detail: 'Tu perfil + top 3 repos + MCP propio si tienes. Suma' },
   { name: 'Stack IA personal', detail: 'docs/AI_STACK.md con tu setup real. Suma señal sobre tu perfil' },
   { name: 'Encuentra los easter eggs', detail: 'Hay varios escondidos en el microsite. Lo curioso suma' },
@@ -29,8 +29,8 @@ const entregables = [
   { Icon: Workflow, name: 'Pipeline funcional', detail: 'Tu sistema corre end-to-end con un README claro: clonamos tu repo, seguimos instrucciones, procesa el escenario elegido. Sub-agentes coordinados, no scripts sueltos.' },
   { Icon: MessagesSquare, name: 'Prompts versionados', detail: 'Los prompts reales que tu pipeline usa en runtime, en /prompts/ con un README breve por cada uno.' },
   { Icon: ScrollText, name: 'Documento Parte A', detail: 'Caso de negocio en máximo 1 página / 500 palabras.' },
-  { Icon: FileCheck, name: 'AI Audit Log (obligatorio)', detail: 'Mínimo 10 entradas con fricción documentada. Primera entrada marca hora de arranque del cronómetro; última marca el cierre.' },
-  { Icon: Mic, name: 'Video 5 a 10 min', detail: 'Loom, WhatsApp, YouTube unlisted o lo que prefieras. Explicás 3 decisiones (arquitectura, descarte de IA, no-build). Se graba fuera del cronómetro de 2h.' },
+  { Icon: FileCheck, name: 'AI Audit Log (obligatorio)', detail: 'Mínimo 10 entradas con fricción documentada. Lo que usaste, lo que descartaste, lo que aprendiste.' },
+  { Icon: Mic, name: 'Video 5 a 10 min', detail: 'Loom, WhatsApp, YouTube unlisted o lo que prefieras. Explicás 3 decisiones (arquitectura, descarte de IA, no-build). Se graba después del ejercicio, dentro del plazo.' },
 ];
 
 const reglasHonestidad = [
@@ -113,7 +113,7 @@ const reglasHonestidad = [
     <!-- Párrafo humano de resumen -->
     <div class="max-w-3xl mb-12 space-y-4">
       <p class="text-base md:text-lg text-fg leading-relaxed">
-        Para este reto te damos una <strong>foto real</strong> (anonimizada) del embudo de marketing de Loggro, algunos escenarios reales, y un formato simple: <strong>48 horas de plazo para entregar</strong> (te sentás cuando puedas dentro de esos 2 días) y <strong>~2 horas de cronómetro</strong> para el ejercicio en sí. Eliges <strong>1 de 4 escenarios</strong> técnicos (prospección, insights, contenido o inteligencia de llamadas), construyes una solución con un <strong>pipeline IA con varios sub-agentes coordinados</strong>, lo evalúas, y documentas cómo trabajaste con IA.
+        Para este reto te damos una <strong>foto real</strong> (anonimizada) del embudo de marketing de Loggro, algunos escenarios reales, y un formato simple: <strong>48 horas de plazo para entregar</strong> y un ejercicio <strong>dimensionado para ~2 horas</strong> (tomate lo que necesites dentro del plazo). Eliges <strong>1 de 4 escenarios</strong> técnicos (prospección, insights, contenido o inteligencia de llamadas), construyes una solución con un <strong>pipeline IA con varios sub-agentes coordinados</strong>, lo evalúas, y documentas cómo trabajaste con IA.
       </p>
       <p class="text-base md:text-lg text-fg-muted leading-relaxed">
         Después agendamos una <strong class="text-fg">sustentación de 60 minutos</strong> donde presentás lo que construiste, respondés preguntas duras, y revisamos tu Audit Log juntos. Esa sesión vale 30% del puntaje. La barra es alta: buscamos a alguien que sepa operar con IA mejor que la mayoría.
@@ -200,7 +200,7 @@ const reglasHonestidad = [
         <span class="font-pixel text-[10px] px-2 py-1 pixel-corners border-2 border-fg bg-surface-alt">offer?</span>
       </div>
       <p class="mt-4 text-xs text-fg-muted font-sans leading-relaxed">
-        Las partes A · B · Entregable corren a tu ritmo dentro de tus 48 horas (cronómetro de 2h para A + B). La Sustentación es en vivo, se agenda después de tu entrega. La Parte D (Wildcard) la haces cuando quieras dentro del plazo, fuera del cronómetro.
+        Las partes A · B · Entregable corren a tu ritmo dentro de tus 48 horas (A + B están dimensionados para ~2h pero tomate lo que necesites). La Sustentación es en vivo, se agenda después de tu entrega. La Parte D (Wildcard) la haces cuando quieras dentro del plazo.
       </p>
     </div>
 
@@ -236,12 +236,12 @@ const reglasHonestidad = [
         </p>
       </div>
       <div>
-        <h3 class="text-xl md:text-2xl font-bold mb-4 leading-tight">Por qué 48h plazo + 2h cronómetro</h3>
+        <h3 class="text-xl md:text-2xl font-bold mb-4 leading-tight">Por qué 48h de plazo</h3>
         <p class="text-base text-fg-muted leading-relaxed mb-4">
-          Queremos ver cómo decides bajo un escenario realista de MVP usando todas las herramientas de IA, no cómo pules 5 días seguidos. Te damos 48h de plazo para que te sientes cuando puedas dentro de esos 2 días. El ejercicio en sí está dimensionado para ~2 horas reales.
+          Queremos ver cómo decides bajo un escenario realista de MVP usando todas las herramientas de IA, no cómo pules 5 días seguidos. Te damos 48 horas de plazo para que te sientes cuando puedas dentro de esos 2 días. El ejercicio está dimensionado para ~2 horas reales.
         </p>
         <p class="text-base text-fg-muted leading-relaxed">
-          Si pasás de 2h porque te trabaste o te apasionaste, bienvenido: anotalo en el Audit Log. <strong class="text-fg">Lo que entregás es lo que evaluamos</strong>.
+          Pero no te clavés con el cronómetro: si te tomás 2h o 3h o más, no importa. <strong class="text-fg">Lo importante es lo que entregás y cómo lo sustentás</strong>.
         </p>
       </div>
     </div>

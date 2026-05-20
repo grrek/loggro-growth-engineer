@@ -1,5 +1,5 @@
 ---
-import { Mail, GitBranch, Timer, Video, Send, MessageSquare, Mic, CheckCircle2 } from 'lucide-react';
+import { Mail, GitBranch, Code, Video, Send, MessageSquare, Mic, CheckCircle2 } from 'lucide-react';
 import PixelSprite from './PixelSprite.astro';
 
 const fases = [
@@ -17,27 +17,27 @@ const fases = [
       {
         Icon: GitBranch,
         num: '02',
-        title: 'Confirmás por correo + clonás el template',
-        desc: 'Respondés con el escenario que elegís y el link a tu repo público recién clonado. Esto NO arranca el cronómetro de 2h, solo nos avisa que recibiste todo.',
+        title: 'Clonás el template y armás tu repo público',
+        desc: 'Clonás `grrek/loggro-ai-challenge`, configurás tu `.env` con la virtual key y firmás los legales. ~10 minutos.',
       },
     ],
   },
   {
-    title: 'Durante (cronómetro de 2h cuando te sentás)',
+    title: 'Durante',
     color: '#03A3F8',
     label: 'DURANTE',
     pasos: [
       {
-        Icon: Timer,
+        Icon: Code,
         num: '03',
-        title: 'Cuando te sentás, arrancás el cronómetro',
-        desc: 'Primera entrada del AI Audit Log con la hora. De acá en adelante son ~2h de ejercicio: Parte A (30 min) + Boss Fight (90 min). Hasta donde alcancés.',
+        title: 'Trabajás el ejercicio',
+        desc: 'Parte A (caso de negocio) + Boss Fight (un escenario). El ejercicio está dimensionado para ~2 horas, pero tomate lo que necesites dentro del plazo. Lo importante es lo que entregás y cómo lo sustentás, no el cronómetro exacto.',
       },
       {
         Icon: Video,
         num: '04',
-        title: 'Cerrás el cronómetro y grabás el video',
-        desc: 'Última entrada del Audit Log con la hora. Grabás 5 a 10 min explicando 3 decisiones (arquitectura, descarte de IA, no-build). El video va fuera del cronómetro pero dentro del plazo de 48h.',
+        title: 'Grabás el video corto',
+        desc: 'De 5 a 10 minutos explicando 3 decisiones (una de arquitectura, una donde la IA te dio algo y lo cambiaste, una de "no construir"). Loom, WhatsApp, YouTube unlisted o lo que prefieras.',
       },
       {
         Icon: Send,
@@ -48,7 +48,7 @@ const fases = [
     ],
   },
   {
-    title: 'Después (sin SLA, pero te respondemos)',
+    title: 'Después',
     color: '#149E71',
     label: 'DESPUÉS',
     pasos: [
@@ -88,10 +88,10 @@ const fases = [
       <span class="text-fg-subtle font-mono text-2xl md:text-3xl mr-2">12.</span>El proceso (de fin a fin)
     </h2>
     <p class="text-lg text-fg-muted mb-4 max-w-2xl">
-      Desde que recibís el correo hasta que te damos la decisión final. Sin sorpresas.
+      Desde que recibís el correo hasta la decisión final. Sin sorpresas.
     </p>
     <p class="text-sm text-fg-subtle mb-12 font-mono">
-      Plazo: 48 horas calendario para que nos mandes el correo de entrega. Después: sin SLA, pero te respondemos.
+      Plazo: 48 horas calendario para que nos mandes el correo de entrega. Lo importante es lo que entregás y la sustentación, no cuánto tardás dentro del plazo.
     </p>
 
     <div class="space-y-12">
@@ -133,9 +133,6 @@ const fases = [
         <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel mt-0.5">+</span> <span><strong class="text-fg">WhatsApp</strong> (urgencias o bloqueos): +57 314 661 9018</span></li>
         <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel mt-0.5">+</span> <span><strong class="text-fg">GitHub Issues</strong> (preguntas técnicas reproducibles): en el repo template</span></li>
       </ul>
-      <p class="mt-4 text-xs text-fg-subtle font-mono">
-        {'> '} Respondemos en menos de 2h en horario laboral Colombia (9am a 7pm COT) durante el plazo de 48h.
-      </p>
     </div>
   </div>
 </section>

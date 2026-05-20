@@ -6,7 +6,7 @@
     "tagline": "Construyes un pipeline de outbound: identificas ~30 cuentas desde un ICP, las enriqueces con fuentes públicas, escribes secuencia email + WhatsApp adaptada, y clasificas respuestas entrantes.",
     "descripcion": "Sistema de prospección desde cero. No recibes las cuentas, las generás vos desde el ICP usando fuentes públicas (RUES, LinkedIn, web, prensa). Es lo que un SDR moderno tiene que armar para no depender de bases compradas ni esperar inbound. Acá medimos criterio de ICP match, fuentes citadas, dedupe, y adaptación de copy por sector + rol.",
     "perfil_si": "Te llama la atención o tienes experiencia con SDR, growth, prospección en frío. Alguien que entiende que un asunto malo mata cualquier secuencia y que sabe scrapear fuentes públicas con criterio.",
-    "tiempo": "90 min cronómetro · hasta donde alcancés",
+    "tiempo": "~90 min sugeridos · hasta donde alcancés",
     "sub_agentes": ["AccountFinder + Enricher", "MessageWriter", "ResponseClassifier"],
     "inputs": [
       { "text": "ICP.md: criterios + señales + fuentes sugeridas", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/ICP.md" },
@@ -39,7 +39,7 @@
     "tagline": "Construyes un sistema que analiza 124 campañas reales de Loggro Q1-Q2 2026 y genera 3 hallazgos priorizados + detección de anomalías + flag de vanity metrics.",
     "descripcion": "Análisis del portafolio real de campañas de Loggro para encontrar dónde se está quemando plata vs dónde hay señal real. Cruzar el funnel completo (impressions → MQL → cliente), separar vanity de impact, escribir conclusiones que un CMO pueda accionar el lunes. Marketing analytics aplicado: hay 3 anomalías plantadas y 2 campañas engañosas que parecen anomalía pero no lo son.",
     "perfil_si": "Te llama la atención o tienes experiencia con analítica, data, cruzar fuentes JSON y separar vanity metrics de señal real. Cómodo escribiendo conclusiones para un CMO, no solo dashboards.",
-    "tiempo": "90 min cronómetro · hasta donde alcancés",
+    "tiempo": "~90 min sugeridos · hasta donde alcancés",
     "sub_agentes": ["DataIngestor", "CampaignAnalyzer", "InsightPrioritizer"],
     "inputs": [
       { "text": "campaigns.json: 124 campañas reales Q1-Q2 2026 (Google + Meta + LinkedIn)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-b-insights/campaigns.json" },
@@ -70,7 +70,7 @@
     "tagline": "Construyes un agente que recibe brief de campaña y genera piezas multi-canal consistentes en brand voice, con un reviewer que bloquea las que no pasan umbral.",
     "descripcion": "Generación de piezas multi-canal (LinkedIn, Meta, WhatsApp, email, landing, image prompts) con un reviewer interno que bloquea las que no pasan brand voice. Creatividad con disciplina: la marca no se compromete por velocidad. Tu reviewer se entrena con 10 piezas reales buenas (Meta Ad Library de Loggro) y 10 sintéticas malas con violations etiquetadas.",
     "perfil_si": "Te llama la atención o tienes experiencia con creativos técnicos, content ops, marketing + IA generativa, o perfiles híbridos copywriter-developer. Sensibilidad de marca + código aplicado a generación con disciplina.",
-    "tiempo": "90 min cronómetro · hasta donde alcancés",
+    "tiempo": "~90 min sugeridos · hasta donde alcancés",
     "sub_agentes": ["Copywriter", "BrandVoiceReviewer", "FormatPublisher", "ImagePromptWriter"],
     "inputs": [
       { "text": "briefs.json: 3 briefs reales (DIAN, cross-sell POS, retención Nómina)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/briefs.json" },
@@ -103,7 +103,7 @@
     "tagline": "Procesas grabaciones REALES del equipo comercial de Loggro en español Colombia. STT con la solución que vos elijás + objeciones + competidores + señales DIAN + scoring + email de seguimiento.",
     "descripcion": "Pipeline audio-a-acción sobre llamadas reales del equipo comercial. Transcripción + diarización + extracción de objeciones + detección de competidores y señales DIAN + scoring de riesgo + email de seguimiento. El escenario más multi-step y subjetivo del set: multi-modal (audio → texto → estructurado → acción), con acentos colombianos variados y emociones reales.",
     "perfil_si": "Te llama la atención o tienes experiencia con RevOps, sales ops, customer ops, o builders híbridos. Con apetito por audio + multi-agente, cómodos con audio sin limpiar (overlap, emociones, acentos variados).",
-    "tiempo": "90 min cronómetro · hasta donde alcancés",
+    "tiempo": "~90 min sugeridos · hasta donde alcancés",
     "sub_agentes": [
       "TranscriptionAgent",
       "ObjectionExtractor",
