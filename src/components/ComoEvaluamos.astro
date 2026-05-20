@@ -8,12 +8,12 @@ const dimensiones = [
   {
     name: 'Fluidez con IA y herramientas',
     pobre: 'Un prompt gigante sin estructura',
-    bueno: 'Prompts modulares + tool use + caching + evaluación de prompts',
+    bueno: 'Prompts modulares + tool use + caching',
   },
   {
     name: 'Disciplina de evaluación',
     pobre: 'No tiene cómo medir si su pipeline funciona',
-    bueno: 'Extiende el juez con criterios propios + test de sabotaje que atrapa outputs malos',
+    bueno: 'Define criterios + ejemplos buenos/malos + sabotage test que atrapa outputs malos propios',
   },
   {
     name: 'Costo y latencia',
@@ -22,7 +22,7 @@ const dimensiones = [
   },
   {
     name: 'Sustentación en vivo',
-    pobre: 'Cambia al primer "por qué"',
+    pobre: 'Cambia al primer "¿por qué?"',
     bueno: 'Sustenta con criterio, admite límites, propone alternativa',
   },
 ];
@@ -36,9 +36,8 @@ const criterios = [
 
 const enfoques = [
   { name: 'Revisión con LLM (asíncrona)', desc: 'Script con Claude API + rúbrica versionada en eval/judge_prompt.md. Procesa todo tu entregable después de tu push final.' },
-  { name: 'Revisión humana en frío', desc: 'El líder del rol y el Tech Lead califican por separado antes de hablar entre ellos. Sobre el repo + el Loom.' },
-  { name: 'Revisión con LLM de la sesión en vivo', desc: 'Grabación de la sesión en vivo procesada con Claude usando rúbrica predefinida. Captura señales que se escapan en vivo.' },
-  { name: 'Extensión del juez + prueba de sabotaje (tu Apéndice.A5)', desc: 'Lo evalúa otro LLM: ¿extendiste bien el juez? ¿tu prueba de sabotaje atrapó outputs malos? La señal más alta para este rol.' },
+  { name: 'Revisión humana en frío', desc: 'El líder del rol y el Tech Lead califican por separado antes de hablar entre ellos. Sobre el repo + el video.' },
+  { name: 'Revisión con LLM de la sustentación', desc: 'Grabación de la sustentación procesada con Claude usando rúbrica predefinida. Captura señales que se escapan en vivo.' },
 ];
 ---
 
@@ -89,8 +88,8 @@ const enfoques = [
     </div>
 
     <div class="mb-16">
-      <h3 class="text-xl font-bold mb-6">4 enfoques de evaluación</h3>
-      <div class="grid md:grid-cols-2 gap-4">
+      <h3 class="text-xl font-bold mb-6">3 enfoques de evaluación</h3>
+      <div class="grid md:grid-cols-3 gap-4">
         {enfoques.map((l, i) => (
           <div class="p-5 rounded-lg border border-line">
             <p class="text-xs font-mono text-fg-subtle mb-2">Enfoque {i + 1}</p>
@@ -119,9 +118,9 @@ const enfoques = [
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Tono propio (no "ChatGPT corporativo")</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Honestidad en la bitácora de uso de IA</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> GitHub voluntario con sustancia</li>
-            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Juez bien extendido + sabotaje atrapado</li>
+            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Sabotage test propio que atrapa outputs malos</li>
             <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> Prompt injection encontrado y mitigado (Escenario D)</li>
-            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> MCP server propio mostrado en la sesión en vivo</li>
+            <li class="flex gap-2"><span class="text-green-500/60 shrink-0 mt-0.5">+</span> MCP server propio mostrado en la sustentación</li>
           </ul>
         </div>
 

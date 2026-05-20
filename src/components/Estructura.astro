@@ -4,41 +4,41 @@ const partes = [
     code: '0',
     name: 'Prerequisitos',
     desc: 'Setup: clonar template, firmar consentimiento, mandar link a tu repo',
-    tiempo: '15 min',
+    tiempo: '10 min',
     peso: '0%',
     async: true,
   },
   {
     code: 'A',
     name: 'Caso de negocio',
-    desc: '6 preguntas sobre un snapshot real de funnel y atribución de Loggro',
-    tiempo: '60 min',
-    peso: '15%',
+    desc: '3 preguntas sobre un snapshot real del funnel de Loggro',
+    tiempo: '30 min',
+    peso: '25%',
     async: true,
   },
   {
     code: 'B',
-    name: 'Build',
-    desc: 'Eliges 1 de 4 escenarios y construyes el pipeline',
-    tiempo: '3 a 4 horas',
-    peso: '30%',
+    name: 'Boss Fight (Build)',
+    desc: 'Eliges 1 de 4 escenarios y construyes hasta donde alcancés',
+    tiempo: '90 min',
+    peso: '35%',
     async: true,
     destacado: true,
   },
   {
-    code: 'Apéndice',
-    name: 'AI Audit Log + Stack + Video',
-    desc: 'Documentas cómo trabajaste con IA. Sin esto no se evalúa nada más',
-    tiempo: '45 min',
-    peso: '15%',
+    code: 'Entregable',
+    name: 'AI Audit Log + Video',
+    desc: 'Bitácora obligatoria + video corto explicando 3 decisiones clave. Sin esto, no se evalúa',
+    tiempo: 'dentro del plazo',
+    peso: '10%',
     async: true,
   },
   {
     code: 'C',
-    name: 'Sesión en vivo',
-    desc: 'Plan / Build / Review con el equipo evaluador. Sustentación de 3 decisiones',
+    name: 'Sustentación',
+    desc: 'Presentás, respondemos preguntas, revisamos tu Audit Log juntos. Te lucís, no te defendés',
     tiempo: '60 min',
-    peso: '35%',
+    peso: '30%',
     async: false,
     destacado: true,
   },
@@ -66,7 +66,7 @@ import PixelSprite from './PixelSprite.astro';
     </p>
     <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">La estructura</h2>
     <p class="text-lg text-fg-muted mb-12 max-w-2xl">
-      Total: 5 a 7 horas de trabajo asincrónico dentro de la ventana de 48h, más 60 minutos de sesión en vivo al cierre.
+      Plazo total: 48 horas para entregar. Cronómetro del ejercicio (Parte A + Boss Fight): ~2 horas. Sustentación de 60 min se agenda después de tu entrega.
     </p>
 
     <div class="overflow-x-auto rounded-xl border border-line">
@@ -75,7 +75,7 @@ import PixelSprite from './PixelSprite.astro';
           <tr>
             <th class="text-left p-4 font-semibold w-20">Parte</th>
             <th class="text-left p-4 font-semibold">Qué es</th>
-            <th class="text-left p-4 font-semibold w-28 hidden md:table-cell">Tiempo</th>
+            <th class="text-left p-4 font-semibold w-32 hidden md:table-cell">Tiempo</th>
             <th class="text-left p-4 font-semibold w-20">Peso</th>
             <th class="text-left p-4 font-semibold w-24 hidden md:table-cell">Modalidad</th>
           </tr>
@@ -112,7 +112,7 @@ import PixelSprite from './PixelSprite.astro';
     </div>
 
     <p class="text-sm text-fg-subtle font-mono mt-4">
-      {'> '} El reloj de 48h inicia cuando te enviamos estas instrucciones por correo. Coordinamos día y hora contigo.
+      {'> '} El plazo de 48h inicia cuando te enviamos estas instrucciones por correo. El cronómetro de 2h del ejercicio lo arrancás vos (primera entrada del Audit Log) cuando te sentés a trabajar.
     </p>
   </div>
 </section>

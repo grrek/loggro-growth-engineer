@@ -135,7 +135,7 @@ export default function Terminal() {
         <span className="w-3 h-3 bg-yellow-500/80 border border-yellow-700" aria-hidden="true" />
         <span className="w-3 h-3 bg-green-500/80 border border-green-700" aria-hidden="true" />
         <span className="ml-2 text-xs text-neutral-500 font-mono">
-          ~/loggro-ai-challenge — zsh
+          ~/loggro-ai-challenge · zsh
         </span>
         <span className="ml-auto flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 bg-green-400 animate-pulse rounded-none" aria-hidden="true" />

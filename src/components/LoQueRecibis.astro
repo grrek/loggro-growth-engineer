@@ -4,7 +4,6 @@ import {
   FileCode,
   Palette,
   KeyRound,
-  Server,
   MessageCircle,
 } from 'lucide-react';
 
@@ -17,7 +16,7 @@ const general = [
   {
     Icon: FileCode,
     title: 'Schemas y judge prompt público',
-    desc: 'HubSpot mock schema, insights schema (Escenario D), y eval/judge_prompt.md v1.0 con la rúbrica de 5 dimensiones que extiendes en el Apéndice.',
+    desc: 'HubSpot mock schema, insights schema (Escenario D), y eval/judge_prompt.md v1.0 con la rúbrica de 5 dimensiones. Lo publicamos para que sepas exactamente cómo te evaluamos con el LLM (sin sorpresas).',
   },
   {
     Icon: Palette,
@@ -28,11 +27,6 @@ const general = [
     Icon: KeyRound,
     title: 'Virtual key del LLM Broker',
     desc: 'Una key llm_brk_* con budget cap pre-asignado. Apunta a labs.loggro.com/llm_broker (gateway OpenAI-compatible). Cero costo personal de tooling.',
-  },
-  {
-    Icon: Server,
-    title: 'Whisper self-hosted (operativo)',
-    desc: 'Endpoint en labs.loggro.com/whisper con Basic Auth. Modelo small faster-whisper. Gratis para vos. Solo aplica si eliges Escenario D. Credentials en tu .env y correo de arranque.',
   },
   {
     Icon: MessageCircle,

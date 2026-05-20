@@ -4,7 +4,6 @@ import {
   Layers,
   Video,
   Github,
-  Gavel,
   MessagesSquare,
 } from 'lucide-react';
 import PixelSprite from './PixelSprite.astro';
@@ -16,57 +15,48 @@ const REPO_TREE = `${REPO_URL}/tree/main`;
 const items = [
   {
     Icon: ListChecks,
-    code: 'A1',
+    code: 'E1',
     title: 'AI Audit Log',
     obligatorio: true,
-    desc: 'Registro de cada vez que usaste IA durante el reto: qué le pediste, qué te dio, qué tuviste que corregir, y qué aprendiste. Mínimo 10 entradas con fricción documentada.',
+    desc: 'Registro de cada vez que usaste IA durante el reto: qué le pediste, qué te dio, qué tuviste que corregir, y qué aprendiste. Mínimo 10 entradas con fricción documentada. Primera entrada marca la hora de arranque del cronómetro de 2h; última marca el cierre del ejercicio.',
     file: 'docs/AI_AUDIT_LOG.md',
     fileUrl: `${REPO_BLOB}/docs/AI_AUDIT_LOG_template.md`,
   },
   {
-    Icon: Layers,
-    code: 'A2',
-    title: 'Stack IA diario',
-    obligatorio: true,
-    desc: 'Tu setup real de IA en el día a día. Modelos que usas, MCPs conectados, herramientas favoritas. Si no usas una categoría, dilo: no inventes.',
-    file: 'docs/AI_STACK.md',
-    fileUrl: `${REPO_BLOB}/docs/AI_STACK_template.md`,
-  },
-  {
     Icon: Video,
-    code: 'A3',
-    title: 'Video Loom de 5 a 10 minutos',
+    code: 'E2',
+    title: 'Video corto de 5 a 10 minutos',
     obligatorio: true,
-    desc: 'Defiendes 3 decisiones del entregable: una de arquitectura, una donde la IA te dio algo y lo cambiaste, una de "no construir". Hablas a cámara, no lees la pantalla.',
+    desc: 'Explicás 3 decisiones del entregable: una de arquitectura, una donde la IA te dio algo y lo cambiaste, una de "no construir". Hablas a cámara, no lees la pantalla. Loom, WhatsApp, YouTube unlisted o lo que prefieras. Se graba fuera del cronómetro de 2h, dentro del plazo de 48h.',
     file: 'URL en tu README final',
     fileUrl: null,
   },
   {
+    Icon: MessagesSquare,
+    code: 'E3',
+    title: 'Prompts versionados',
+    obligatorio: true,
+    desc: 'Los prompts reales que tu pipeline usa en runtime (no los del Audit Log, esos son notas/reflexión). Versionados en /prompts/ con un README breve por cada uno.',
+    file: 'prompts/',
+    fileUrl: `${REPO_TREE}/prompts`,
+  },
+  {
+    Icon: Layers,
+    code: 'O1',
+    title: 'Stack IA personal',
+    obligatorio: false,
+    desc: 'Opcional. Tu setup real de IA en el día a día. Modelos que usas, MCPs conectados, herramientas favoritas. Si no usas una categoría, dilo: no inventes. Suma señal sobre tu perfil.',
+    file: 'docs/AI_STACK.md',
+    fileUrl: `${REPO_BLOB}/docs/AI_STACK_template.md`,
+  },
+  {
     Icon: Github,
-    code: 'A4',
+    code: 'O2',
     title: 'Tu GitHub',
     obligatorio: false,
     desc: 'Opcional. Si te sientes cómodo, mándanos tu perfil + top 3 repos + 1 línea por cada uno. Si tienes un MCP server propio, suma muchísimo.',
     file: 'enlace en README',
     fileUrl: null,
-  },
-  {
-    Icon: Gavel,
-    code: 'A5',
-    title: 'Extensión del judge prompt',
-    obligatorio: true,
-    desc: 'El repo trae eval/judge_prompt.md público (rúbrica de 5 dimensiones que usa un LLM para evaluarte). Lo extiendes con 2 a 3 criterios tuyos, corres un sabotage test contra 2 outputs deliberadamente malos, y reportas si tu judge atrapó el sabotaje. Este sub-ejercicio es el de más alto signal de toda la prueba.',
-    file: 'eval/judge_prompt.md',
-    fileUrl: `${REPO_BLOB}/eval/judge_prompt.md`,
-  },
-  {
-    Icon: MessagesSquare,
-    code: 'A6',
-    title: 'Prompts versionados + transcripts/exports',
-    obligatorio: true,
-    desc: 'Los prompts reales que tu pipeline usa (no los del Audit Log, esos son notas). Versionados en /prompts/ con un README breve por cada uno. Más: exports o screenshots de 2 a 3 sesiones representativas con tu agente (Claude Code /export, transcript de Cursor, screenshot del chat). No tiene que ser todo: lo que muestre cómo trabajaste.',
-    file: 'prompts/ + docs/sessions/',
-    fileUrl: `${REPO_TREE}/prompts`,
   },
 ];
 ---
@@ -78,15 +68,15 @@ const items = [
       <PixelSprite type="key" size={26} class="text-brand-primary-text" animated />
     </div>
     <div class="flex items-baseline gap-3 mb-4 flex-wrap">
-      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE APÉNDICE · OBLIGATORIA</p>
-      <span class="font-pixel text-[9px] text-fg-subtle">peso: 15%</span>
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} ENTREGABLE · OBLIGATORIO</p>
+      <span class="font-pixel text-[9px] text-fg-subtle">peso: 10% (obligatorios) + bonus opcionales</span>
     </div>
-    <h2 class="text-2xl md:text-4xl mb-4 leading-[1.3]">El Apéndice</h2>
+    <h2 class="text-2xl md:text-4xl mb-4 leading-[1.3]">El entregable</h2>
     <p class="text-lg text-fg-muted mb-4 max-w-2xl font-sans">
       Estos artefactos documentan cómo trabajaste con IA durante el reto: tu criterio, tus correcciones, las decisiones que tomaste cuando la IA te dio algo que no servía.
     </p>
     <p class="text-sm text-fg-muted mb-12 max-w-2xl font-sans">
-      <strong class="text-fg">Sin ellos no evaluamos nada más.</strong> El proceso importa tanto como el output. Esa es la única regla dura.
+      <strong class="text-fg">Los 3 obligatorios son sine qua non.</strong> Sin Audit Log + Video + Prompts versionados, no evaluamos lo demás. Los 2 opcionales suman señal pero no penalizan si no los entregás.
     </p>
 
     <div class="grid md:grid-cols-2 gap-5">

@@ -1,5 +1,5 @@
 ---
-import { TrendingUp, Users, DollarSign, Compass, Zap, Scissors } from 'lucide-react';
+import { TrendingUp, Users, DollarSign } from 'lucide-react';
 
 const preguntas = [
   {
@@ -16,27 +16,9 @@ const preguntas = [
   },
   {
     code: 'A3',
-    Icon: Compass,
-    title: 'Modelo de atribución a 4 semanas',
-    desc: 'Si tuvieras 4 semanas para mejorar atribución: ¿qué modelo (last-touch, lineal, time-decay, position-based, data-driven) y por qué? ¿Cómo lo configurarías en HubSpot?',
-  },
-  {
-    code: 'A4',
     Icon: DollarSign,
-    title: 'Número clave para defender paid',
-    desc: '¿Cuál reportarías al CEO? Bonus: ¿qué número NO reportarías aunque se vea bonito?',
-  },
-  {
-    code: 'A5',
-    Icon: Zap,
-    title: 'Escalar si comercial se duplica',
-    desc: 'Si el equipo comercial se duplica de un mes para otro, ¿qué acciones sugerirías para escalar de forma responsable el alcance en marketing digital?',
-  },
-  {
-    code: 'A6',
-    Icon: Scissors,
-    title: 'Reducción de costos a la mitad',
-    desc: 'Asume que tu arquitectura cuesta $X procesar una unidad (lead, llamada, pieza). Loggro escala 10x. ¿Cómo bajas el costo a la mitad sin perder calidad significativa?',
+    title: 'Número clave para sustentar paid',
+    desc: '¿Cuál número reportarías al CEO para sustentar la inversión en paid? Bonus: ¿qué número NO reportarías aunque se vea bonito?',
   },
 ];
 ---
@@ -45,7 +27,7 @@ const preguntas = [
   <div class="max-w-5xl mx-auto">
     <div class="flex items-baseline gap-3 mb-4 flex-wrap">
       <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text">{'> '} PARTE A · OBLIGATORIA</p>
-      <span class="font-pixel text-[9px] text-fg-subtle">peso: 15% · 60 minutos · todos la hacen</span>
+      <span class="font-pixel text-[9px] text-fg-subtle">peso: 25% · 30 minutos · todos la hacen</span>
     </div>
     <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">El caso de negocio <span class="text-fg-subtle font-mono text-xl md:text-2xl">(conceptual)</span></h2>
     <p class="text-lg text-fg-muted mb-8 max-w-3xl leading-relaxed">
@@ -102,14 +84,14 @@ const preguntas = [
     </div>
 
     <p class="text-base text-fg-muted mb-12 max-w-3xl leading-relaxed">
-      <strong class="text-fg">Documento de máximo 1.5 páginas o 700 palabras</strong>. Si no vienes de marketing, no pasa nada: responde desde primeros principios y declara los supuestos que necesites. Te leerán el Director de Marketing y el Director Comercial.
+      <strong class="text-fg">Documento de máximo 1 página o 500 palabras</strong>. Si no vienes de marketing, no pasa nada: responde desde primeros principios y declara los supuestos que necesites. Te leerán el Director de Marketing y el Director Comercial.
     </p>
 
     <p class="font-pixel text-[10px] uppercase tracking-widest text-fg-subtle mb-6">
-      {'> '} 6 PREGUNTAS QUE RESPONDES
+      {'> '} 3 PREGUNTAS QUE RESPONDES
     </p>
 
-    <div class="grid md:grid-cols-2 gap-5 mb-10">
+    <div class="grid md:grid-cols-3 gap-5 mb-10">
       {preguntas.map(({ code, Icon, title, desc }) => (
         <div class="p-6 bg-surface border-pixel shadow-pixel-md">
           <div class="flex items-start gap-4 mb-3">

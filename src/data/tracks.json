@@ -3,23 +3,23 @@
     "id": "a",
     "code": "Escenario A",
     "name": "Prospección Automatizada (Outbound)",
-    "tagline": "Construyes un pipeline de outbound end-to-end: identificas ~100 cuentas desde un ICP, las enriqueces con fuentes públicas, escribes secuencia email + WhatsApp adaptada, y clasificas respuestas entrantes.",
+    "tagline": "Construyes un pipeline de outbound: identificas ~30 cuentas desde un ICP, las enriqueces con fuentes públicas, escribes secuencia email + WhatsApp adaptada, y clasificas respuestas entrantes.",
     "perfil_si": "SDR, growth con experiencia en prospección en frío, alguien que entiende que un asunto malo mata cualquier secuencia y que sabe scrapear fuentes públicas",
-    "tiempo": "3 a 4 horas",
+    "tiempo": "90 min cronómetro · hasta donde alcancés",
     "sub_agentes": ["AccountFinder + Enricher", "MessageWriter", "ResponseClassifier"],
     "inputs": [
-      { "text": "ICP.md — criterios + señales + fuentes sugeridas", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/ICP.md" },
-      { "text": "accounts_example.json — 30 cuentas en formato canónico (solo referencia)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/accounts_example.json" },
-      { "text": "responses_sample.json — 10 respuestas con groundtruth_intent", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/responses_sample.json" },
+      { "text": "ICP.md: criterios + señales + fuentes sugeridas", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/ICP.md" },
+      { "text": "accounts_example.json: 30 cuentas en formato canónico (solo referencia)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/accounts_example.json" },
+      { "text": "responses_sample.json: 10 respuestas con groundtruth_intent", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-a-outbound/responses_sample.json" },
       { "text": "Buyer persona: dueño de empresa, director de finanzas, emprendedor", "url": null },
       { "text": "Brand voice guide de Loggro", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/docs/BRAND_VOICE.md" },
       { "text": "Virtual key del LLM Broker", "url": null }
     ],
     "outputs": [
-      "accounts.json con ~100 cuentas nuevas + sources (URLs reales) + confidence + icp_match_score",
+      "accounts.json con ~30 cuentas nuevas + sources (URLs reales) + confidence + icp_match_score",
       "Pipeline reproducible que genera las cuentas desde fuentes públicas",
       "Secuencia outbound 2-touchpoint (cold + bump 1) adaptada por sector + rol",
-      "Clasificador de respuestas (4 intents) con accuracy reportada",
+      "Clasificador de respuestas (si el tiempo alcanza)",
       "README con: % ICP match · diversidad sectorial · costo · plan a 1000 cuentas/mes"
     ],
     "rules": [
@@ -37,10 +37,10 @@
     "name": "Insights de Campañas de Marketing",
     "tagline": "Construyes un sistema que analiza 124 campañas reales de Loggro Q1-Q2 2026 y genera 3 hallazgos priorizados + detección de anomalías + flag de vanity metrics.",
     "perfil_si": "Analítica, data-oriented, cómodo cruzando JSON y separando vanity de señal real",
-    "tiempo": "3 a 4 horas",
+    "tiempo": "90 min cronómetro · hasta donde alcancés",
     "sub_agentes": ["DataIngestor", "CampaignAnalyzer", "InsightPrioritizer"],
     "inputs": [
-      { "text": "campaigns.json — 124 campañas reales Q1-Q2 2026 (Google + Meta + LinkedIn)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-b-insights/campaigns.json" },
+      { "text": "campaigns.json: 124 campañas reales Q1-Q2 2026 (Google + Meta + LinkedIn)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-b-insights/campaigns.json" },
       { "text": "7 productos · 3 canales · funnel completo + CAC + audiencia", "url": null },
       { "text": "3 anomalías plantadas (sin etiqueta) + 2 campañas engañosas vanity", "url": null },
       { "text": "Virtual key del LLM Broker", "url": null }
@@ -67,13 +67,13 @@
     "name": "Generador de Piezas",
     "tagline": "Construyes un agente que recibe brief de campaña y genera piezas multi-canal consistentes en brand voice, con un reviewer que bloquea las que no pasan umbral.",
     "perfil_si": "Creativos técnicos, content ops, marketing + IA generativa, perfiles híbridos copywriter-developer",
-    "tiempo": "3 a 4 horas",
+    "tiempo": "90 min cronómetro · hasta donde alcancés",
     "sub_agentes": ["Copywriter", "BrandVoiceReviewer", "FormatPublisher", "ImagePromptWriter"],
     "inputs": [
-      { "text": "briefs.json — 3 briefs reales (DIAN, cross-sell POS, retención Nómina)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/briefs.json" },
-      { "text": "good_pieces.json — 10 piezas REALES extraídas de Meta Ad Library", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/good_pieces.json" },
-      { "text": "bad_pieces.json — 10 piezas sintéticas con violations documentadas (11 tipos)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/bad_pieces.json" },
-      { "text": "screenshots/ — 10 imágenes (7 anuncios + 3 video posters)", "url": "https://github.com/grrek/loggro-ai-challenge/tree/main/data/track-c-pieces/screenshots" },
+      { "text": "briefs.json: 3 briefs reales (DIAN, cross-sell POS, retención Nómina)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/briefs.json" },
+      { "text": "good_pieces.json: 10 piezas REALES extraídas de Meta Ad Library", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/good_pieces.json" },
+      { "text": "bad_pieces.json: 10 piezas sintéticas con violations documentadas (11 tipos)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-c-pieces/bad_pieces.json" },
+      { "text": "screenshots/: 10 imágenes (7 anuncios + 3 video posters)", "url": "https://github.com/grrek/loggro-ai-challenge/tree/main/data/track-c-pieces/screenshots" },
       { "text": "Brand voice guide + Meta Ad Library live de Loggro", "url": "https://www.facebook.com/ads/library/?country=CO&q=loggro" }
     ],
     "outputs": [
@@ -97,9 +97,9 @@
     "id": "d",
     "code": "Escenario D",
     "name": "Inteligencia de Conversaciones",
-    "tagline": "Procesas 9 grabaciones REALES del equipo comercial de Loggro en español Colombia. STT + diarization + objeciones + competidores + señales DIAN + scoring + email de seguimiento.",
+    "tagline": "Procesas grabaciones REALES del equipo comercial de Loggro en español Colombia. STT con la solución que vos elijás + objeciones + competidores + señales DIAN + scoring + email de seguimiento.",
     "perfil_si": "RevOps, sales ops, builders híbridos con apetito por audio + multi-agente, cómodos con audio sin limpiar (overlap, emociones, acentos variados)",
-    "tiempo": "3 a 4 horas (incluye setup de STT)",
+    "tiempo": "90 min cronómetro · hasta donde alcancés",
     "sub_agentes": [
       "TranscriptionAgent",
       "ObjectionExtractor",
@@ -109,17 +109,17 @@
       "FollowUpDrafter"
     ],
     "inputs": [
-      { "text": "9 MP3 reales Q2 2026 (5 obligatorios + 4 opcionales que suman puntos, ~80 min)", "url": "https://labs.loggro.com/growth-engineer/audio/" },
-      { "text": "speaker_map.json — metadata por audio (escenario + señales esperadas)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-d-intel/speaker_map.json" },
-      { "text": "insights_schema.json — schema fijo del output esperado", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/schemas/insights_schema.json" },
-      { "text": "Whisper self-hosted Loggro Labs (gratis, modelo small con Basic Auth)", "url": "https://labs.loggro.com/whisper/docs" },
+      { "text": "9 MP3 reales Q2 2026 (2 obligatorias call-01 + call-02 · 7 opcionales que suman puntos)", "url": "https://labs.loggro.com/growth-engineer/audio/" },
+      { "text": "speaker_map.json: metadata por audio (escenario + señales esperadas)", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/data/track-d-intel/speaker_map.json" },
+      { "text": "insights_schema.json: schema fijo del output esperado", "url": "https://github.com/grrek/loggro-ai-challenge/blob/main/schemas/insights_schema.json" },
+      { "text": "STT a tu criterio: API comercial (Deepgram, AssemblyAI, OpenAI), modelo open-source local, LLM con audio nativo. Justificá la concesión costo/calidad/latencia.", "url": null },
       { "text": "Virtual key del LLM Broker", "url": null }
     ],
     "outputs": [
-      "insights.json por llamada conforme al schema (transcript + diarization + objeciones + competidores + compliance + next_steps + risk_score + follow_up_email)",
+      "insights.json por llamada conforme al schema (transcript + objeciones + competidores + compliance + next_steps + risk_score + follow_up_email)",
       "Tablero agregado: talk ratio, top objeciones, competidores, deals en riesgo",
       "Patch al CRM (HubSpot mock)",
-      "5 emails de seguimiento (uno por obligatoria)",
+      "Emails de seguimiento (uno por llamada procesada)",
       "README con arquitectura + costo total con y sin prompt caching"
     ],
     "rules": [
