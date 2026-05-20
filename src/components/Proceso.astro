@@ -1,0 +1,141 @@
+---
+import { Mail, GitBranch, Timer, Video, Send, MessageSquare, Mic, CheckCircle2 } from 'lucide-react';
+import PixelSprite from './PixelSprite.astro';
+
+const fases = [
+  {
+    title: 'Antes (dentro del plazo de 48h calendario)',
+    color: '#E75E1E',
+    label: 'ANTES',
+    pasos: [
+      {
+        Icon: Mail,
+        num: '01',
+        title: 'Recibís el correo de arranque',
+        desc: 'Grego te manda instrucciones + virtual key del LLM Broker. El plazo de 48 horas calendario arranca acá.',
+      },
+      {
+        Icon: GitBranch,
+        num: '02',
+        title: 'Confirmás por correo + clonás el template',
+        desc: 'Respondés con el escenario que elegís y el link a tu repo público recién clonado. Esto NO arranca el cronómetro de 2h, solo nos avisa que recibiste todo.',
+      },
+    ],
+  },
+  {
+    title: 'Durante (cronómetro de 2h cuando te sentás)',
+    color: '#03A3F8',
+    label: 'DURANTE',
+    pasos: [
+      {
+        Icon: Timer,
+        num: '03',
+        title: 'Cuando te sentás, arrancás el cronómetro',
+        desc: 'Primera entrada del AI Audit Log con la hora. De acá en adelante son ~2h de ejercicio: Parte A (30 min) + Boss Fight (90 min). Hasta donde alcancés.',
+      },
+      {
+        Icon: Video,
+        num: '04',
+        title: 'Cerrás el cronómetro y grabás el video',
+        desc: 'Última entrada del Audit Log con la hora. Grabás 5 a 10 min explicando 3 decisiones (arquitectura, descarte de IA, no-build). El video va fuera del cronómetro pero dentro del plazo de 48h.',
+      },
+      {
+        Icon: Send,
+        num: '05',
+        title: 'Push final + correo de entrega',
+        desc: 'Push a tu repo público y nos mandás un correo a garistizabal@loggro.com con: link repo, link video, escenario, y notas si querés. El plazo de 48h se cumple cuando enviás este correo.',
+      },
+    ],
+  },
+  {
+    title: 'Después (sin SLA, pero te respondemos)',
+    color: '#149E71',
+    label: 'DESPUÉS',
+    pasos: [
+      {
+        Icon: MessageSquare,
+        num: '06',
+        title: 'Te contactamos para agendar la sustentación',
+        desc: 'Por correo, WhatsApp o llamada con propuestas de día y hora. Coordinamos según tu disponibilidad. Microsoft Teams.',
+      },
+      {
+        Icon: Mic,
+        num: '07',
+        title: 'Sustentación en vivo (60 min)',
+        desc: 'Presentás (15 min) + preguntas de criterio y huella IA (30 min) + revisamos tu AI Audit Log juntos (15 min). Te lucís, no te defendés.',
+      },
+      {
+        Icon: CheckCircle2,
+        num: '08',
+        title: 'Decisión + feedback',
+        desc: 'Te avisamos por correo. Si pasás, entrevista final con el Director de Crecimiento (45 min, fit cultural + números). Si no, retroalimentación escrita con rúbrica diligenciada.',
+      },
+    ],
+  },
+];
+---
+
+<section id="proceso" class="py-20 md:py-28 px-6 md:px-8 bg-surface-alt">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-3 text-brand-primary-text">
+      <PixelSprite type="controller" size={28} animated />
+      <PixelSprite type="cup" size={26} class="text-arcade-yellow-bright" animated />
+    </div>
+    <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
+      {'> '} 12 · EL_PROCESO
+    </p>
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+      <span class="text-fg-subtle font-mono text-2xl md:text-3xl mr-2">12.</span>El proceso (de fin a fin)
+    </h2>
+    <p class="text-lg text-fg-muted mb-4 max-w-2xl">
+      Desde que recibís el correo hasta que te damos la decisión final. Sin sorpresas.
+    </p>
+    <p class="text-sm text-fg-subtle mb-12 font-mono">
+      Plazo: 48 horas calendario para que nos mandes el correo de entrega. Después: sin SLA, pero te respondemos.
+    </p>
+
+    <div class="space-y-12">
+      {fases.map((fase) => (
+        <div>
+          <div class="flex items-baseline gap-3 mb-5 pb-3 border-b-2" style={`border-color: ${fase.color};`}>
+            <p class="font-pixel text-[10px] uppercase tracking-widest" style={`color: ${fase.color};`}>
+              {'> '} {fase.label}
+            </p>
+            <p class="text-sm text-fg-muted font-sans flex-1">{fase.title}</p>
+          </div>
+
+          <div class="space-y-4">
+            {fase.pasos.map(({ Icon, num, title, desc }) => (
+              <div class="flex gap-5 p-6 bg-surface border-pixel shadow-pixel-md hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-pixel-lg transition-all">
+                <div class="shrink-0 flex flex-col items-center gap-2">
+                  <span class="font-pixel text-base font-bold text-white pixel-corners border-2 border-fg w-12 h-12 grid place-items-center" style={`background-color: ${fase.color}; box-shadow: 3px 3px 0 0 var(--color-fg);`}>
+                    {num}
+                  </span>
+                  <Icon size={20} class="text-fg-subtle" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-base md:text-lg font-bold mb-2 leading-snug">{title}</h3>
+                  <p class="text-sm text-fg-muted leading-relaxed font-sans">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-surface border-pixel shadow-pixel-md" style="border-color: var(--arcade-yellow-bright);">
+      <p class="font-pixel text-[10px] uppercase tracking-widest text-brand-primary-text mb-3">
+        {'> '} CANALES DURANTE EL PROCESO
+      </p>
+      <ul class="space-y-2 text-sm text-fg-muted leading-relaxed">
+        <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel mt-0.5">+</span> <span><strong class="text-fg">Correo</strong> (preferido): <a href="mailto:garistizabal@loggro.com" class="underline decoration-dotted underline-offset-2 hover:text-brand-primary-text">garistizabal@loggro.com</a></span></li>
+        <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel mt-0.5">+</span> <span><strong class="text-fg">WhatsApp</strong> (urgencias o bloqueos): +57 314 661 9018</span></li>
+        <li class="flex gap-2"><span class="text-brand-primary-text shrink-0 font-pixel mt-0.5">+</span> <span><strong class="text-fg">GitHub Issues</strong> (preguntas técnicas reproducibles): en el repo template</span></li>
+      </ul>
+      <p class="mt-4 text-xs text-fg-subtle font-mono">
+        {'> '} Respondemos en menos de 2h en horario laboral Colombia (9am a 7pm COT) durante el plazo de 48h.
+      </p>
+    </div>
+  </div>
+</section>
